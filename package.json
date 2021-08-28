@@ -1,0 +1,23 @@
+{
+  "name": "waspbot",
+  "version": "1.0.0",
+  "description": "WaspBot is the discord bot of the WaspBots server.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Torwent/WaspBot.git"
+  },
+  "author": "Torwent",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Torwent/WaspBot/issues"
+  },
+  "homepage": "https://github.com/Torwent/WaspBot#readme",
+  "dependencies": {
+    "coinbase-commerce-node": "^1.0.4",
+    "discord.js": "^13.1.0"
+  }
+}
