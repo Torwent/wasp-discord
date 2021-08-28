@@ -1,0 +1,2 @@
+# WaspBot
+ Discord WaspBot
