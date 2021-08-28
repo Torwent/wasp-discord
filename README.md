@@ -1,3 +1,3 @@
-# Wasp Bot
+# WaspBot
 
-Wasp Bot is the discord bot of the WaspBots server
+WaspBot is the discord bot of the WaspBots server
