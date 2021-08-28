@@ -1,0 +1,10 @@
+{
+  "mainToken": "",
+  "devToken": "",
+  "realBot": false,
+  "coinbaseAPIKey": "",
+  "coinbaseSharedSecret": "",
+  "botID": "",
+  "devBotID": "",
+  "prefix": "!"
+}
