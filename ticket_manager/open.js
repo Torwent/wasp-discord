@@ -5,7 +5,7 @@ const { premiumRole } = require("../config.json")
 
 const firstMessage = require("../channel_manager/first-message")
 const deleteMessage = require("../channel_manager/delete")
-const cryptoCharge = require("../crypto_payment/create_charge")
+const cryptoCharge = require("../crypto_payment/create")
 
 module.exports = async (client, guild, user) => {
   const ticketName = `${user.username + user.discriminator}-ticket`

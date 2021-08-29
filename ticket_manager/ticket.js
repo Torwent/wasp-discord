@@ -3,7 +3,7 @@ const { botID } = require("../config.json")
 const { devBotID } = require("../config.json")
 const { premiumRole } = require("../config.json")
 const firstMessage = require("../channel_manager/first-message")
-const openTicket = require("./open-ticket")
+const openTicket = require("./open")
 
 module.exports = (client) => {
   //comment out to test
