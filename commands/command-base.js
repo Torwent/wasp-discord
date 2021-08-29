@@ -101,7 +101,7 @@ module.exports.listen = (client) => {
 
             //Ensure the user has the required permissions
             for (const permission of permissions)
-                if (!member.hasPermission(peclearrmission)) {
+                if (!member.permissions.has(permission)) {
                     message.reply(permissionError)
                     return
                 }
