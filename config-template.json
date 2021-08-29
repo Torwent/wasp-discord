@@ -6,5 +6,7 @@
   "coinbaseSharedSecret": "",
   "botID": "",
   "devBotID": "",
+  "ticketCategoryID": "",
+  "premiumRole": "",
   "prefix": "!"
 }
