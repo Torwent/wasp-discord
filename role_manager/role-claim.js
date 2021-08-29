@@ -1,7 +1,7 @@
 const { realBot } = require("../config.json")
 const { botID } = require("../config.json")
 const { devBotID } = require("../config.json")
-const firstMessage = require("./first-message")
+const firstMessage = require("../channel_manager/first-message")
 
 module.exports = (client) => {
   //comment out to test

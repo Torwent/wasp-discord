@@ -7,6 +7,7 @@ const client = new discord.Client({
 
 const config = require("./config.json")
 const roleClaim = require("./role_manager/role-claim")
+const ticketManager = require("./ticket_manager/ticket")
 
 client.once("ready", () => {
   console.log("Wasp Bot is ready!")
@@ -31,6 +32,8 @@ client.once("ready", () => {
   console.log("Finished loading commands.")
 
   roleClaim(client)
+  ticketManager(client)
+  commandBase.listen(client)
 })
 
 config.realBot ? client.login(config.token) : client.login(config.devToken)
