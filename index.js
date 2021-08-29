@@ -6,7 +6,7 @@ const client = new discord.Client({
 })
 
 const config = require("./config.json")
-const roleClaim = require("./role_manager/role-claim")
+const roleClaim = require("./role_manager/claim")
 const ticketManager = require("./ticket_manager/ticket")
 
 client.once("ready", () => {
