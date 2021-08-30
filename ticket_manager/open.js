@@ -8,7 +8,7 @@ const deleteMessage = require("../channel_manager/delete")
 const cryptoCharge = require("../crypto_payment/create")
 
 module.exports = async (client, guild, user) => {
-  const ticketName = `${user.username + user.discriminator}-ticket`
+  const ticketName = `ticket-${user.id}`
   if (guild.channels.cache.find((c) => c.name === ticketName)) return
 
   const getEmoji = (emojiName) =>
@@ -28,7 +28,6 @@ module.exports = async (client, guild, user) => {
     },
   ])
 
-  //TODO
   let chargeObj = cryptoCharge(user)
 
   chargeObj
