@@ -8,39 +8,20 @@ module.exports = {
     maxArgs: 0,
     callback: (message, arguments, text) => {
         const guild = message.guild;
-        const embed = new MessageEmbed()
+        const members = guild.members.cache;
+        const owner = members.find(member => member.id === guild.ownerId);
+
+        const siEmbed = new MessageEmbed()
             .setTitle(guild.name)
             .setThumbnail(guild.iconURL())
             .setColor("RANDOM")
-            .addField('General Info', [
-                `ID: ${guild.id}`,
-                `Name: ${guild.name}`,
-                `Owner: ${guild.owner}`,
-            ])
-            .addField('Counts', [
-                `Role: ${
-                            guild.roles.cache.size
-                        } roles`,
-                `Channels: ${
-                                guild.channels.cache.filter((ch) => ch.type === "text" || ch.type === "voice").size
-                            } total (Text: ${
-                                guild.channels.cache.filter((ch) => ch.type === "text").size
-                            }, Voice: ${
-                                guild.channels.cache.filter((ch) => ch.type === "voice").size
-                            })`,
-                `Emojis: ${
-                                guild.emojis.cache.size
-                            } (Regular: ${
-                                guild.emojis.cache.filter((e) => !e.animated).size
-                            }, Aminated: ${
-                                guild.emojis.cache.filter((e) => e.animated).size
-                            })`,
-            ])
-            .addField('Additional Information', [
-                `Region: ${guild.region}`    
-            ])
-
-            message.channel.send(embed)
+            .addFields(
+                { name: "Server ID:", value: guild.id },
+                { name: "Server name:", value: guild.name },
+                { name: "Owner:", value: `${owner.user.username}#${owner.user.discriminator}` },
+            )
+            
+            message.channel.send({ embeds: [siEmbed] })
     },
     permissions: ['ADMINISTRATOR'],
     requiredRoles: [],
