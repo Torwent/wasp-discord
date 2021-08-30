@@ -38,4 +38,4 @@ client.once("ready", () => {
   commandBase.listen(client)
 })
 
-config.realBot ? client.login(config.token) : client.login(config.devToken)
+config.realBot ? client.login(config.mainToken) : client.login(config.devToken)
