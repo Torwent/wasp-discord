@@ -12,7 +12,7 @@ module.exports = (client) => {
   const getEmoji = (emojiName) =>
     client.emojis.cache.find((emoji) => emoji.name === emojiName)
 
-  const channelID = realBot ? "878406756676567071" : "878406756676567071"
+  const channelID = realBot ? "830549590327164964" : "878406756676567071"
 
   let reactText = `
 You can buy <@&${premiumRole}> at:
