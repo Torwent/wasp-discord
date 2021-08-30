@@ -8,6 +8,7 @@ const client = new discord.Client({
 const config = require("./config.json")
 const roleClaim = require("./role_manager/claim")
 const ticketManager = require("./ticket_manager/ticket")
+const coinbaseWebhook = require("./crypto_payment/handler")
 
 client.once("ready", () => {
   console.log("Wasp Bot is ready!")
@@ -33,6 +34,7 @@ client.once("ready", () => {
 
   roleClaim(client)
   ticketManager(client)
+  coinbaseWebhook.listen(client)
   commandBase.listen(client)
 })
 

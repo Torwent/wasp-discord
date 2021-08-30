@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Torwent/WaspBot#readme",
   "dependencies": {
     "coinbase-commerce-node": "^1.0.4",
-    "discord.js": "^13.1.0"
+    "discord.js": "^13.1.0",
+    "express": "^4.17.1"
   }
 }

@@ -4,7 +4,7 @@ const { ticketCategoryID } = require("../config.json")
 const { premiumRole } = require("../config.json")
 
 const firstMessage = require("../channel_manager/first-message")
-const deleteMessage = require("../channel_manager/delete")
+const deleteChannel = require("../channel_manager/delete")
 const cryptoCharge = require("../crypto_payment/create")
 
 module.exports = async (client, guild, user) => {
@@ -28,12 +28,14 @@ module.exports = async (client, guild, user) => {
     },
   ])
 
-  let chargeObj = cryptoCharge(user)
+  let chargeObj = cryptoCharge(channel.guildId, user, channel.id)
 
   chargeObj
     .save()
     .then(function (response) {
-      console.log(`Created charge for ${user.id}`)
+      console.log(
+        `Created charge with ChargeID: ${response.id} for DiscordUserID: ${user.id}`
+      )
 
       if (response && response.hosted_url) {
         let msgText = `Thank you for contacting support and considering buying <@&${premiumRole}> with crypto.\n\n`
@@ -42,7 +44,7 @@ module.exports = async (client, guild, user) => {
         msgText += `A Coinbase account is not required.\n\n`
         msgText += `To delete the ticket react with ⛔.\n`
         msgText += `Do not delete the ticket after donating. Doing so might result in the money being lost.\n`
-        msgText += `The ticket will automatically be deleted after one hour or after the transaction is confirmed.\n`
+        msgText += `The ticket will automatically be deleted after the transaction expires in 1 hour or is confirmed.\n`
 
         firstMessage(client, channel.id, msgText, ["⛔"])
       }
@@ -58,7 +60,7 @@ module.exports = async (client, guild, user) => {
       for (const message of messages) message[1].delete()
     })
 
-    if (reaction.emoji.name === "⛔") deleteMessage(channel, 5000, true)
+    if (reaction.emoji.name === "⛔") deleteChannel(channel, 5000, true)
   }
 
   client.on("messageReactionAdd", (reaction, user) => {

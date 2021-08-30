@@ -19,21 +19,15 @@ module.exports = (client) => {
 
   const reactions = []
 
-  let reactText = `
-**Welcome to the developer section!**
+  let reactText
 
-In this section you can share your scripts if you want and get help with coding issues you night be facing.
-  
-**Keep in mind that even though I'll try review all posted scripts, I might not have time to do so sometimes and they could be malicious.
-  
-Use them at you own risk!**
-  
-**You can also find Simba tutorials that will start from very basic to advanced from top to bottom.**
-  
-Keep in mind that I've never actually studied programming and I try to explain things the way I understand them.
-If you know more than me and you see something I'm not exactly explaining things properly, let me know.
-  
-`
+  reactText += `**Welcome to the developer section!**\n\n`
+  reactText += `In this section you can share your scripts if you want and get help with coding issues you night be facing.\n\n`
+  reactText += `**Keep in mind that even though I'll try review all posted scripts, I might not have time to do so sometimes and they could be malicious.\n\n`
+  reactText += `Use them at you own risk!**\n\n`
+  reactText += `**You can also find Simba tutorials that will start from very basic to advanced from top to bottom.**\n\n`
+  reactText += `Keep in mind that I've never actually studied programming and I try to explain things the way I understand them.\n`
+  reactText += `If you know more than me and you see something I'm not exactly explaining things properly, let me know.\n\n`
 
   for (const key in emojis) {
     const emoji = key

@@ -23,15 +23,15 @@ It can be bought as a weekly, monthly or yearly subscription that can be cancele
 **Very Important:**
 Make sure you set your discord username or are logged in into discord through upgrade.chat! Otherwise it will be considered a simple donation!
 
-**You can buy <@&${premiumRole}> one time payment method with crypto if you want.** This has to be made manually, contact me through any channel or PM me if you are interested.
+**You can also buy the permanent <@&${premiumRole}> method with crypto if you want with Coinbase commerce.**
 
 When buying the role with crypto you are responsible for the transaction fees and the only crypto I accept are the ones accepted by Coinbase commerce.
 Some of the main ones are:
 > ${getEmoji("btc")} Bitcoin
 > ${getEmoji("eth")} Ethereum
 > ${getEmoji("dai")} Dai
-Any other crypto, I'm not interested.
 
+The price with crypto is also lower due to lower fees on my side, but then again, at times of high crypto network activity, the fees you have to pay might do the transaction more expensive.
 To buy Premium with crypto please open a ticket by reacting to this message with 🎟️.
 
 
