@@ -15,43 +15,46 @@ module.exports = (client) => {
   const channelID = realBot ? "830549590327164964" : "878406756676567071"
 
   let reactText = `
-You can buy <@&${premiumRole}> at:
-https://upgrade.chat/waspbots
+You can buy <@&${premiumRole}> at: https://upgrade.chat/waspbots
 
-It can be bought as a weekly, monthly or yearly subscription that can be canceled at anytime or for a one time payment.
+It can be bought as a weekly, monthly or yearly subscription or for a one time payment.
 
-**Very Important:**
-Make sure you set your discord username or are logged in into discord through upgrade.chat! Otherwise it will be considered a simple donation!
+**Make sure you set your discord username or are logged in through upgrade.chat!**
+Otherwise it will be considered a simple donation!
 
-**You can also buy the permanent <@&${premiumRole}> method with crypto if you want with Coinbase commerce.**
+**Permanent <@&${premiumRole}> can also be bought with crypto through Coinbase commerce.**
 
-When buying the role with crypto you are responsible for the transaction fees and the only crypto I accept are the ones accepted by Coinbase commerce.
-Some of the main ones are:
+Some of the main cryptos accepted are:
 > ${getEmoji("btc")} Bitcoin
 > ${getEmoji("eth")} Ethereum
 > ${getEmoji("dai")} Dai
+The price with crypto is lower due to lower fees on my side, but then again, at times of high network activity, the fees you have to pay might make it more expensive for you.
+To buy <@&${premiumRole}> with crypto please open a ticket by reacting to this message with 🎟️.
 
-The price with crypto is also lower due to lower fees on my side, but then again, at times of high crypto network activity, the fees you have to pay might do the transaction more expensive.
-To buy Premium with crypto please open a ticket by reacting to this message with 🎟️.
-
-
-With the <@&${premiumRole}> role you will be able to access all channels on this category.
+With the <@&${premiumRole}> role you will be able to access all channels on this category:
+> <#824084821936308244>
+> <#839214233589514240>
+> <#816264431952199740>
+> <#816596465337892905>
+> <#816593982611914762>
+> <#816640387073441802>
+> <#816593682408013874>
+> <#849222080994344960>
+> <#873241370956030032>
 
 Premium scripts are installed manually unlike the free scripts which use Simba's package manager.
-
 I recommend <@&${premiumRole}> users to create the following folder:
 `
 
   reactText += "```cmd\n"
-  reactText += "C:SimbaScriptsPremiumWaspBots"
+  reactText += "C:\\Simba\\Scripts\\Premium\\WaspBots"
   reactText += "```"
   reactText += `And place any premium scripts downloaded there.
-
 
 **If you just paid for <@&${premiumRole}> but still cannot see the channels**, first check if you already have the role (Yellow name in my server).
 If you don't wait 5 minutes and see if it shows up. If you already have the role and still can't see the channels, try restarting your Discord client. Discord seems to be slow at updating permissions unfortunately. If that does not fix, as a last resort, try to logout of Discord and log back in.
 
-Relogging should fix the issue, if it does not, feel free to contact me, I'll help you out as soon as I am free!`
+Relogging should fix the issue, if it does not, feel free to contact me, **I'll help you out as soon as I am free!**`
 
   firstMessage(client, channelID, reactText, ["🎟️"])
 
