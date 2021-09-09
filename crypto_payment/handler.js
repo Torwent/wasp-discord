@@ -81,6 +81,12 @@ module.exports.listen = async (client) => {
       if (event.type === "charge:confirmed") {
         console.log("Webhook: charge:confirmed")
         let member = guild.members.cache.find((member) => member.id === user.id)
+
+        let notificationCh = client.channels.cache.get("830446743027187722")
+        notificationCh.Send(
+          `<@${user.id}> just joined the Premium role via Coinbase!`
+        )
+
         if (member) {
           member.roles.add(premiumRole)
           msgText = `<@${user.id}> your payment for the Premium role in the WaspBots server was received.\n`
