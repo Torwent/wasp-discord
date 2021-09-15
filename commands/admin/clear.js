@@ -1,6 +1,6 @@
 module.exports = {
-    commands: ['clearchannel', 'clear', 'cc'],
-    permissionError: 'You need admin permissions to run this command.',
+    commands: ["clearchannel", "clear", "cc"],
+    permissionError: "You need admin permissions to run this command.",
     minArgs: 0,
     maxArgs: 0,
     callback: (message, arguments, text) => {
@@ -8,6 +8,6 @@ module.exports = {
             message.channel.bulkDelete(results)   
         })
     },
-    permissions: ['ADMINISTRATOR'],
-    requiredRoles: ['Server Owner'],
+    permissions: ["ADMINISTRATOR"],
+    requiredRoles: ["Server Owner"],
 }

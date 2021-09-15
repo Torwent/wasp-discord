@@ -1,12 +1,27 @@
 {
-  "mainToken": "",
-  "devToken": "",
-  "realBot": false,
-  "coinbaseAPIKey": "",
-  "coinbaseSharedSecret": "",
-  "botID": "",
-  "devBotID": "",
-  "ticketCategoryID": "",
-  "premiumRole": "",
-  "prefix": "!"
+  "discord": {
+    "realBot": false,
+    "mainBot": {
+      "token": "",
+      "id": ""
+    },
+    "devBot": {
+      "token": "",
+      "id": ""
+    },
+    "managementChannel": "",
+    "ticketCategory": "",
+    "premiumRole": "",
+    "prefix": "!"
+  },
+
+  "coinbase": {
+    "apiKey": "",
+    "secret": ""
+  },
+
+  "mongodb": {
+    "user": "",
+    "password": ""
+  }
 }

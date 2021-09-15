@@ -1,11 +1,24 @@
 const path = require("path")
 const fs = require("fs")
 const discord = require("discord.js")
+const mongoose = require("mongoose")
+
+const config = require("./config.json")
+
+mongoose
+  .connect(
+    `mongodb+srv://${config.mongodb.user}:${config.mongodb.password}@waspbotserver.4ccjh.mongodb.net/Data`,
+    {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+    }
+  )
+  .then(console.log("Connected to mongo db!"))
+
 const client = new discord.Client({
   intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS"],
 })
 
-const config = require("./config.json")
 const roleClaim = require("./role_manager/claim")
 const ticketManager = require("./ticket_manager/ticket")
 const coinbaseWebhook = require("./crypto_payment/handler")
@@ -38,4 +51,6 @@ client.once("ready", () => {
   commandBase.listen(client)
 })
 
-config.realBot ? client.login(config.mainToken) : client.login(config.devToken)
+config.discord.realBot
+  ? client.login(config.discord.mainBot.token)
+  : client.login(config.discord.devBot.token)

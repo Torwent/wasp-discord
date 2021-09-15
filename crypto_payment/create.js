@@ -1,10 +1,10 @@
 const coinbase = require("coinbase-commerce-node")
-const { coinbaseAPIKey } = require("../config.json")
+const { apiKey } = require("../config.json").coinbase
 const Client = coinbase.Client
 const Charge = coinbase.resources.Charge
 
 module.exports = (guildID, user, channelID) => {
-  const clientObj = Client.init(coinbaseAPIKey)
+  const clientObj = Client.init(apiKey)
   clientObj.setRequestTimeout(3000)
 
   var chargeData = {

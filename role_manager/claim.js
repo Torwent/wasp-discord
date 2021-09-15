@@ -1,17 +1,16 @@
-const { realBot } = require("../config.json")
-const { botID } = require("../config.json")
-const { devBotID } = require("../config.json")
+const config = require("../config.json").discord
+const { botID } = config.mainBot.id
+const { devBotID } = config.devBot.id
+
+const channelID = config.realBot
+  ? config.channels.devInfo
+  : config.channels.management
+
 const firstMessage = require("../channel_manager/first-message")
 
 module.exports = (client) => {
   //comment out to test
-  if (!realBot) return
-
-  var channelID
-
-  channelID = realBot ? "864745341109927967" : "878406756676567071"
-
-  console.log(channelID)
+  if (!config.realBot) return
 
   const emojis = {
     "🤖": "Developer",
@@ -43,10 +42,9 @@ module.exports = (client) => {
     if (user.id === botID || user.id === devBotID) return
 
     const emoji = reaction._emoji.name
-
     const { guild } = reaction.message
-
     const roleName = emojis[emoji]
+
     if (!roleName) return
 
     const role = guild.roles.cache.find((role) => role.name === roleName)

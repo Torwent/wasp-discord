@@ -2,9 +2,9 @@
 
 const Express = require("express")
 const Webhook = require("coinbase-commerce-node").Webhook
-const { coinbaseSecret } = require("../config.json")
-const { premiumRole } = require("../config.json")
-const deleteChannel = require("../channel_manager/delete")
+const { secret } = require("../config.json").coinbase
+const { premiumRole } = require("../config.json").discord
+const delChannel = require("../channel_manager/delete")
 
 const router = Express.Router()
 const app = Express()
@@ -33,7 +33,7 @@ module.exports.listen = async (client) => {
       event = Webhook.verifyEventBody(
         request.rawBody,
         request.headers["x-cc-webhook-signature"],
-        coinbaseSecret
+        secret
       )
 
       if (
@@ -63,7 +63,7 @@ module.exports.listen = async (client) => {
               channel.send(
                 `<@${user.id}> You already have <@&${premiumRole}> role.`
               )
-              deleteChannel(channel, 10000, true)
+              delChannel(channel, 10000, true)
             }
           }, 10000)
         }
@@ -99,7 +99,7 @@ module.exports.listen = async (client) => {
           user.send(msgText)
         }
 
-        channel && deleteChannel(channel, 3000, false)
+        channel && delChannel(channel, 3000, false)
       }
 
       if (event.type === "charge:failed") {
