@@ -1,4 +1,4 @@
-const config = require("../config.json")
+const config = require("../config.json").discord
 
 const firstMessage = require("../channel_manager/first-message")
 const deleteChannel = require("../channel_manager/delete")
@@ -12,7 +12,7 @@ module.exports = async (client, guild, user) => {
     client.emojis.cache.find((emoji) => emoji.name === emojiName)
 
   let channel = await guild.channels.create(ticketName, { type: "text" })
-  await channel.setParent(config.discord.ticketCategory)
+  await channel.setParent(config.channels.tickets)
 
   channel.permissionOverwrites.set([
     {
@@ -35,8 +35,8 @@ module.exports = async (client, guild, user) => {
       )
 
       if (response && response.hosted_url) {
-        let msgText = `Thank you for contacting support and considering buying <@&${config.discord.premiumRole}> with crypto.\n\n`
-        msgText += `You can use this link to purchase <@&${config.discord.premiumRole}> with any crypto currency supported by coinbase commerce.\n`
+        let msgText = `Thank you for contacting support and considering buying <@&${config.roles.premium}> with crypto.\n\n`
+        msgText += `You can use this link to purchase <@&${config.roles.premium}> with any crypto currency supported by coinbase commerce.\n`
         msgText += `${response.hosted_url}\n\n`
         msgText += `A Coinbase account is not required.\n\n`
         msgText += `To delete the ticket react with ⛔.\n`
@@ -51,11 +51,7 @@ module.exports = async (client, guild, user) => {
     })
 
   const handleReaction = (reaction, user, add) => {
-    if (
-      user.id === config.discord.mainBot.id ||
-      user.id === config.discord.devBot.id
-    )
-      return
+    if (user.id === config.mainBot.id || user.id === config.devBot.id) return
 
     channel.messages.fetch().then((messages) => {
       for (const message of messages) message[1].delete()
