@@ -73,7 +73,14 @@ module.exports = (commandOptions) => {
 module.exports.listen = (client) => {
     //Listen for messages.
     client.on("messageCreate", message => {
-        const { member, content, guild } = message
+        const { member, content, guild, webhookId } = message
+
+        if (webhookId) {
+            message.attachments.forEach(attachment => {
+                if (attachment.name.includes(".simba")) message.pin()
+                });
+            return
+        }
 
         //Split on any number of spaces.
         const arguments = content.split(/[ ]+/)
@@ -123,7 +130,5 @@ module.exports.listen = (client) => {
             //Handle the custom command code.
             callback(message, arguments, arguments.join(" "))
         }
-
-
-    })    
+    })
 }
