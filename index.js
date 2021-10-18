@@ -5,16 +5,6 @@ const mongoose = require("mongoose")
 
 const config = require("./config.json")
 
-mongoose
-  .connect(
-    `mongodb+srv://${config.mongodb.user}:${config.mongodb.password}@waspbotserver.4ccjh.mongodb.net/Data`,
-    {
-      useUnifiedTopology: true,
-      useNewUrlParser: true,
-    }
-  )
-  .then(console.log("Connected to mongo db!"))
-
 const client = new discord.Client({
   intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS"],
 })
