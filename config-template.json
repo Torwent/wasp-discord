@@ -9,9 +9,21 @@
       "token": "",
       "id": ""
     },
-    "managementChannel": "",
-    "ticketCategory": "",
-    "premiumRole": "",
+    "channels": {
+      "rules": "",
+      "welcome": "",
+      "setup": "",
+      "management": "",
+      "devInfo": "",
+      "premInfo": "",
+      "tickets": ""
+    },
+    "roles": {
+      "readrules": "",
+      "osrsbotter": "",
+      "developer": "",
+      "premium": ""
+    },
     "prefix": "!"
   },
 
