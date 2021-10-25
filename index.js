@@ -21,7 +21,6 @@ const client = new discord.Client({
   intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS"],
 })
 
-const roleClaim = require("./role_manager/claim")
 const ticketManager = require("./ticket_manager/ticket")
 const coinbaseWebhook = require("./crypto_payment/handler")
 const rules = require("./role_manager/rules")
@@ -51,7 +50,6 @@ client.once("ready", () => {
 
   rules(client)
   welcome(client)
-  roleClaim(client)
   ticketManager(client)
   coinbaseWebhook.listen(client)
   commandBase.listen(client)
