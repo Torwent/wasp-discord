@@ -1,9 +1,21 @@
 const path = require("path")
 const fs = require("fs")
 const discord = require("discord.js")
-const mongoose = require("mongoose")
 
 const config = require("./config.json")
+
+/*
+const mongoose = require("mongoose");
+mongoose
+  .connect(
+    `mongodb+srv://${config.mongodb.user}:${config.mongodb.password}@waspbotserver.4ccjh.mongodb.net/Data`,
+    {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+    }
+  )
+  .then(console.log("Connected to mongo db!"))
+*/
 
 const client = new discord.Client({
   intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS"],
@@ -12,6 +24,8 @@ const client = new discord.Client({
 const roleClaim = require("./role_manager/claim")
 const ticketManager = require("./ticket_manager/ticket")
 const coinbaseWebhook = require("./crypto_payment/handler")
+const rules = require("./role_manager/rules")
+const welcome = require("./role_manager/welcome")
 
 client.once("ready", () => {
   console.log("Wasp Bot is ready!")
@@ -35,6 +49,8 @@ client.once("ready", () => {
 
   console.log("Finished loading commands.")
 
+  rules(client)
+  welcome(client)
   roleClaim(client)
   ticketManager(client)
   coinbaseWebhook.listen(client)
