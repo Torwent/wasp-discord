@@ -1,4 +1,4 @@
-const { prefix, realBot } = require("../config.json").discord
+const { prefix, realBot, channels, roles } = require("../config.json").discord
 
 const validatePermissions = (permissions) => {
   const validPermissions = [
@@ -40,95 +40,135 @@ const validatePermissions = (permissions) => {
       throw new Error(`Unknown permission node "${permission}"`)
 }
 
-
 const allCommands = {}
 
-
 module.exports = (commandOptions) => {
-    let {
-        commands,
-        permissions = [],
-    } = commandOptions
+  let { commands, permissions = [] } = commandOptions
 
-    //Ensure the command and aliases are in an array
-    if (typeof commands === "string")
-        commands = [commands]
-    
-    console.log(`Command "${commands[0]}" registered ✅`)
+  //Ensure the command and aliases are in an array
+  if (typeof commands === "string") commands = [commands]
 
-    //Ensure the permissions are in an array and are all valid
-    if (permissions.length) {
-        (typeof persmissions === "string") && (permissions = [permissions])
-        validatePermissions(permissions)
+  console.log(`Command "${commands[0]}" registered ✅`)
+
+  //Ensure the permissions are in an array and are all valid
+  if (permissions.length) {
+    typeof persmissions === "string" && (permissions = [permissions])
+    validatePermissions(permissions)
+  }
+
+  for (const command of commands)
+    allCommands[command] = {
+      ...commandOptions,
+      commands,
+      permissions,
     }
-
-    for (const command of commands)
-        allCommands[command] = {
-            ...commandOptions,  
-            commands,
-            permissions  
-        } 
 }
 
 module.exports.listen = (client) => {
-    //Listen for messages.
-    client.on("messageCreate", message => {
-        const { member, content, guild, webhookId } = message
+  //Listen for messages.
+  client.on("messageCreate", (message) => {
+    const { member, content, guild, webhookId } = message
 
-        if (webhookId) {
-            message.attachments.forEach(attachment => {
-                if (attachment.name.includes(".simba")) message.pin()
-                });
-            return
+    if (webhookId) {
+      message.attachments.forEach((attachment) => {
+        if (attachment.name.includes(".simba")) message.pin()
+      })
+      return
+    }
+
+    //Split on any number of spaces.
+    const args = content.split(/[ ]+/) //this breaks prettier.
+
+    //Remove the command
+    const name = args.shift().toLowerCase()
+
+    if (name.startsWith(prefix)) {
+      const command = allCommands[name.replace(prefix, "")]
+      if (!command) return
+
+      //A command has been run.
+      const {
+        permissions,
+        permissionError = "You do not have permission to run this command.",
+        requiredRoles = [],
+        minArgs = 0,
+        maxArgs = null,
+        expectedArgs,
+        callback,
+      } = command
+
+      //DevBot only replies to admins.
+      if (!realBot && !member.permissions.has("ADMINISTRATOR")) return
+
+      //Ensure the user has the required permissions.
+      for (const permission of permissions)
+        if (!member.permissions.has(permission)) {
+          message.reply(permissionError)
+          return
         }
 
-        //Split on any number of spaces.
-        const arguments = content.split(/[ ]+/)
+      //Ensure the user has the required roles.
+      for (const requiredRole of requiredRoles) {
+        const role = guild.roles.cache.find(
+          (role) => role.name === requiredRole
+        )
 
-        //Remove the command
-        const name = arguments.shift().toLowerCase()
-
-        if (name.startsWith(prefix)) {
-            const command = allCommands[name.replace(prefix, "")]
-            if (!command) return
-    
-            //A command has been run.
-            const {
-                permissions,
-                permissionError = "You do not have permission to run this command.",
-                requiredRoles = [],
-                minArgs = 0,
-                maxArgs = null,
-                expectedArgs,
-                callback
-            } = command
-            
-            //DevBot only replies to admins.
-            if ((!realBot) && (!member.permissions.has("ADMINISTRATOR"))) return           
-
-            //Ensure the user has the required permissions.
-            for (const permission of permissions)
-                if (!member.permissions.has(permission)) {
-                    message.reply(permissionError)
-                    return
-                }
-            
-            //Ensure the user has the required roles.
-            for (const requiredRole of requiredRoles) {
-                const role = guild.roles.cache.find((role) => role.name === requiredRole)
-        
-                if (!role || !member.roles.cache.has(role.id)) {
-                    message.reply(`You must have the "${requiredRole}" role to use this command.`)
-                    return
-                }
-            }
-            
-            //Ensure we have the correct number of arguments.
-            if (arguments.length < minArgs || (maxArgs !== null && arguments.length > maxArgs))
-                message.reply(`Incorrect syntax! Use ${prefix}${alias} ${expectedArgs}`)
-
-            //Handle the custom command code.
-            callback(message, arguments, arguments.join(" "))
+        if (!role || !member.roles.cache.has(role.id)) {
+          message.reply(
+            `You must have the "${requiredRole}" role to use this command.`
+          )
+          return
         }
-    })
+      }
+
+      //Ensure we have the correct number of arguments.
+      if (args.length < minArgs || (maxArgs !== null && args.length > maxArgs))
+        message.reply(`Incorrect syntax! Use ${prefix}${alias} ${expectedArgs}`)
+
+      //Handle the custom command code.
+      callback(message, args, args.join(" "))
+    }
+  })
+
+  //Listen to button interactions
+  client.on("interactionCreate", (interaction) => {
+    const member = interaction.guild.members.cache.find(
+      (member) => member.id === interaction.user.id
+    )
+
+    //Button interactions
+    if (interaction.isButton()) {
+      if (interaction.customId === "acceptrules") {
+        member.roles.add(roles.readrules)
+      }
+    }
+
+    //DropDown interactions
+    if (interaction.isSelectMenu()) {
+      if (interaction.customId === "welcome") {
+        if (interaction.values != []) {
+          if (interaction.values.includes("osrsbotter")) {
+            member.roles.remove(roles.developer)
+            member.roles.add(roles.osrsbotter)
+          } else if (interaction.values.includes("developer")) {
+            member.roles.remove(roles.osrsbotter)
+            member.roles.add(roles.developer)
+          }
+
+          interaction.deferUpdate()
+
+          interaction
+            .reply(
+              `Welcome aboard <@${interaction.user.id}>! If you are new to Simba, I highly recommend you check <#${channels.setup}>.`
+            )
+            .then((msg) => {
+              msg.delete({
+                timeout: 15000 /*time unitl delete in milliseconds*/,
+              })
+            })
+            .catch(error)
+        }
+      }
+    }
+  })
 }
