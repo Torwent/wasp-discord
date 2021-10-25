@@ -140,6 +140,15 @@ module.exports.listen = (client) => {
     if (interaction.isButton()) {
       if (interaction.customId === "acceptrules") {
         member.roles.add(roles.readrules)
+
+        interaction.channel
+          .send({
+            content: `Thank you for accepting our rules <@${interaction.user.id}>! Head on to <#${channels.welcome}> to choose your role in the server.`,
+          })
+          .then((msg) => {
+            setTimeout(() => msg.delete(), 20000)
+          })
+          .catch(console.error)
       }
     }
 
