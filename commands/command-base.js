@@ -132,6 +132,8 @@ module.exports.listen = (client) => {
 
   //Listen to button interactions
   client.on("interactionCreate", (interaction) => {
+    interaction.deferUpdate()
+
     const member = interaction.guild.members.cache.find(
       (member) => member.id === interaction.user.id
     )
@@ -153,7 +155,7 @@ module.exports.listen = (client) => {
     }
 
     //DropDown interactions
-    if (interaction.isSelectMenu()) {
+    else if (interaction.isSelectMenu()) {
       if (interaction.customId === "welcome") {
         if (interaction.values.length != 0) {
           if (interaction.values.includes("osrsbotter")) {
@@ -163,8 +165,6 @@ module.exports.listen = (client) => {
             member.roles.remove(roles.osrsbotter)
             member.roles.add(roles.developer)
           }
-
-          interaction.deferUpdate()
 
           interaction.channel
             .send({
