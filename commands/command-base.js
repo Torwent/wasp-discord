@@ -146,7 +146,7 @@ module.exports.listen = (client) => {
     //DropDown interactions
     if (interaction.isSelectMenu()) {
       if (interaction.customId === "welcome") {
-        if (interaction.values != []) {
+        if (interaction.values.length != 0) {
           if (interaction.values.includes("osrsbotter")) {
             member.roles.remove(roles.developer)
             member.roles.add(roles.osrsbotter)
@@ -157,16 +157,14 @@ module.exports.listen = (client) => {
 
           interaction.deferUpdate()
 
-          interaction
-            .reply(
-              `Welcome aboard <@${interaction.user.id}>! If you are new to Simba, I highly recommend you check <#${channels.setup}>.`
-            )
-            .then((msg) => {
-              msg.delete({
-                timeout: 15000 /*time unitl delete in milliseconds*/,
-              })
+          interaction.channel
+            .send({
+              content: `Welcome aboard <@${interaction.user.id}>! If you are new to Simba, I highly recommend you check <#${channels.setup}>.`,
             })
-            .catch(error)
+            .then((msg) => {
+              setTimeout(() => msg.delete(), 20000)
+            })
+            .catch(console.error)
         }
       }
     }
