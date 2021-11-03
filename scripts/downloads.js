@@ -14,16 +14,16 @@ module.exports = async (client) => {
   const channel = await client.channels.fetch(channelID)
 
   const scripts = {
-    "Script Chainer    ": "🔗",
-    "AIO Agility       ": "🏃",
-    "AIO Combiner      ": "🖇",
-    "AIO Fletcher      ": "🏹",
-    "AIO Herblore      ": "🧪",
-    "AIO Rod Fisher    ": "🎣",
-    "AIO Smither       ": "🔨",
+    "Script Chainer": "🔗",
+    "AIO Agility": "🏃",
+    "AIO Combiner": "🖇",
+    "AIO Fletcher": "🏹",
+    "AIO Herblore": "🧪",
+    "AIO Rod Fisher": "🎣",
+    "AIO Smither": "🔨",
     "Astral Runecrafter": "✨",
-    "Pest Controller   ": "🧘",
-    "Wintertodt        ": "🔥",
+    "Pest Controller": "🧘",
+    Wintertodt: "🔥",
   }
 
   const scriptArray = []
@@ -36,7 +36,7 @@ module.exports = async (client) => {
   const row4 = new MessageActionRow()
 
   for (let key in scripts) {
-    scriptArray.push(key.padEnd(20))
+    scriptArray.push(key)
     emojis.push(scripts[key])
   }
 

@@ -155,10 +155,16 @@ module.exports.listen = (client) => {
       }
 
       if (interaction.customId.includes("download")) {
-        interaction.message.components.fetch().then((components) => {
-          console.log(components)
-        })
-
+        let label
+        let rows = interaction.message.components
+        for (let row of rows) {
+          for (let btn of row.components) {
+            if (btn.customId === interaction.customId) {
+              label = btn.label
+              break
+            }
+          }
+        }
         let row = new MessageActionRow().addComponents(
           new MessageSelectMenu()
             .setCustomId("welcome")
@@ -196,7 +202,7 @@ module.exports.listen = (client) => {
 
         interaction.channel
           .send({
-            content: `_ _\n<@${interaction.user.id}> here you have your downloads!\n\nChoose the version of **${interaction.customId}** you would like to download:\n_ _`,
+            content: `_ _\n<@${interaction.user.id}> here you have your downloads!\n\nChoose the version of **${label}** you would like to download:\n_ _`,
             components: [row],
           })
           .then((msg) => {
