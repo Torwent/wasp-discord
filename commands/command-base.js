@@ -71,7 +71,11 @@ module.exports.listen = (client) => {
 
     if (webhookId) {
       message.attachments.forEach((attachment) => {
-        if (attachment.name.includes(".simba")) message.pin()
+        if (
+          attachment.name.includes(".simba") ||
+          attachment.name.includes(".zip")
+        )
+          message.pin()
       })
       return
     }
