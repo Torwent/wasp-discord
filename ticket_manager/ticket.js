@@ -30,6 +30,7 @@ module.exports = (client) => {
   reactText += `With the <@&${premium}> role you will be able to access all channels on this category:\n`
   reactText += `> <#824084821936308244>\n> <#839214233589514240>\n> <#816264431952199740>\n> <#816596465337892905>\n> <#816593982611914762>\n`
   reactText += `> <#816640387073441802>\n> <#816593682408013874>\n> <#849222080994344960>\n> <#884894583656439828>\n> <#873241370956030032>\n\n`
+  reactText += `> <#903195759602724885>\n\n`
 
   reactText += `Premium scripts are installed manually unlike the free scripts which use Simba's package manager.\n`
   reactText += `I recommend <@&${premium}> users to create the following folder:\n`
