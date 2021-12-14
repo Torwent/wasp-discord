@@ -72,7 +72,11 @@ module.exports.listen = (client) => {
 
     if (webhookId) {
       message.attachments.forEach((attachment) => {
-        if (attachment.name.includes(".simba")) message.pin()
+        if (
+          attachment.name.includes(".simba") ||
+          attachment.name.includes(".zip")
+        )
+          message.pin()
       })
       return
     }
@@ -141,19 +145,6 @@ module.exports.listen = (client) => {
 
     //Button interactions
     if (interaction.isButton()) {
-      if (interaction.customId === "acceptrules") {
-        member.roles.add(roles.readrules)
-
-        interaction.channel
-          .send({
-            content: `Thank you for accepting our rules <@${interaction.user.id}>! Head on to <#${channels.welcome}> to choose your role in the server.`,
-          })
-          .then((msg) => {
-            setTimeout(() => msg.delete(), 20000)
-          })
-          .catch(console.error)
-      }
-
       if (interaction.customId.includes("download")) {
         let label
         let rows = interaction.message.components
@@ -165,45 +156,10 @@ module.exports.listen = (client) => {
             }
           }
         }
-        let row = new MessageActionRow().addComponents(
-          new MessageSelectMenu()
-            .setCustomId("welcome")
-            .setPlaceholder("Choose an option")
-            .setMinValues(1)
-            .setMaxValues(1)
-            .addOptions([
-              {
-                label: "latest",
-                value: "v0",
-                description: "Version from 26-10-2021",
-              },
-              {
-                label: "v1",
-                value: "v1",
-                description: "Version from 20-10-2021",
-              },
-              {
-                label: "v2",
-                value: "v2",
-                description: "",
-              },
-              {
-                label: "v3",
-                value: "v3",
-                description: "",
-              },
-              {
-                label: "v4",
-                value: "v4",
-                description: "",
-              },
-            ])
-        )
 
         interaction.channel
           .send({
-            content: `_ _\n<@${interaction.user.id}> here you have your downloads!\n\nChoose the version of **${label}** you would like to download:\n_ _`,
-            components: [row],
+            content: `_ _\n<@${interaction.user.id}> here you have your download:`,
           })
           .then((msg) => {
             setTimeout(() => msg.delete(), 20000)

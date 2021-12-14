@@ -23,7 +23,6 @@ const client = new discord.Client({
 
 const ticketManager = require("./ticket_manager/ticket")
 const coinbaseWebhook = require("./crypto_payment/handler")
-const rules = require("./role_manager/rules")
 const welcome = require("./role_manager/welcome")
 const downloads = require("./scripts/downloads")
 
@@ -49,7 +48,6 @@ client.once("ready", () => {
 
   console.log("Finished loading commands.")
 
-  rules(client)
   welcome(client)
   downloads(client)
   ticketManager(client)
