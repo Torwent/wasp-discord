@@ -29,7 +29,7 @@ module.exports = (client) => {
 
   reactText += `With the <@&${premium}> role you will be able to access the premium <#906170516795170847> channel which has the following scripts:\n`
   reactText += `> Agility\n> Combiner\n> Anvil smither\n> Astral runecrafter\n> Combat-beta\n> Combiner\n`
-  reactText += `> Fletcher\n> Herblore\n> Motherload mine\n> Pest control\n> Rod fisher\n`
+  reactText += `> Fletcher\n> Herblore\n> Motherload mine-beta\n> Pest control-beta\n> Rod fisher\n`
   reactText += `> Script chainer\n> Zeah runecrafter\n\n`
 
   reactText += `Premium scripts are installed manually unlike the free scripts which use Simba's package manager.\n`
