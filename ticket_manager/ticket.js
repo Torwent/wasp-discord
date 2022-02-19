@@ -28,7 +28,7 @@ module.exports = (client) => {
   reactText += `To buy <@&${premium}> with crypto please open a ticket by reacting to this message with 🎟️.\n\n`
 
   reactText += `With the <@&${premium}> role you will be able to access the premium <#906170516795170847> channel which has the following scripts:\n`
-  reactText += `> Agility\n> Combiner\n> Anvil smither\n> Astral runecrafter\n> Combiner\n`
+  reactText += `> Agility\n> Combiner\n> Anvil smither\n> Astral runecrafter\n> Combat-beta\n> Combiner\n`
   reactText += `> Fletcher\n> Herblore\n> Motherload mine\n> Pest control\n> Rod fisher\n`
   reactText += `> Script chainer\n> Zeah runecrafter\n\n`
 
