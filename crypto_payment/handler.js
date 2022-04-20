@@ -122,7 +122,7 @@ module.exports.listen = async (client) => {
 
   app.use(rawBody)
   app.use(router)
-  app.listen(3000, function () {
-    console.log("Listening for coinbase webhooks on port 3000!")
+  app.listen(5000, function () {
+    console.log("Listening for coinbase webhooks on port 5000!")
   })
 }
