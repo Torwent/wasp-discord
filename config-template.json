@@ -31,10 +31,5 @@
   "coinbase": {
     "apiKey": "",
     "secret": ""
-  },
-
-  "mongodb": {
-    "user": "",
-    "password": ""
   }
 }
