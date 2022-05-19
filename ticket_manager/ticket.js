@@ -14,7 +14,7 @@ module.exports = (client) => {
     ? config.channels.premInfo
     : config.channels.management
 
-  let reactText = `You can buy <@&${premium}> at: https://upgrade.chat/waspbots\n\n`
+  let reactText = `You can buy <@&${premium}> at: https://upgrade.chat/waspscripts\n\n`
   reactText += `It can be bought as a weekly, monthly or yearly subscription or for a one time payment.\n\n`
 
   reactText += `**Make sure you set your discord username or are logged in through upgrade.chat!**\n`
