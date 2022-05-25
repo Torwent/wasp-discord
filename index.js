@@ -1,15 +1,28 @@
 const path = require("path")
 const fs = require("fs")
-const discord = require("discord.js")
+const { Client, Intents } = require("discord.js")
 
 const config = require("./config.json")
 
-const client = new discord.Client({
-  intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS"],
+const client = new Client({
+  intents: [
+    Intents.FLAGS.GUILDS,
+    Intents.FLAGS.GUILD_MEMBERS,
+    Intents.FLAGS.GUILD_INTEGRATIONS,
+
+    Intents.FLAGS.GUILD_MESSAGES,
+    Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+
+    Intents.FLAGS.DIRECT_MESSAGES,
+    Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
+    Intents.FLAGS.DIRECT_MESSAGE_TYPING,
+    Intents.FLAGS.GUILD_PRESENCES,
+  ],
 })
 
 const ticketManager = require("./ticket_manager/ticket")
 const coinbaseWebhook = require("./crypto_payment/handler")
+const wsServer = require("./websockets/wsserver")
 const welcome = require("./role_manager/welcome")
 
 client.once("ready", () => {
@@ -37,6 +50,7 @@ client.once("ready", () => {
   welcome(client)
   ticketManager(client)
   coinbaseWebhook.listen(client)
+  wsServer.listen(client)
   commandBase.listen(client)
 })
 
