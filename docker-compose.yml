@@ -6,6 +6,10 @@ services:
     build:
       context: .
     restart: unless-stopped
+    volumes:
+      - /docker/etc/letsencrypt/live/waspscripts.com/cert.pem:/etc/letsencrypt/live/waspscripts.com/cert.pem
+      - /docker/etc/letsencrypt/live/waspscripts.com/fullchain.pem:/etc/letsencrypt/live/waspscripts.com/fullchain.pem
+      - /docker/etc/letsencrypt/live/waspscripts.com/privkey.pem:/etc/letsencrypt/live/waspscripts.com/privkey.pem
     networks:
       - wasp-server_proxy
 

@@ -1,5 +1,36 @@
 const webSocket = require("ws")
-const wss = new webSocket.Server({ port: 4100 })
+const fs = require("fs")
+
+const ws_cfg = {
+  ssl: true,
+  port: 4100,
+  ssl_key: "/etc/letsencrypt/live/waspscripts.com/privkey.pem",
+  ssl_cert: "/etc/letsencrypt/live/waspscripts.com/cert.pem",
+}
+
+const processRequest = function (req, res) {
+  console.log("Request received.")
+}
+
+let app
+
+try {
+  app = require("https")
+    .createServer(
+      {
+        key: fs.readFileSync(ws_cfg.ssl_key),
+        cert: fs.readFileSync(ws_cfg.ssl_cert),
+      },
+      processRequest
+    )
+    .listen(ws_cfg.port)
+} catch (error) {
+  console.log("we had an error: ", error)
+}
+
+const wss = new webSocket.Server({ server: app })
+
+//const wss = new webSocket.Server({ port: 4100 })
 
 module.exports.listen = async (client) => {
   console.log("Listening for websocket connections on port 4100!")
