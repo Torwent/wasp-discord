@@ -7,17 +7,19 @@ module.exports.listen = async (client) => {
     console.log("New client connected!")
 
     ws.on("message", (data) => {
-      let user_id = `${data}`
-      let guild = client.guilds.resolve("795071177475227709")
-
-      let member = guild.members.cache.get(user_id)
-
-      let memberRoles = member.roles.cache
-        .filter((roles) => roles.id !== guild.id)
-        .map((role) => role.toString())
-
-      ws.send(memberRoles.toString())
-      ws.close()
+      try {
+        let user_id = `${data}`
+        let guild = client.guilds.resolve("795071177475227709")
+        let member = guild.members.cache.get(user_id)
+        let memberRoles = member.roles.cache
+          .filter((roles) => roles.id !== guild.id)
+          .map((role) => role.toString())
+        ws.send(memberRoles.toString())
+      } catch (error) {
+        console.log(error)
+      } finally {
+        ws.close()
+      }
     })
 
     ws.on("close", () => {

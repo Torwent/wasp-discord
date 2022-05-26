@@ -4,4 +4,5 @@ COPY . .
 RUN npm ci && npm prune --production
 # our app is running on port 4000 within the container, so need to expose it
 EXPOSE 4000
+EXPOSE 4100
 CMD ["node", "index.js"]
