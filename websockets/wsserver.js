@@ -3,7 +3,7 @@ const HttpsServer = require("https").createServer
 const fs = require("fs")
 
 server = HttpsServer({
-  cert: fs.readFileSync("/etc/letsencrypt/live/waspscripts.com/cert.pem"),
+  cert: fs.readFileSync("/etc/letsencrypt/live/waspscripts.com/fullchain.pem"),
   key: fs.readFileSync("/etc/letsencrypt/live/waspscripts.com/privkey.pem"),
 })
 socket = new WebSocket({
