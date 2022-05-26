@@ -10,8 +10,6 @@ socket = new WebSocket({
   server: server,
 })
 
-//const wss = new webSocket.Server({ port: 4100 })
-
 module.exports.listen = async (client) => {
   console.log("Listening for websocket connections on port 4100!")
 
@@ -40,4 +38,4 @@ module.exports.listen = async (client) => {
   })
 }
 
-server.listen(4100)
+server.listen(4100, "0.0.0.0")
