@@ -1,9 +1,19 @@
-const webSocket = require("ws")
-const wss = new webSocket.Server({ port: 4100 })
+const WebSocket = require("ws").Server
+const HttpsServer = require("https").createServer
+const fs = require("fs")
+
+server = HttpsServer({
+  cert: fs.readFileSync("/etc/letsencrypt/live/waspscripts.com/fullchain.pem"),
+  key: fs.readFileSync("/etc/letsencrypt/live/waspscripts.com/privkey.pem"),
+})
+socket = new WebSocket({
+  server: server,
+})
 
 module.exports.listen = async (client) => {
   console.log("Listening for websocket connections on port 4100!")
-  wss.on("connection", (ws) => {
+
+  socket.on("connection", (ws) => {
     console.log("New client connected!")
 
     ws.on("message", (data) => {
@@ -27,3 +37,5 @@ module.exports.listen = async (client) => {
     })
   })
 }
+
+server.listen(4100, "0.0.0.0")
