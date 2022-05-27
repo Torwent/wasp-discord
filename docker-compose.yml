@@ -5,8 +5,6 @@ services:
     container_name: "wasp-discord"
     build:
       context: .
-    ports:
-      - "4100:4100"
     restart: unless-stopped
     volumes:
       - /docker/etc/letsencrypt/live/waspscripts.com/cert.pem:/etc/letsencrypt/live/waspscripts.com/cert.pem
