@@ -40,7 +40,7 @@ module.exports = async (client) => {
 
     channel.send({
       content:
-        "**Welcome to WaspBot server!**\n\nPlease choose what you are interested in:",
+        "**Welcome to WaspScripts server!**\n\nPlease choose what you are interested in:",
       components: [row],
     })
   })
