@@ -20,8 +20,6 @@ const client = new Client({
   ],
 })
 
-const ticketManager = require("./ticket_manager/ticket")
-const coinbaseWebhook = require("./crypto_payment/handler")
 const wsServer = require("./websockets/wsserver")
 const welcome = require("./role_manager/welcome")
 
@@ -48,8 +46,6 @@ client.once("ready", () => {
   console.log("Finished loading commands.")
 
   welcome(client)
-  ticketManager(client)
-  coinbaseWebhook.listen(client)
   wsServer.listen(client)
   commandBase.listen(client)
 })
