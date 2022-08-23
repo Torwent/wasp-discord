@@ -10,12 +10,24 @@ export default new Command({
       type: 3,
       required: true,
     },
+
+    {
+      type: 3,
+      name: "user",
+      description: "Pings a user",
+      required: false,
+    },
   ],
 
   run: async ({ interaction }) => {
     let link: string = "https://oldschool.runescape.wiki/?search="
-    if (interaction.options.data.length > 0)
-      link += encodeURI(interaction.options.data[0].value as string)
+
+    if (interaction.options.data.length > 0) {
+      interaction.options.data.forEach((entry) => {
+        if (entry.name === "user") link = entry.value + " Check: " + link
+        if (entry.name === "search") link += encodeURI(entry.value as string)
+      })
+    }
 
     interaction.followUp(link)
   },

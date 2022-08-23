@@ -37,12 +37,24 @@ export default new Command({
         },
       ],
     },
+
+    {
+      type: 3,
+      name: "user",
+      description: "Pings a user",
+      required: false,
+    },
   ],
 
   run: async ({ interaction }) => {
     let link: string = "https://waspscripts.com"
-    if (interaction.options.data.length > 0)
-      link += interaction.options.data[0].value
+
+    if (interaction.options.data.length > 0) {
+      interaction.options.data.forEach((entry) => {
+        if (entry.name === "user") link = entry.value + " Check: " + link
+        if (entry.name === "page") link += encodeURI(entry.value as string)
+      })
+    }
 
     interaction.followUp(link)
   },
