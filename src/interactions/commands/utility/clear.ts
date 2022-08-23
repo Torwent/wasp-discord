@@ -1,10 +1,10 @@
-import { GuildTextBasedChannel } from "discord.js"
+import { GuildTextBasedChannel, PermissionFlagsBits } from "discord.js"
 import { Command } from "../../../structures/Interactions"
 
 export default new Command({
   name: "clear",
-  description: "clears the channel from ",
-  userPermissions: ["Administrator"],
+  description: "Clears messages from the channel",
+  defaultMemberPermissions: ["Administrator"],
   run: async ({ interaction }) => {
     const channel: GuildTextBasedChannel = interaction.channel
 

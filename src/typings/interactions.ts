@@ -5,7 +5,6 @@ import {
   GuildMember,
   PermissionResolvable,
   SelectMenuComponentData,
-  SelectMenuComponentOptionData,
   SelectMenuInteraction,
 } from "discord.js"
 import { ExtendedClient } from "../structures/Client"
@@ -47,11 +46,10 @@ type CommandRunFunction = (options: CommandRunOptions) => any
 type MenuRunFunction = (options: MenuRunOptions) => any
 
 export type CommandType = {
-  userPermissions?: PermissionResolvable[]
   run: CommandRunFunction
 } & ChatInputApplicationCommandData
 
 export type MenuType = {
-  userPermissions?: PermissionResolvable[]
+  defaultMemberPermissions?: PermissionResolvable[]
   run: MenuRunFunction
 } & SelectMenuComponentData
