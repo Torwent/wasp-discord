@@ -15,7 +15,7 @@ export default new Command({
   run: async ({ interaction }) => {
     let link: string = "https://oldschool.runescape.wiki/?search="
     if (interaction.options.data.length > 0)
-      link += interaction.options.data[0].value
+      link += encodeURI(interaction.options.data[0].value as string)
 
     interaction.followUp(link)
   },

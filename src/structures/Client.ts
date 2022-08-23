@@ -24,11 +24,7 @@ export class ExtendedClient extends Client {
 
   start() {
     this.registerModules()
-    const token =
-      process.env.environment === "prod"
-        ? process.env.devBotToken
-        : process.env.botToken
-    this.login(token)
+    this.login(process.env.botToken)
   }
 
   async importFile(filePath: string) {

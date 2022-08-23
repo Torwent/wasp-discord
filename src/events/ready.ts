@@ -10,13 +10,14 @@ export default new Event("ready", async () => {
       ? "901909938090156084"
       : "1011326532360343682"
 
-  let channel = client.channels.cache.get(channelId) as TextChannel
+  let channel = await client.channels.fetch(channelId)
 
-  const messages = await channel.messages.fetch()
+  const welcomeChannel = channel as TextChannel
+  const messages = await welcomeChannel.messages.fetch()
 
   if (messages.size === 1) return
 
-  await channel.bulkDelete(messages) //Delete all messages on the channel!
+  await welcomeChannel.bulkDelete(messages) //Delete all messages on the channel!
 
   const row = new ActionRowBuilder().addComponents(
     new SelectMenuBuilder()
@@ -40,7 +41,7 @@ export default new Event("ready", async () => {
       ])
   )
 
-  channel.send({
+  welcomeChannel.send({
     content:
       "**Welcome to WaspScripts Discord Server!**\n\nPlease choose what you are interested in:",
     components: [row as any],
