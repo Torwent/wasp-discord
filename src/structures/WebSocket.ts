@@ -1,19 +1,11 @@
-const WebSocket = require("ws").Server
-const HttpsServer = require("https").createServer
-const fs = require("fs")
+import webSocket from "ws"
+import { ExtendedClient } from "./Client"
 
-server = HttpsServer({
-  cert: fs.readFileSync("/etc/letsencrypt/live/waspscripts.com/fullchain.pem"),
-  key: fs.readFileSync("/etc/letsencrypt/live/waspscripts.com/privkey.pem"),
-})
-socket = new WebSocket({
-  server: server,
-})
+const wss = new webSocket.Server({ port: 4100 })
 
-module.exports.listen = async (client) => {
+export const wssListen = async (client: ExtendedClient) => {
   console.log("Listening for websocket connections on port 4100!")
-
-  socket.on("connection", (ws) => {
+  wss.on("connection", (ws) => {
     console.log("New client connected!")
 
     ws.on("message", (data) => {
@@ -22,8 +14,8 @@ module.exports.listen = async (client) => {
         let guild = client.guilds.resolve("795071177475227709")
         let member = guild.members.cache.get(user_id)
         let memberRoles = member.roles.cache
-          .filter((roles) => roles.id !== guild.id)
-          .map((role) => role.toString())
+          .filter((roles: { id: string }) => roles.id !== guild.id)
+          .map((role: { toString: () => any }) => role.toString())
         ws.send(memberRoles.toString())
       } catch (error) {
         console.log(error)
@@ -37,5 +29,3 @@ module.exports.listen = async (client) => {
     })
   })
 }
-
-server.listen(4100, "0.0.0.0")
