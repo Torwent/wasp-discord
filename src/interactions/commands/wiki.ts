@@ -12,7 +12,7 @@ export default new Command({
     },
 
     {
-      type: 3,
+      type: 6,
       name: "user",
       description: "Pings a user",
       required: false,
