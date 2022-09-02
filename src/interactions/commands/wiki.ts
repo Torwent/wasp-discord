@@ -24,7 +24,8 @@ export default new Command({
 
     if (interaction.options.data.length > 0) {
       interaction.options.data.forEach((entry) => {
-        if (entry.name === "user") link = entry.value + " Check: " + link
+        if (entry.name === "user")
+          link = "<@" + entry.value + "> Check: " + link
         if (entry.name === "search") link += encodeURI(entry.value as string)
       })
     }
