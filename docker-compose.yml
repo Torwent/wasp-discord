@@ -11,8 +11,8 @@ services:
       - /docker/etc/letsencrypt/live/waspscripts.com/fullchain.pem:/etc/letsencrypt/live/waspscripts.com/fullchain.pem
       - /docker/etc/letsencrypt/live/waspscripts.com/privkey.pem:/etc/letsencrypt/live/waspscripts.com/privkey.pem
     networks:
-      - wasp-server_proxy
+      - wasp-proxy
 
 networks:
-  wasp-server_proxy:
+  wasp-proxy:
     external: true

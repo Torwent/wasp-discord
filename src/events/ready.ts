@@ -16,8 +16,11 @@ export default new Event("ready", async () => {
   const messages = await welcomeChannel.messages.fetch()
 
   if (messages.size === 1) return
-
-  await welcomeChannel.bulkDelete(messages) //Delete all messages on the channel!
+  try {
+    await welcomeChannel.bulkDelete(messages) //Delete all messages on the channel!
+  } catch (error) {
+    return console.error(error)
+  }
 
   const row = new ActionRowBuilder().addComponents(
     new SelectMenuBuilder()
