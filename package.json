@@ -10,9 +10,9 @@
     "watch": "tsc -w"
   },
   "keywords": [],
-  "author": "",
+  "author": "Torwent",
   "license": "ISC",
-  "description": "",
+  "description": "Wasp Bot for waspscripts.com discord server.",
   "dependencies": {
     "discord.js": "^14.2.0",
     "dotenv": "^16.0.1",
