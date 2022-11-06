@@ -84,7 +84,7 @@ async function cmd() {
           if (entry.name === "user")
             link = "<@" + entry.value + "> Check: " + link
           if (entry.name === "page") link += encodeURI(entry.value as string)
-          if (entry.name === "script") link += entry.value as string
+          if (entry.name === "script") link += encodeURI(entry.value as string)
         })
       }
 
