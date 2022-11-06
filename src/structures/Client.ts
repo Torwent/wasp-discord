@@ -73,8 +73,8 @@ export class ExtendedClient extends Client {
       this.menus.set(menuCommand.customId, menuCommand)
     })
 
-    this.on("ready", () => {
-      this.registerCommands({
+    this.on("ready", async () => {
+      await this.registerCommands({
         commands: slashCommands,
         guildId: process.env.guildId,
       })
@@ -89,7 +89,7 @@ export class ExtendedClient extends Client {
         status: "online",
       })
 
-      wssListen(this)
+      await wssListen(this)
     })
 
     // Event
