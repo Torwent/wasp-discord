@@ -14,6 +14,7 @@
   "license": "ISC",
   "description": "Wasp Bot for waspscripts.com discord server.",
   "dependencies": {
+    "@supabase/supabase-js": "^2.0.5",
     "discord.js": "^14.2.0",
     "dotenv": "^16.0.1",
     "glob": "^8.0.3",

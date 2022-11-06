@@ -19,8 +19,6 @@ export const wssListen = async (client: ExtendedClient) => {
         ws.send(memberRoles.toString())
       } catch (error) {
         console.log(error)
-      } finally {
-        ws.close()
       }
     })
 

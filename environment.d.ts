@@ -3,6 +3,8 @@ declare global {
     interface ProcessEnv {
       botToken: string
       guildId: string
+      sbURL: string
+      sbAnonKey: string
       environment: "dev" | "prod" | "debug"
     }
   }
