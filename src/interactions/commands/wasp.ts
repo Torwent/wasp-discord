@@ -19,7 +19,7 @@ const getScriptChoicesAsync = async (): Promise<
     if (i > 24) break
     choice = {
       name: data[i].title,
-      value: "/scripts/" + encodeURI(data[i].title) + "&" + data[i].id,
+      value: "/scripts/" + data[i].title + "&" + data[i].id,
     }
     choices.push(choice)
   }
@@ -84,8 +84,7 @@ async function cmd() {
           if (entry.name === "user")
             link = "<@" + entry.value + "> Check: " + link
           if (entry.name === "page") link += encodeURI(entry.value as string)
-          if (entry.name === "script")
-            link += "/scripts/" + encodeURI(entry.value as string)
+          if (entry.name === "script") link += entry.value as string
         })
       }
 
