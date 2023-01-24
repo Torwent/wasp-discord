@@ -27,7 +27,7 @@ export default new Button({
       "Your issue has been marked as solved. And the post will be closed. Thank you!"
     )
 
-    await thread.setAppliedTags(["1067372365304045608"])
+    await thread.setAppliedTags(["1025145279768432670"])
 
     await thread.setLocked(true, "Issue solved.")
     await thread.setArchived(true, "Issue solved.")

@@ -1,4 +1,4 @@
-import { forumListen, forumUnarchiveListen } from "./forum"
+import { forumListen, forumUnarchiveListen } from "./Forum"
 import {
   ActivityType,
   ApplicationCommandDataResolvable,

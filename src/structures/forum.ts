@@ -25,9 +25,12 @@ export const forumUnarchiveListen = async (client: ExtendedClient) => {
 
   client.on(Events.ThreadUpdate, async (thread) => {
     const owner = await thread.fetchOwner()
+
+    console.log(thread.appliedTags)
     const parent = owner.thread.parentId
     if (parent !== helpId) return
 
+    if (!thread.archived) thread.setArchived(true)
     if (thread.archived) await threadReOpen(thread)
   })
 }

@@ -1,11 +1,7 @@
 import { Menu } from "../../structures/Interactions"
-import { threadReply } from "../components/close_thread"
-
-const compileError = ""
-const bug = ""
 
 export default new Menu({
-  customId: "compile",
+  customId: "script",
   type: 3,
   run: async ({ interaction }) => {
     if (interaction.values.length === 0) return
@@ -14,14 +10,16 @@ export default new Menu({
     const thread = interaction.channel
     const owner = await thread.fetchOwner()
 
-    console.log(thread.appliedTags)
-
     if (interaction.user.id !== owner.user.id) return
 
-    if (interaction.values.includes("no")) {
-      thread.setName("Simba/Compiling issue - " + interaction.user.username)
+    if (interaction.values.includes("yes")) {
+      thread.setName(thread.name.replace(" - ", "Crash - "))
+      thread.setAppliedTags(["1019686956889808987"])
     }
 
-    await threadReply(interaction)
+    if (interaction.values.includes("no")) {
+      thread.setName(thread.name.replace(" - ", "Bug - "))
+      thread.setAppliedTags(["1019686607734972549"])
+    }
   },
 })

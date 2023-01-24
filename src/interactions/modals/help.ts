@@ -1,7 +1,6 @@
-import { ActionRowBuilder, StringSelectMenuBuilder } from "discord.js"
 import { Modal } from "../../structures/Interactions"
 import { supabase } from "../../structures/Supabase"
-import { compileReply } from "../components/compile"
+import { modalCompileReply } from "../components/compile"
 
 export default new Modal({
   customId: "help",
@@ -65,6 +64,6 @@ export default new Modal({
       publicData[0].title + " - " + interaction.user.username
     )
 
-    await compileReply(interaction)
+    await modalCompileReply(interaction)
   },
 })

@@ -6,7 +6,7 @@ import {
 
 const row = new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
   new StringSelectMenuBuilder()
-    .setCustomId("help")
+    .setCustomId("script")
     .setPlaceholder("Choose an option")
     .setMinValues(1)
     .setMaxValues(1)
@@ -14,13 +14,13 @@ const row = new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
       {
         label: "Yes",
         value: "yes",
-        description: "Yes. I'm trying to run a script.",
+        description: "Yes. I see a red line.",
         emoji: "📜",
       },
       {
         label: "No",
         value: "no",
-        description: "No. This is a general Simba issue.",
+        description: "No. I don't see a red line.",
         emoji: "🦁",
       },
     ])
@@ -28,8 +28,7 @@ const row = new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
 
 export async function openThread(thread: AnyThreadChannel) {
   thread.send({
-    content:
-      "You need to answer a couple of questions before your post is made visible to others.\n\nIs your issue related to a specifit script?",
+    content: "Does the script stop running with a line highlighted in red?",
     components: [row],
   })
 }
