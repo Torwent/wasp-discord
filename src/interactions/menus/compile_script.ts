@@ -1,5 +1,5 @@
 import { Menu } from "../../structures/Interactions"
-import { threadReply } from "../components/close_thread"
+import { openThread } from "../components/script"
 
 export default new Menu({
   customId: "compile_script",
@@ -13,17 +13,11 @@ export default new Menu({
 
     if (interaction.user.id !== owner.user.id) return
 
-    if (interaction.values.includes("yes")) {
-      thread.setName(thread.name.replace(" - ", "Crash/Bug - "))
-      thread.setName("Coding help - " + interaction.user.username)
-      thread.setAppliedTags(["1020028124693549138"])
-    }
-
     if (interaction.values.includes("no")) {
       thread.setName("Simba/Compiling issue - " + interaction.user.username)
       thread.setAppliedTags(["1019687260469346446"])
     }
 
-    await threadReply(interaction)
+    await openThread(interaction)
   },
 })

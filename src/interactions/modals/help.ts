@@ -21,8 +21,6 @@ export default new Modal({
       .select("title")
       .eq("id", scriptId)
 
-    console.log(publicData)
-
     if (publicError || publicData == null) {
       return interaction.reply({
         content: "That Script ID doesn't match any on https://waspscripts.com!",
@@ -43,7 +41,7 @@ export default new Modal({
       })
 
     if (parseInt(protectedData[0].revision) !== parseInt(revision))
-      return interaction.reply({
+      return await interaction.reply({
         content:
           "You seem to be running an outdated version of the script.\n" +
           "The latest revision of the script is: " +
@@ -60,7 +58,7 @@ export default new Modal({
         ephemeral: true,
       })
 
-    interaction.channel.setName(
+    await interaction.channel.setName(
       publicData[0].title + " - " + interaction.user.username
     )
 

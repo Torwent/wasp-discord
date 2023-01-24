@@ -54,9 +54,9 @@ export default new Menu({
     if (interaction.user.id !== owner.user.id) return
 
     if (interaction.values.includes("yes")) {
-      return await interaction.showModal(modal)
+      await interaction.showModal(modal)
     } else if (interaction.values.includes("no")) {
-      return await compileReply(interaction)
+      await compileReply(interaction)
     }
   },
 })

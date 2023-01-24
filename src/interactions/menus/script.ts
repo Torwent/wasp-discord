@@ -14,12 +14,12 @@ export default new Menu({
     if (interaction.user.id !== owner.user.id) return
 
     if (interaction.values.includes("yes")) {
-      thread.setName(thread.name.replace(" - ", "Crash - "))
+      thread.setName(thread.name.replace(" - ", " Crash - "))
       thread.setAppliedTags(["1019686956889808987"])
     }
 
     if (interaction.values.includes("no")) {
-      thread.setName(thread.name.replace(" - ", "Bug - "))
+      thread.setName(thread.name.replace(" - ", " Bug - "))
       thread.setAppliedTags(["1019686607734972549"])
     }
 

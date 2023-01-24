@@ -30,7 +30,6 @@ export const forumUnarchiveListen = async (client: ExtendedClient) => {
     const parent = owner.thread.parentId
     if (parent !== helpId) return
 
-    if (!thread.archived) thread.setArchived(true)
     if (thread.archived) await threadReOpen(thread)
   })
 }

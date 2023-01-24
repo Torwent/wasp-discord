@@ -55,15 +55,20 @@ function replyMsg(component: ActionRowBuilder<StringSelectMenuBuilder>) {
       "Does the script say:\n" +
       "```\nSuccesfully compiled in ... milliseconds.```" +
       "When you start it?",
-    ephemeral: true,
     components: [component],
   }
 }
 
 export async function compileReply(interaction: MenuExtendedInteraction) {
-  return await interaction.reply(replyMsg(rowCompile))
+  await interaction.deferReply({ ephemeral: true })
+  await interaction
+    .editReply(replyMsg(rowCompile))
+    .catch((error) => console.log(error))
 }
 
 export async function modalCompileReply(interaction: ModalExtendedInteraction) {
-  return await interaction.reply(replyMsg(scriptReply))
+  await interaction.deferReply({ ephemeral: true })
+  await interaction
+    .editReply(replyMsg(scriptReply))
+    .catch((error) => console.log(error))
 }
