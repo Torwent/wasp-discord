@@ -27,7 +27,7 @@ const row = new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
 )
 
 export async function openThread(thread: AnyThreadChannel) {
-  thread.setAutoArchiveDuration(60)
+  thread.setAutoArchiveDuration(process.env.environment === "prod" ? 1440 : 60)
 
   thread.send({
     content:
