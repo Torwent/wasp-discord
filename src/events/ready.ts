@@ -1,11 +1,15 @@
-import { TextChannel, ActionRowBuilder, SelectMenuBuilder } from "discord.js"
+import {
+  TextChannel,
+  ActionRowBuilder,
+  StringSelectMenuBuilder,
+} from "discord.js"
 import { client } from ".."
 import { Event } from "../structures/Event"
 
 export default new Event("ready", async () => {
   console.log("Bot is online")
 
-  let channelId =
+  const channelId =
     process.env.environment === "prod"
       ? "901909938090156084"
       : "1011326532360343682"
@@ -17,13 +21,13 @@ export default new Event("ready", async () => {
 
   if (messages.size === 1) return
   try {
-    await welcomeChannel.bulkDelete(messages) //Delete all messages on the channel!
+    await welcomeChannel.bulkDelete(messages, true) //Delete all messages on the channel!
   } catch (error) {
     return console.error(error)
   }
 
-  const row = new ActionRowBuilder().addComponents(
-    new SelectMenuBuilder()
+  const row = new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
+    new StringSelectMenuBuilder()
       .setCustomId("welcome")
       .setPlaceholder("Choose an option")
       .setMinValues(1)
@@ -47,6 +51,6 @@ export default new Event("ready", async () => {
   welcomeChannel.send({
     content:
       "**Welcome to WaspScripts Discord Server!**\n\nPlease choose what you are interested in:",
-    components: [row as any],
+    components: [row],
   })
 })

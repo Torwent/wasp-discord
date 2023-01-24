@@ -1,3 +1,7 @@
+import {
+  ButtonExtendedInteraction,
+  ModalExtendedInteraction,
+} from "./../typings/interactions"
 import { CommandInteractionOptionResolver } from "discord.js"
 import { client } from ".."
 import { Event } from "../structures/Event"
@@ -24,20 +28,44 @@ export default new Event("interactionCreate", async (interaction) => {
 
   //Button interactions
   if (interaction.isButton()) {
-    //nothing for now
+    const button = client.buttons.get(interaction.customId)
+
+    if (button == null)
+      return interaction.followUp("That button is not registered!")
+
+    button.run({
+      client,
+      interaction: interaction as ButtonExtendedInteraction,
+    })
+
     return
   }
 
   //Select menu interactions
-  if (interaction.isSelectMenu()) {
-    await interaction.deferUpdate()
-
+  if (interaction.isStringSelectMenu()) {
     const menu = client.menus.get(interaction.customId)
-    if (!menu) return interaction.followUp("That command does not exist!")
+
+    if (menu == null)
+      return interaction.followUp("That menu is not registered!")
 
     menu.run({
       client,
       interaction: interaction as MenuExtendedInteraction,
+    })
+
+    return
+  }
+
+  //Modal interactions
+  if (interaction.isModalSubmit()) {
+    const modal = client.modals.get(interaction.customId)
+    console.log("modal is", modal)
+    if (modal == null)
+      return interaction.followUp("That modal is not registered!")
+
+    modal.run({
+      client,
+      interaction: interaction as ModalExtendedInteraction,
     })
 
     return

@@ -4,8 +4,12 @@ import {
   CommandInteractionOptionResolver,
   GuildMember,
   PermissionResolvable,
-  SelectMenuComponentData,
-  SelectMenuInteraction,
+  BaseSelectMenuComponentData,
+  StringSelectMenuInteraction,
+  ModalSubmitInteraction,
+  ModalComponentData,
+  ButtonInteraction,
+  InteractionButtonComponentData,
 } from "discord.js"
 import { ExtendedClient } from "../structures/Client"
 
@@ -20,6 +24,41 @@ export interface CommandExtendedInteraction extends CommandInteraction {
   member: GuildMember
 }
 
+interface CommandRunOptions {
+  client: ExtendedClient
+  interaction: CommandExtendedInteraction
+  args: CommandInteractionOptionResolver
+}
+
+type CommandRunFunction = (options: CommandRunOptions) => any
+
+export type CommandType = {
+  run: CommandRunFunction
+} & ChatInputApplicationCommandData
+
+/** Button command
+ * {
+ *   customId: "commandname",
+ *   type: 3,
+ *   run: async({ interaction }) => {}
+ * }
+ */
+export interface ButtonExtendedInteraction extends ButtonInteraction {
+  member: GuildMember
+}
+
+interface ButtonRunOptions {
+  client: ExtendedClient
+  interaction: ButtonExtendedInteraction
+}
+
+type ButtonRunFunction = (options: ButtonRunOptions) => any
+
+export type ButtonType = {
+  defaultMemberPermissions?: PermissionResolvable[]
+  run: ButtonRunFunction
+} & InteractionButtonComponentData
+
 /** Menu command
  * {
  *   customId: "commandname",
@@ -27,14 +66,8 @@ export interface CommandExtendedInteraction extends CommandInteraction {
  *   run: async({ interaction }) => {}
  * }
  */
-export interface MenuExtendedInteraction extends SelectMenuInteraction {
+export interface MenuExtendedInteraction extends StringSelectMenuInteraction {
   member: GuildMember
-}
-
-interface CommandRunOptions {
-  client: ExtendedClient
-  interaction: CommandExtendedInteraction
-  args: CommandInteractionOptionResolver
 }
 
 interface MenuRunOptions {
@@ -42,14 +75,32 @@ interface MenuRunOptions {
   interaction: MenuExtendedInteraction
 }
 
-type CommandRunFunction = (options: CommandRunOptions) => any
 type MenuRunFunction = (options: MenuRunOptions) => any
-
-export type CommandType = {
-  run: CommandRunFunction
-} & ChatInputApplicationCommandData
 
 export type MenuType = {
   defaultMemberPermissions?: PermissionResolvable[]
   run: MenuRunFunction
-} & SelectMenuComponentData
+} & BaseSelectMenuComponentData
+
+/** Modal command
+ * {
+ *   customId: "commandname",
+ *   type: 3,
+ *   run: async({ interaction }) => {}
+ * }
+ */
+export interface ModalExtendedInteraction extends ModalSubmitInteraction {
+  member: GuildMember
+}
+
+interface ModalRunOptions {
+  client: ExtendedClient
+  interaction: ModalExtendedInteraction
+}
+
+type ModalRunFunction = (options: ModalRunOptions) => any
+
+export type ModalType = {
+  defaultMemberPermissions?: PermissionResolvable[]
+  run: ModalRunFunction
+} & ModalComponentData

@@ -5,7 +5,7 @@ const wss = new webSocket.Server({ port: 4100 })
 
 export const wssListen = async (client: ExtendedClient) => {
   console.log("Listening for websocket connections on port 4100!")
-  wss.on("connection", (ws) => {
+  wss.on("connection", (ws: webSocket) => {
     console.log("New client connected!")
 
     ws.on("message", (data) => {

@@ -3,7 +3,7 @@ import { Command } from "../../structures/Interactions"
 import { ApplicationCommandOptionChoiceData } from "discord.js"
 
 const getScriptChoicesAsync = async (): Promise<
-  ApplicationCommandOptionChoiceData[]
+  ApplicationCommandOptionChoiceData<string>[]
 > => {
   const { data, error } = await supabase.from("scripts_public").select()
 
@@ -12,8 +12,8 @@ const getScriptChoicesAsync = async (): Promise<
     return []
   }
 
-  let choices: ApplicationCommandOptionChoiceData[] = []
-  let choice: ApplicationCommandOptionChoiceData
+  let choices: ApplicationCommandOptionChoiceData<string>[] = []
+  let choice: ApplicationCommandOptionChoiceData<string>
 
   for (let i = 0; i < data.length; i++) {
     if (i > 24) break

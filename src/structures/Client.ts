@@ -1,3 +1,4 @@
+import { forumListen, forumUnarchiveListen } from "./forum"
 import {
   ActivityType,
   ApplicationCommandDataResolvable,
@@ -5,7 +6,12 @@ import {
   ClientEvents,
   Collection,
 } from "discord.js"
-import { CommandType, MenuType } from "../typings/interactions"
+import {
+  ButtonType,
+  CommandType,
+  MenuType,
+  ModalType,
+} from "../typings/interactions"
 import glob from "glob"
 import { promisify } from "util"
 import { RegisterCommandsOptions } from "../typings/client"
@@ -16,15 +22,17 @@ const globPromise = promisify(glob)
 
 export class ExtendedClient extends Client {
   commands: Collection<string, CommandType> = new Collection()
+  buttons: Collection<string, ButtonType> = new Collection()
   menus: Collection<string, MenuType> = new Collection()
+  modals: Collection<string, ModalType> = new Collection()
 
   constructor() {
     super({ intents: 32767 })
   }
 
-  start() {
-    this.registerModules()
-    this.login(process.env.botToken)
+  async start() {
+    await this.registerModules()
+    await this.login(process.env.botToken)
   }
 
   async importFile(filePath: string) {
@@ -42,6 +50,7 @@ export class ExtendedClient extends Client {
     console.log("Registering global commands")
   }
 
+  // Register modules (Commands, Buttons, Menus, Modals, ...)
   async registerModules() {
     const path = __dirname.replaceAll("\\", "/") //windows issue maybe? \ needs to be replaced with /
 
@@ -60,6 +69,19 @@ export class ExtendedClient extends Client {
       slashCommands.push(command)
     })
 
+    // Buttons
+    const buttonFiles = await globPromise(
+      `${path}/../interactions/buttons/**/*{.ts,.js}`
+    )
+
+    buttonFiles.forEach(async (filePath) => {
+      const buttonCommand: ButtonType = await this.importFile(filePath)
+      if (!buttonCommand.customId) return
+      console.log("Adding button: ", buttonCommand.customId)
+
+      this.buttons.set(buttonCommand.customId, buttonCommand)
+    })
+
     // Menus
     const menuFiles = await globPromise(
       `${path}/../interactions/menus/**/*{.ts,.js}`
@@ -71,6 +93,19 @@ export class ExtendedClient extends Client {
       console.log("Adding menu: ", menuCommand.customId)
 
       this.menus.set(menuCommand.customId, menuCommand)
+    })
+
+    //Modals
+    const modalFiles = await globPromise(
+      `${path}/../interactions/modals/**/*{.ts,.js}`
+    )
+
+    modalFiles.forEach(async (filePath) => {
+      const modalCommand: ModalType = await this.importFile(filePath)
+      if (!modalCommand.customId) return
+      console.log("Adding modal: ", modalCommand.customId)
+
+      this.modals.set(modalCommand.customId, modalCommand)
     })
 
     this.on("ready", async () => {
@@ -90,6 +125,8 @@ export class ExtendedClient extends Client {
       })
 
       await wssListen(this)
+      await forumListen(this)
+      await forumUnarchiveListen(this)
     })
 
     // Event
