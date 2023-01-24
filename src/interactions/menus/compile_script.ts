@@ -11,8 +11,6 @@ export default new Menu({
     const thread = interaction.channel
     const owner = await thread.fetchOwner()
 
-    console.log(thread.appliedTags)
-
     if (interaction.user.id !== owner.user.id) return
 
     if (interaction.values.includes("yes")) {

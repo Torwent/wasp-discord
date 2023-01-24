@@ -29,7 +29,7 @@ const row = new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
 export async function openThread(thread: AnyThreadChannel) {
   thread.send({
     content:
-      "You need to answer a couple of questions before your post is made visible to others.\n\nIs your issue related to a specifit script?",
+      "You need to answer a couple of questions before your post is made visible to others.\n\nIs your issue related to a specific script?",
     components: [row],
   })
 }

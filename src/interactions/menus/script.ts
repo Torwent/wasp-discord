@@ -1,4 +1,5 @@
 import { Menu } from "../../structures/Interactions"
+import { threadReply } from "../components/close_thread"
 
 export default new Menu({
   customId: "script",
@@ -21,5 +22,7 @@ export default new Menu({
       thread.setName(thread.name.replace(" - ", "Bug - "))
       thread.setAppliedTags(["1019686607734972549"])
     }
+
+    await threadReply(interaction)
   },
 })
