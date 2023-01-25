@@ -1,6 +1,6 @@
-import { MenuExtendedInteraction } from "./../../typings/interactions"
+import { MenuExtendedInteraction } from "../../types/interactions"
 import { ActionRowBuilder, StringSelectMenuBuilder } from "discord.js"
-import { ModalExtendedInteraction } from "../../typings/interactions"
+import { ModalExtendedInteraction } from "../../types/interactions"
 
 const rowCompile =
   new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
@@ -61,6 +61,9 @@ function replyMsg(component: ActionRowBuilder<StringSelectMenuBuilder>) {
 
 export async function compileReply(interaction: MenuExtendedInteraction) {
   await interaction.deferReply({ ephemeral: true })
+
+  interaction.message.delete()
+
   await interaction
     .editReply(replyMsg(rowCompile))
     .catch((error) => console.log(error))
@@ -68,6 +71,9 @@ export async function compileReply(interaction: MenuExtendedInteraction) {
 
 export async function modalCompileReply(interaction: ModalExtendedInteraction) {
   await interaction.deferReply({ ephemeral: true })
+
+  interaction.message.delete()
+
   await interaction
     .editReply(replyMsg(scriptReply))
     .catch((error) => console.log(error))

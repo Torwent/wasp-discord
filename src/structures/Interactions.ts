@@ -3,7 +3,7 @@ import {
   CommandType,
   MenuType,
   ModalType,
-} from "../typings/interactions"
+} from "../types/interactions"
 
 export class Command {
   constructor(commandOptions: CommandType) {

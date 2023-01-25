@@ -8,17 +8,17 @@ export const wssListen = async (client: ExtendedClient) => {
   wss.on("connection", (ws: webSocket) => {
     console.log("New client connected!")
 
-    ws.on("message", (data) => {
+    ws.on("message", (data: any) => {
       try {
         let user_id = `${data}`
-        let guild = client.guilds.resolve("795071177475227709")
+        let guild = client.guilds.resolve(process.env.guildId)
         let member = guild.members.cache.get(user_id)
         let memberRoles = member.roles.cache
           .filter((roles: { id: string }) => roles.id !== guild.id)
           .map((role: { toString: () => any }) => role.toString())
         ws.send(memberRoles.toString())
       } catch (error) {
-        console.log(error)
+        console.error(error)
       }
     })
 

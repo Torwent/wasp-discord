@@ -3,10 +3,10 @@ import { threadReOpen } from "../interactions/components/close_thread"
 import { openThread } from "../interactions/components/open_thread"
 import { ExtendedClient } from "./Client"
 
-const helpId =
+const HELP_ID =
   process.env.environment === "prod"
     ? "1019686348623454270"
-    : "1067124995354001459"
+    : "1067745162735927379"
 
 export const forumListen = async (client: ExtendedClient) => {
   console.log("Listening for forum posts!")
@@ -14,7 +14,7 @@ export const forumListen = async (client: ExtendedClient) => {
   client.on(Events.ThreadCreate, async (thread) => {
     const owner = await thread.fetchOwner()
     const parent = owner.thread.parentId
-    if (parent !== helpId) return
+    if (parent !== HELP_ID) return
 
     await openThread(thread)
   })
@@ -28,7 +28,7 @@ export const forumUnarchiveListen = async (client: ExtendedClient) => {
 
     console.log(thread.appliedTags)
     const parent = owner.thread.parentId
-    if (parent !== helpId) return
+    if (parent !== HELP_ID) return
 
     if (thread.archived) await threadReOpen(thread)
   })

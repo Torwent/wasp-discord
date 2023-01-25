@@ -9,12 +9,12 @@ import { Event } from "../structures/Event"
 export default new Event("ready", async () => {
   console.log("Bot is online")
 
-  const channelId =
+  const WELCOME_ID =
     process.env.environment === "prod"
       ? "901909938090156084"
-      : "1011326532360343682"
+      : "1067734815257927741"
 
-  let channel = await client.channels.fetch(channelId)
+  let channel = await client.channels.fetch(WELCOME_ID)
 
   const welcomeChannel = channel as TextChannel
   const messages = await welcomeChannel.messages.fetch()

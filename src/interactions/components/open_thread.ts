@@ -27,9 +27,10 @@ const row = new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
 )
 
 export async function openThread(thread: AnyThreadChannel) {
-  thread.send({
+  await thread.send({
     content:
-      "You need to answer a couple of questions before your post is made visible to others.\n\nIs your issue related to a specific script?",
+      "You need to answer a couple of questions before others can reply.\n\n" +
+      "Is your issue related to a specific script?",
     components: [row],
   })
 }

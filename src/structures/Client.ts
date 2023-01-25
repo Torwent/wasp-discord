@@ -11,10 +11,10 @@ import {
   CommandType,
   MenuType,
   ModalType,
-} from "../typings/interactions"
+} from "../types/interactions"
 import glob from "glob"
 import { promisify } from "util"
-import { RegisterCommandsOptions } from "../typings/client"
+import { RegisterCommandsOptions } from "../types/client"
 import { Event } from "./Event"
 import { wssListen } from "./WebSocket"
 

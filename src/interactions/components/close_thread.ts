@@ -1,11 +1,11 @@
-import { MenuExtendedInteraction } from "../../typings/interactions"
+import { MenuExtendedInteraction } from "../../types/interactions"
 import {
   ActionRowBuilder,
   ButtonBuilder,
   ButtonStyle,
   ThreadChannel,
 } from "discord.js"
-import { ModalExtendedInteraction } from "../../typings/interactions"
+import { ModalExtendedInteraction } from "../../types/interactions"
 
 const row = new ActionRowBuilder<ButtonBuilder>()
 

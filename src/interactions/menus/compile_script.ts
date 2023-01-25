@@ -1,4 +1,5 @@
 import { Menu } from "../../structures/Interactions"
+import { threadReply } from "../components/close_thread"
 import { openThread } from "../components/script"
 
 export default new Menu({
@@ -16,6 +17,8 @@ export default new Menu({
     if (interaction.values.includes("no")) {
       thread.setName("Simba/Compiling issue - " + interaction.user.username)
       thread.setAppliedTags(["1019687260469346446"])
+
+      return await threadReply(interaction)
     }
 
     await openThread(interaction)

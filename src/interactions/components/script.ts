@@ -1,5 +1,5 @@
 import { ActionRowBuilder, StringSelectMenuBuilder } from "discord.js"
-import { MenuExtendedInteraction } from "../../typings/interactions"
+import { MenuExtendedInteraction } from "../../types/interactions"
 
 const row = new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
   new StringSelectMenuBuilder()

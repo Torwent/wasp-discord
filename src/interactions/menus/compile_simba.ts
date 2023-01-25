@@ -8,13 +8,13 @@ export default new Menu({
     if (interaction.values.length === 0) return
 
     if (!interaction.channel.isThread()) return
+
     const thread = interaction.channel
     const owner = await thread.fetchOwner()
 
     if (interaction.user.id !== owner.user.id) return
-
     if (interaction.values.includes("yes")) {
-      thread.setName("Coding help - " + interaction.user.username)
+      await thread.setName("Coding help - " + interaction.user.username)
       thread.setAppliedTags(["1020028124693549138"])
     }
 

@@ -1,14 +1,14 @@
 import {
   ButtonExtendedInteraction,
   ModalExtendedInteraction,
-} from "./../typings/interactions"
+} from "../types/interactions"
 import { CommandInteractionOptionResolver } from "discord.js"
 import { client } from ".."
 import { Event } from "../structures/Event"
 import {
   CommandExtendedInteraction,
   MenuExtendedInteraction,
-} from "../typings/interactions"
+} from "../types/interactions"
 
 export default new Event("interactionCreate", async (interaction) => {
   // Slash command interactions
