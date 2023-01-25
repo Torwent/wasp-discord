@@ -1,4 +1,13 @@
-# 0.1.0 (2023-01-24)
+## [0.1.1](https://github.com/Torwent/wasp-discord/compare/v0.1.0...v0.1.1) (2023-01-25)
+
+
+### Bug Fixes
+
+* more fixes to the automated help ([cbd7ad9](https://github.com/Torwent/wasp-discord/commit/cbd7ad9a4c0a1ef08d72395ea28d9126402d06be))
+
+
+
+# [0.1.0](https://github.com/Torwent/wasp-discord/compare/f647ac0a01d69a145ade8bf0ace0a1b9144d795b...v0.1.0) (2023-01-24)
 
 
 ### Bug Fixes
