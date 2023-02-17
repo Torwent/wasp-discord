@@ -1,4 +1,4 @@
-import { forumListen, forumUnarchiveListen } from "./Forum"
+//import { forumListen, forumUnarchiveListen } from "./Forum"
 import {
   ActivityType,
   ApplicationCommandDataResolvable,
@@ -125,8 +125,8 @@ export class ExtendedClient extends Client {
       })
 
       await wssListen(this)
-      await forumListen(this)
-      await forumUnarchiveListen(this)
+      //await forumListen(this)
+      //await forumUnarchiveListen(this)
     })
 
     // Event

@@ -8,6 +8,7 @@ const HELP_ID =
     ? "1019686348623454270"
     : "1067745162735927379"
 
+/*
 export const forumListen = async (client: ExtendedClient) => {
   console.log("Listening for forum posts!")
 
@@ -33,3 +34,4 @@ export const forumUnarchiveListen = async (client: ExtendedClient) => {
     //if (thread.archived) await threadReOpen(thread)
   })
 }
+*/
