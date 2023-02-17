@@ -1,3 +1,12 @@
+## [0.1.3](https://github.com/Torwent/wasp-discord/compare/v0.1.2...v0.1.3) (2023-02-17)
+
+
+### Bug Fixes
+
+* removed the automated help things ([819216c](https://github.com/Torwent/wasp-discord/commit/819216c0c146b56d5f0c9799dd8d06bda9d2488c))
+
+
+
 ## [0.1.2](https://github.com/Torwent/wasp-discord/compare/v0.1.1...v0.1.2) (2023-02-09)
 
 
