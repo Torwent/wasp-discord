@@ -4,7 +4,7 @@ import { openThread } from "../interactions/components/open_thread"
 import { ExtendedClient } from "./Client"
 
 const HELP_ID =
-  process.env.environment === "prod"
+  process.env.ENVIRONMENT === "production"
     ? "1019686348623454270"
     : "1067745162735927379"
 

@@ -11,7 +11,7 @@ export const wssListen = async (client: ExtendedClient) => {
     ws.on("message", (data: any) => {
       try {
         let user_id = `${data}`
-        let guild = client.guilds.resolve(process.env.guildId)
+        let guild = client.guilds.resolve(process.env.GUILD_ID)
         let member = guild.members.cache.get(user_id)
         let memberRoles = member.roles.cache
           .filter((roles: { id: string }) => roles.id !== guild.id)

@@ -5,6 +5,12 @@ services:
     container_name: "wasp-discord"
     build:
       context: .
+      args:
+        BOT_TOKEN: $BOT_TOKEN
+        GUILD_ID: $GUILD_ID
+        SB_URL: $SB_URL
+        SB_ANON_KEY: $SB_ANON_KEY
+        ENVIRONMENT: $ENVIRONMENT
     restart: unless-stopped
     volumes:
       - /docker/etc/letsencrypt/live/waspscripts.com/cert.pem:/etc/letsencrypt/live/waspscripts.com/cert.pem
@@ -12,6 +18,8 @@ services:
       - /docker/etc/letsencrypt/live/waspscripts.com/privkey.pem:/etc/letsencrypt/live/waspscripts.com/privkey.pem
     networks:
       - wasp-proxy
+    env_file:
+      - .env
 
 networks:
   wasp-proxy:

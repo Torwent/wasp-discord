@@ -32,17 +32,17 @@ export class ExtendedClient extends Client {
 
   async start() {
     await this.registerModules()
-    await this.login(process.env.botToken)
+    await this.login(process.env.BOT_TOKEN)
   }
 
   async importFile(filePath: string) {
     return (await import(filePath))?.default
   }
 
-  async registerCommands({ commands, guildId }: RegisterCommandsOptions) {
-    if (guildId) {
-      this.guilds.cache.get(guildId)?.commands.set(commands)
-      console.log(`Registering commands to ${guildId}`)
+  async registerCommands({ commands, GUILD_ID }: RegisterCommandsOptions) {
+    if (GUILD_ID) {
+      this.guilds.cache.get(GUILD_ID)?.commands.set(commands)
+      console.log(`Registering commands to ${GUILD_ID}`)
       return
     }
 
@@ -111,7 +111,7 @@ export class ExtendedClient extends Client {
     this.on("ready", async () => {
       await this.registerCommands({
         commands: slashCommands,
-        guildId: process.env.guildId,
+        GUILD_ID: process.env.GUILD_ID,
       })
 
       this.user.setPresence({

@@ -10,7 +10,7 @@ export default new Event("ready", async () => {
   console.log("Bot is online")
 
   const WELCOME_ID =
-    process.env.environment === "prod"
+    process.env.ENVIRONMENT === "production"
       ? "901909938090156084"
       : "1067734815257927741"
 

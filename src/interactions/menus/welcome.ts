@@ -1,12 +1,12 @@
 import { Menu } from "../../structures/Interactions"
 
 const OSRSBOTTER_ROLE_ID =
-  process.env.environment === "prod"
+  process.env.ENVIRONMENT === "production"
     ? "901892382616846366"
     : "1067734814796550175"
 
 const DEVELOPER_ROLE_ID =
-  process.env.environment === "prod"
+  process.env.ENVIRONMENT === "production"
     ? "864744526894333963"
     : "1067734814796550176"
 
