@@ -1,11 +1,5 @@
 # Install dependencies only when needed
 FROM node:16-alpine AS deps
-ARG BOT_TOKEN
-ARG GUILD_ID
-ARG SB_URL
-ARG SB_ANON_KEY
-ARG ENVIRONMENT
-
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
 RUN apk add --no-cache libc6-compat
 # install dependencies
@@ -23,6 +17,13 @@ RUN npx pnpm run build
 # Production image, copy all the files and run next
 FROM node:16-alpine AS runner
 WORKDIR /usr/src/app
+
+ARG BOT_TOKEN
+ARG GUILD_ID
+ARG SB_URL
+ARG SB_ANON_KEY
+ARG ENVIRONMENT
+
 ENV NODE_ENV production
 ENV BOT_TOKEN $BOT_TOKEN
 ENV GUILD_ID $GUILD_ID
