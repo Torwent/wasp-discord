@@ -1,3 +1,12 @@
+## [0.1.4](https://github.com/Torwent/wasp-discord/compare/v0.1.3...v0.1.4) (2023-02-22)
+
+
+### Bug Fixes
+
+* Dockerfile ([795f7df](https://github.com/Torwent/wasp-discord/commit/795f7dfc07cfd12df8b41dfdd529c66a78f49c60))
+
+
+
 ## [0.1.3](https://github.com/Torwent/wasp-discord/compare/v0.1.2...v0.1.3) (2023-02-17)
 
 
