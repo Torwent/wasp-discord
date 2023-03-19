@@ -1,3 +1,12 @@
+## [0.1.6](https://github.com/Torwent/wasp-discord/compare/v0.1.5...v0.1.6) (2023-03-19)
+
+
+### Bug Fixes
+
+* added more debugging to found what's crashing the bot ([bb56669](https://github.com/Torwent/wasp-discord/commit/bb56669c749a4ee83d66fbb6a7f0426858cbeab0))
+
+
+
 ## [0.1.5](https://github.com/Torwent/wasp-discord/compare/v0.1.4...v0.1.5) (2023-03-05)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * disable bot spam when a post is unarchived! ([cc3f988](https://github.com/Torwent/wasp-discord/commit/cc3f988078a741e57ba638727d10cd432fe119bf))
-
-
-
-## [0.1.1](https://github.com/Torwent/wasp-discord/compare/v0.1.0...v0.1.1) (2023-01-25)
-
-
-### Bug Fixes
-
-* more fixes to the automated help ([cbd7ad9](https://github.com/Torwent/wasp-discord/commit/cbd7ad9a4c0a1ef08d72395ea28d9126402d06be))
 
 
 
