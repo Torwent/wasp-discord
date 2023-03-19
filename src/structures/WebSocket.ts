@@ -13,7 +13,7 @@ export const wssListen = async (client: ExtendedClient) => {
       try {
         const user_id = `${data}`
         console.log("Requesting: ", user_id)
-        console.log("ClientIsReady: ", client.isReady)
+        console.log("ClientIsReady: ", client.isReady())
         const guild = client.guilds.resolve(process.env.GUILD_ID)
         console.log("guildname: ", guild.name)
         const member = guild.members.cache.get(user_id)
