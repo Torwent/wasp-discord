@@ -11,6 +11,15 @@ import {
 } from "../types/interactions"
 
 export default new Event("interactionCreate", async (interaction) => {
+  console.log(
+    "Interaction created: ",
+    interaction.id,
+    " in channel: ",
+    interaction.channelId,
+    " by member: ",
+    interaction.member.user.id
+  )
+
   // Slash command interactions
   if (interaction.isChatInputCommand()) {
     await interaction.deferReply()
