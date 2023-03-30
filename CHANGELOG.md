@@ -1,3 +1,12 @@
+## [0.1.8](https://github.com/Torwent/wasp-discord/compare/v0.1.7...v0.1.8) (2023-03-30)
+
+
+### Bug Fixes
+
+* **welcome:** welcome crash should be solved ([e9299ba](https://github.com/Torwent/wasp-discord/commit/e9299baa8d67d3a77ded130f7b9acd495ad3f0d8))
+
+
+
 ## [0.1.7](https://github.com/Torwent/wasp-discord/compare/v0.1.6...v0.1.7) (2023-03-19)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * Dockerfile ([795f7df](https://github.com/Torwent/wasp-discord/commit/795f7dfc07cfd12df8b41dfdd529c66a78f49c60))
-
-
-
-## [0.1.3](https://github.com/Torwent/wasp-discord/compare/v0.1.2...v0.1.3) (2023-02-17)
-
-
-### Bug Fixes
-
-* removed the automated help things ([819216c](https://github.com/Torwent/wasp-discord/commit/819216c0c146b56d5f0c9799dd8d06bda9d2488c))
 
 
 
