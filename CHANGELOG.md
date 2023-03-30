@@ -1,3 +1,12 @@
+## [0.1.9](https://github.com/Torwent/wasp-discord/compare/v0.1.8...v0.1.9) (2023-03-30)
+
+
+### Bug Fixes
+
+* temporarily disabled the lockfile ([9b91d69](https://github.com/Torwent/wasp-discord/commit/9b91d6991ce03ea26e41bacd96281bf1a189db17))
+
+
+
 ## [0.1.8](https://github.com/Torwent/wasp-discord/compare/v0.1.7...v0.1.8) (2023-03-30)
 
 
@@ -31,15 +40,6 @@
 ### Reverts
 
 * Revert "add .env.example" ([996d385](https://github.com/Torwent/wasp-discord/commit/996d3854fa45192017d52ea1e96ac678266e186f))
-
-
-
-## [0.1.4](https://github.com/Torwent/wasp-discord/compare/v0.1.3...v0.1.4) (2023-02-22)
-
-
-### Bug Fixes
-
-* Dockerfile ([795f7df](https://github.com/Torwent/wasp-discord/commit/795f7dfc07cfd12df8b41dfdd529c66a78f49c60))
 
 
 
