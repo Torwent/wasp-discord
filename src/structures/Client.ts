@@ -17,6 +17,7 @@ import { promisify } from "util"
 import { RegisterCommandsOptions } from "../types/client"
 import { Event } from "./Event"
 import { wssListen } from "./WebSocket"
+import { roleListen } from "./Roles"
 
 const globPromise = promisify(glob)
 
@@ -125,6 +126,7 @@ export class ExtendedClient extends Client {
       })
 
       await wssListen(this)
+      await roleListen(this)
       //await forumListen(this)
       //await forumUnarchiveListen(this)
     })
