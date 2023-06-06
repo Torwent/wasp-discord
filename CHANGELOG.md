@@ -1,3 +1,12 @@
+## [0.1.10](https://github.com/Torwent/wasp-discord/compare/v0.1.9...v0.1.10) (2023-06-06)
+
+
+### Bug Fixes
+
+* added role change listener ([92c2da5](https://github.com/Torwent/wasp-discord/commit/92c2da5638bb4e62104cd684fa9472c765bb71f1))
+
+
+
 ## [0.1.9](https://github.com/Torwent/wasp-discord/compare/v0.1.8...v0.1.9) (2023-03-30)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * added more debugging to found what's crashing the bot ([bb56669](https://github.com/Torwent/wasp-discord/commit/bb56669c749a4ee83d66fbb6a7f0426858cbeab0))
-
-
-
-## [0.1.5](https://github.com/Torwent/wasp-discord/compare/v0.1.4...v0.1.5) (2023-03-05)
-
-
-### Reverts
-
-* Revert "add .env.example" ([996d385](https://github.com/Torwent/wasp-discord/commit/996d3854fa45192017d52ea1e96ac678266e186f))
 
 
 
