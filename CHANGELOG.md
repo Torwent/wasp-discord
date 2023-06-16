@@ -1,3 +1,12 @@
+## [0.1.13](https://github.com/Torwent/wasp-discord/compare/v0.1.12...v0.1.13) (2023-06-16)
+
+
+### Bug Fixes
+
+* more typos lol ([8d4bd17](https://github.com/Torwent/wasp-discord/commit/8d4bd179a02ec586fbf8ee18968aac91a4a3ae4f))
+
+
+
 ## [0.1.12](https://github.com/Torwent/wasp-discord/compare/v0.1.11...v0.1.12) (2023-06-16)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * temporarily disabled the lockfile ([9b91d69](https://github.com/Torwent/wasp-discord/commit/9b91d6991ce03ea26e41bacd96281bf1a189db17))
-
-
-
-## [0.1.8](https://github.com/Torwent/wasp-discord/compare/v0.1.7...v0.1.8) (2023-03-30)
-
-
-### Bug Fixes
-
-* **welcome:** welcome crash should be solved ([e9299ba](https://github.com/Torwent/wasp-discord/commit/e9299baa8d67d3a77ded130f7b9acd495ad3f0d8))
 
 
 
