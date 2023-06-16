@@ -1,3 +1,12 @@
+## [0.1.11](https://github.com/Torwent/wasp-discord/compare/v0.1.10...v0.1.11) (2023-06-16)
+
+
+### Bug Fixes
+
+* read notes ([075e97f](https://github.com/Torwent/wasp-discord/commit/075e97feca9f54bb0b144a63ecf29d81418cba01))
+
+
+
 ## [0.1.10](https://github.com/Torwent/wasp-discord/compare/v0.1.9...v0.1.10) (2023-06-06)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * typo ([6917893](https://github.com/Torwent/wasp-discord/commit/69178938a89ae59446048f0ea0c87acd247077b7))
-
-
-
-## [0.1.6](https://github.com/Torwent/wasp-discord/compare/v0.1.5...v0.1.6) (2023-03-19)
-
-
-### Bug Fixes
-
-* added more debugging to found what's crashing the bot ([bb56669](https://github.com/Torwent/wasp-discord/commit/bb56669c749a4ee83d66fbb6a7f0426858cbeab0))
 
 
 
