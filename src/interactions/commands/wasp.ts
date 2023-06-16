@@ -37,22 +37,22 @@ async function cmd() {
         ],
       },
       {
-        type: 1,
+        type: 3,
         name: "script",
         description: "Search a script",
       },
       {
-        type: 1,
+        type: 3,
         name: "tutorials",
         description: "Search a tutorial",
       },
       {
-        type: 1,
+        type: 3,
         name: "stats",
         description: "Search a stats user",
       },
       {
-        type: 1,
+        type: 3,
         name: "devs",
         description: "Search a developer",
       },
