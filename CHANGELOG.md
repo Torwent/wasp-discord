@@ -1,3 +1,12 @@
+## [0.1.12](https://github.com/Torwent/wasp-discord/compare/v0.1.11...v0.1.12) (2023-06-16)
+
+
+### Bug Fixes
+
+* typo ([942bcca](https://github.com/Torwent/wasp-discord/commit/942bccac17b2e2f790dd11de1605b4063364d947))
+
+
+
 ## [0.1.11](https://github.com/Torwent/wasp-discord/compare/v0.1.10...v0.1.11) (2023-06-16)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * **welcome:** welcome crash should be solved ([e9299ba](https://github.com/Torwent/wasp-discord/commit/e9299baa8d67d3a77ded130f7b9acd495ad3f0d8))
-
-
-
-## [0.1.7](https://github.com/Torwent/wasp-discord/compare/v0.1.6...v0.1.7) (2023-03-19)
-
-
-### Bug Fixes
-
-* typo ([6917893](https://github.com/Torwent/wasp-discord/commit/69178938a89ae59446048f0ea0c87acd247077b7))
 
 
 
