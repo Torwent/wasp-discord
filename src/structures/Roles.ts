@@ -2,7 +2,7 @@ import { Events } from "discord.js"
 import { ExtendedClient } from "./Client"
 import { isLoggedIn, login, supabase } from "./Supabase"
 
-const ROLES =
+export const ROLES =
   process.env.ENVIRONMENT === "production"
     ? {
         administrator: "816271648118013953",
@@ -27,6 +27,7 @@ const ROLES =
 
 export const roleListen = async (client: ExtendedClient) => {
   console.log("Listening for role changes!")
+  await login(client)
 
   client.on(Events.GuildMemberUpdate, async (user) => {
     if (process.env.ENVIRONMENT !== "production") {
@@ -37,7 +38,7 @@ export const roleListen = async (client: ExtendedClient) => {
     const roles = updatedUser.roles.cache
 
     const loggedIn = await isLoggedIn()
-    if (!loggedIn) await login()
+    if (!loggedIn) await login(client)
 
     console.log("Updating user: ", user.id)
 
