@@ -1,3 +1,12 @@
+# [0.2.0](https://github.com/Torwent/wasp-discord/compare/v0.1.13...v0.2.0) (2023-06-16)
+
+
+### Features
+
+* read notes ([6488834](https://github.com/Torwent/wasp-discord/commit/648883487d6dd9270bbf9a1e9b1afca0b4c71c55))
+
+
+
 ## [0.1.13](https://github.com/Torwent/wasp-discord/compare/v0.1.12...v0.1.13) (2023-06-16)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * added role change listener ([92c2da5](https://github.com/Torwent/wasp-discord/commit/92c2da5638bb4e62104cd684fa9472c765bb71f1))
-
-
-
-## [0.1.9](https://github.com/Torwent/wasp-discord/compare/v0.1.8...v0.1.9) (2023-03-30)
-
-
-### Bug Fixes
-
-* temporarily disabled the lockfile ([9b91d69](https://github.com/Torwent/wasp-discord/commit/9b91d6991ce03ea26e41bacd96281bf1a189db17))
 
 
 
