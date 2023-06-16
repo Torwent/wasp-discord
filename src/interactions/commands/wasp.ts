@@ -1,31 +1,4 @@
-import { supabase } from "./../../structures/Supabase"
 import { Command } from "../../structures/Interactions"
-import { ApplicationCommandOptionChoiceData } from "discord.js"
-
-const getScriptChoicesAsync = async (): Promise<
-  ApplicationCommandOptionChoiceData<string>[]
-> => {
-  const { data, error } = await supabase.from("scripts_public").select()
-
-  if (error) {
-    console.error(error)
-    return []
-  }
-
-  let choices: ApplicationCommandOptionChoiceData<string>[] = []
-  let choice: ApplicationCommandOptionChoiceData<string>
-
-  for (let i = 0; i < data.length; i++) {
-    if (i > 24) break
-    choice = {
-      name: data[i].title,
-      value: "/scripts/" + data[i].title + "&" + data[i].id,
-    }
-    choices.push(choice)
-  }
-
-  return choices
-}
 
 async function cmd() {
   return new Command({
@@ -43,7 +16,7 @@ async function cmd() {
           },
           {
             name: "Manual setup",
-            value: "/blog/Setup%20(Windows)",
+            value: "/tutorials/setup-windows-by-torwent",
           },
           {
             name: "Scripts",
@@ -58,16 +31,34 @@ async function cmd() {
             value: "/faq",
           },
           {
-            name: "Blog",
-            value: "/blog",
+            name: "Tutorials",
+            value: "/tutorials",
           },
         ],
       },
       {
         type: 3,
         name: "script",
-        description: "Link to a script (only 25 can be displayed)",
-        choices: await getScriptChoicesAsync(),
+        description: "Search a script",
+        required: true,
+      },
+      {
+        type: 3,
+        name: "tutorials",
+        description: "Search a tutorial",
+        required: true,
+      },
+      {
+        type: 3,
+        name: "stats",
+        description: "Search a stats user",
+        required: true,
+      },
+      {
+        type: 3,
+        name: "devs",
+        description: "Search a developer",
+        required: true,
       },
       {
         type: 6,
@@ -84,7 +75,14 @@ async function cmd() {
           if (entry.name === "user")
             link = "<@" + entry.value + "> Check: " + link
           if (entry.name === "page") link += encodeURI(entry.value as string)
-          if (entry.name === "script") link += encodeURI(entry.value as string)
+          if (entry.name === "script")
+            link += "/scripts?search=" + encodeURI(entry.value as string)
+          if (entry.name === "tutorials")
+            link += "/tutorials?search=" + encodeURI(entry.value as string)
+          if (entry.name === "stats")
+            link += "/stats?search=" + encodeURI(entry.value as string)
+          if (entry.name === "devs")
+            link += "/devs?search=" + encodeURI(entry.value as string)
         })
       }
 
