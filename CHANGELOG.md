@@ -1,3 +1,12 @@
+## [0.2.1](https://github.com/Torwent/wasp-discord/compare/v0.2.0...v0.2.1) (2023-06-20)
+
+
+### Bug Fixes
+
+* changed docker network to "hive" to be more thematic ([1018469](https://github.com/Torwent/wasp-discord/commit/10184692fbc3e0ae6257a992f793b0ae5c4e8385))
+
+
+
 # [0.2.0](https://github.com/Torwent/wasp-discord/compare/v0.1.13...v0.2.0) (2023-06-16)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * read notes ([075e97f](https://github.com/Torwent/wasp-discord/commit/075e97feca9f54bb0b144a63ecf29d81418cba01))
-
-
-
-## [0.1.10](https://github.com/Torwent/wasp-discord/compare/v0.1.9...v0.1.10) (2023-06-06)
-
-
-### Bug Fixes
-
-* added role change listener ([92c2da5](https://github.com/Torwent/wasp-discord/commit/92c2da5638bb4e62104cd684fa9472c765bb71f1))
 
 
 
