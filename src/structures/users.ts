@@ -6,7 +6,7 @@ interface ModifiedUser {
 export let modifiedUsers: ModifiedUser[] = []
 
 async function clearOldUsers() {
-  modifiedUsers = modifiedUsers.filter((user) => user.timestamp <= Date.now())
+  modifiedUsers = modifiedUsers.filter((user) => user.timestamp > Date.now())
 }
 
 export async function addNewUsers(id: string) {
@@ -15,12 +15,11 @@ export async function addNewUsers(id: string) {
 }
 
 export async function userModified(id: string) {
-  await clearOldUsers()
-  let result: boolean
-  modifiedUsers.forEach((user) => {
-    result = user.id === id
-    if (result) return result
-  })
+  await clearOldUsers() //needs optimization at some point. this could be all in the next loop.
 
-  return result
+  for (let i = 0; i < modifiedUsers.length; i++) {
+    if (modifiedUsers[i].id === id) return true
+  }
+
+  return false
 }

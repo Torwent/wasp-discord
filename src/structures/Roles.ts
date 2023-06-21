@@ -31,11 +31,6 @@ export const roleListen = async (client: ExtendedClient) => {
   await login(client)
 
   client.on(Events.GuildMemberUpdate, async (user) => {
-    if (process.env.ENVIRONMENT !== "production") {
-      console.log("Not in prodution, role updating will be skipped.")
-      return
-    }
-
     if (await userModified(user.id)) {
       console.log(
         "Discord - User with ID: ",

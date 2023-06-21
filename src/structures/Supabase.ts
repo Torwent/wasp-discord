@@ -75,14 +75,16 @@ export async function login(client: ExtendedClient) {
 
         const member = guild.members.cache.get(discordId)
 
-        Object.keys(ROLES).forEach((key) => {
-          if (key !== "administrator") {
-            if (payload.new[key]) member.roles.add(ROLES[key])
-            else member.roles.remove(ROLES[key])
-          }
-        })
+        if (member) {
+          Object.keys(ROLES).forEach((key) => {
+            if (key !== "administrator") {
+              if (payload.new[key]) member.roles.add(ROLES[key])
+              else member.roles.remove(ROLES[key])
+            }
+          })
 
-        await addNewUsers(discordId)
+          await addNewUsers(discordId)
+        }
       }
     )
     .subscribe()
