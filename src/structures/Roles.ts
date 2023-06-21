@@ -1,6 +1,7 @@
 import { Events } from "discord.js"
 import { ExtendedClient } from "./Client"
 import { isLoggedIn, login, supabase } from "./Supabase"
+import { addNewUsers, userModified } from "./users"
 
 export const ROLES =
   process.env.ENVIRONMENT === "production"
@@ -34,6 +35,16 @@ export const roleListen = async (client: ExtendedClient) => {
       console.log("Not in prodution, role updating will be skipped.")
       return
     }
+
+    if (await userModified(user.id)) {
+      console.log(
+        "Discord - User with ID: ",
+        user.id,
+        " was recently modified."
+      )
+      return
+    }
+
     const updatedUser = user.guild.members.cache.get(user.id)
     const roles = updatedUser.roles.cache
 
@@ -67,6 +78,8 @@ export const roleListen = async (client: ExtendedClient) => {
         timeout: roles.has(ROLES.timeout),
       })
       .eq("id", id)
+
+    await addNewUsers(user.id)
 
     if (error) {
       console.error(error)

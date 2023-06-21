@@ -5,6 +5,7 @@ import {
 } from "@supabase/supabase-js"
 import { ExtendedClient } from "./Client"
 import { ROLES } from "./Roles"
+import { addNewUsers, userModified } from "./users"
 
 let realtime: RealtimeChannel
 
@@ -61,7 +62,18 @@ export async function login(client: ExtendedClient) {
           return
         }
 
-        const member = guild.members.cache.get(data as string)
+        const discordId = data as string
+
+        if (await userModified(discordId)) {
+          console.log(
+            "Supabase - User with ID: ",
+            discordId,
+            " was recently modified."
+          )
+          return
+        }
+
+        const member = guild.members.cache.get(discordId)
 
         Object.keys(ROLES).forEach((key) => {
           if (key !== "administrator") {
@@ -69,6 +81,8 @@ export async function login(client: ExtendedClient) {
             else member.roles.remove(ROLES[key])
           }
         })
+
+        await addNewUsers(discordId)
       }
     )
     .subscribe()

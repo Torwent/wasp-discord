@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   wasp-discord:
-    container_name: "wasp-discord"
+    container_name: wasp-discord
     build:
       context: .
       args:
@@ -18,11 +18,5 @@ services:
       - /docker/etc/letsencrypt/live/waspscripts.com/cert.pem:/etc/letsencrypt/live/waspscripts.com/cert.pem
       - /docker/etc/letsencrypt/live/waspscripts.com/fullchain.pem:/etc/letsencrypt/live/waspscripts.com/fullchain.pem
       - /docker/etc/letsencrypt/live/waspscripts.com/privkey.pem:/etc/letsencrypt/live/waspscripts.com/privkey.pem
-    networks:
-      - hive
     env_file:
       - .env
-
-networks:
-  hive:
-    external: true
