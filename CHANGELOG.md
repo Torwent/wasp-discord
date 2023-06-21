@@ -1,3 +1,12 @@
+## [0.2.2](https://github.com/Torwent/wasp-discord/compare/v0.2.1...v0.2.2) (2023-06-21)
+
+
+### Bug Fixes
+
+* read notes ([a5c176f](https://github.com/Torwent/wasp-discord/commit/a5c176fe0a96c3bdc805b4166dc3577a97ddf60f))
+
+
+
 ## [0.2.1](https://github.com/Torwent/wasp-discord/compare/v0.2.0...v0.2.1) (2023-06-20)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * typo ([942bcca](https://github.com/Torwent/wasp-discord/commit/942bccac17b2e2f790dd11de1605b4063364d947))
-
-
-
-## [0.1.11](https://github.com/Torwent/wasp-discord/compare/v0.1.10...v0.1.11) (2023-06-16)
-
-
-### Bug Fixes
-
-* read notes ([075e97f](https://github.com/Torwent/wasp-discord/commit/075e97feca9f54bb0b144a63ecf29d81418cba01))
 
 
 
