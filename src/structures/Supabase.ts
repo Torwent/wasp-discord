@@ -5,7 +5,7 @@ import {
 } from "@supabase/supabase-js"
 import { ExtendedClient } from "./Client"
 import { ROLES } from "./Roles"
-import { addNewUsers, userModified } from "./users"
+import { addNewUser, isUserModified } from "./users"
 
 let realtime: RealtimeChannel
 
@@ -64,7 +64,7 @@ export async function login(client: ExtendedClient) {
 
         const discordId = data as string
 
-        if (await userModified(discordId)) {
+        if (await isUserModified(discordId)) {
           console.log(
             "Supabase - User with ID: ",
             discordId,
@@ -83,7 +83,7 @@ export async function login(client: ExtendedClient) {
             }
           })
 
-          await addNewUsers(discordId)
+          await addNewUser(discordId, 2 * 60)
         }
       }
     )

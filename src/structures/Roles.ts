@@ -1,7 +1,7 @@
 import { Events } from "discord.js"
 import { ExtendedClient } from "./Client"
 import { isLoggedIn, login, supabase } from "./Supabase"
-import { addNewUsers, userModified } from "./users"
+import { addNewUser, isUserModified } from "./users"
 
 export const ROLES =
   process.env.ENVIRONMENT === "production"
@@ -31,7 +31,7 @@ export const roleListen = async (client: ExtendedClient) => {
   await login(client)
 
   client.on(Events.GuildMemberUpdate, async (user) => {
-    if (await userModified(user.id)) {
+    if (await isUserModified(user.id)) {
       console.log(
         "Discord - User with ID: ",
         user.id,
@@ -74,7 +74,7 @@ export const roleListen = async (client: ExtendedClient) => {
       })
       .eq("id", id)
 
-    await addNewUsers(user.id)
+    await addNewUser(user.id, 2 * 60)
 
     if (error) {
       console.error(error)
