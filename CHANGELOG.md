@@ -1,3 +1,12 @@
+## [0.2.4](https://github.com/Torwent/wasp-discord/compare/v0.2.3...v0.2.4) (2023-06-27)
+
+
+### Bug Fixes
+
+* doesn't need docker network anymore ([3080294](https://github.com/Torwent/wasp-discord/commit/30802946fed1426c7ae3804b85db0abe2c870b06))
+
+
+
 ## [0.2.3](https://github.com/Torwent/wasp-discord/compare/v0.2.2...v0.2.3) (2023-06-21)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * read notes ([6488834](https://github.com/Torwent/wasp-discord/commit/648883487d6dd9270bbf9a1e9b1afca0b4c71c55))
-
-
-
-## [0.1.13](https://github.com/Torwent/wasp-discord/compare/v0.1.12...v0.1.13) (2023-06-16)
-
-
-### Bug Fixes
-
-* more typos lol ([8d4bd17](https://github.com/Torwent/wasp-discord/commit/8d4bd179a02ec586fbf8ee18968aac91a4a3ae4f))
 
 
 
