@@ -1,3 +1,12 @@
+## [0.2.6](https://github.com/Torwent/wasp-discord/compare/v0.2.5...v0.2.6) (2023-07-26)
+
+
+### Bug Fixes
+
+* minor tweak to last commit ([076fc87](https://github.com/Torwent/wasp-discord/commit/076fc87664580489e6c607d52603e4ae628c8e12))
+
+
+
 ## [0.2.5](https://github.com/Torwent/wasp-discord/compare/v0.2.4...v0.2.5) (2023-07-26)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * read notes ([a5c176f](https://github.com/Torwent/wasp-discord/commit/a5c176fe0a96c3bdc805b4166dc3577a97ddf60f))
-
-
-
-## [0.2.1](https://github.com/Torwent/wasp-discord/compare/v0.2.0...v0.2.1) (2023-06-20)
-
-
-### Bug Fixes
-
-* changed docker network to "hive" to be more thematic ([1018469](https://github.com/Torwent/wasp-discord/commit/10184692fbc3e0ae6257a992f793b0ae5c4e8385))
 
 
 
