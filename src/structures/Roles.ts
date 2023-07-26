@@ -65,8 +65,7 @@ export const roleListen = async (client: ExtendedClient) => {
       return
     }
 
-    const { id, profiles_protected } = data[0]
-    const {subscription_external} = profiles_protected
+    const { id, profiles_protected: {subscription_external} } = data[0]
 
     const roleObject = subscription_external ? {
         moderator: roles.has(ROLES.moderator),
