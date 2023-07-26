@@ -26,6 +26,13 @@ export const ROLES =
         timeout: "1115527081745465375",
       }
 
+interface SBProfile {
+    id: string;
+    profiles_protected: {
+        subscription_external: boolean;
+    }
+}
+
 export const roleListen = async (client: ExtendedClient) => {
   console.log("Listening for role changes!")
   await login(client)
@@ -50,20 +57,18 @@ export const roleListen = async (client: ExtendedClient) => {
 
     const { data, error: IDError } = await supabase
       .from("profiles_public")
-      .select("id")
-      .eq("discord_id", user.id)
+      .select("id, profiles_protected (subscription_external)")
+      .eq("discord_id", user.id).limit(1).returns<SBProfile[]>()
 
     if (IDError) {
       console.error(IDError)
       return
     }
 
-    const { id } = data[0]
+    const { id, profiles_protected } = data[0]
+    const {subscription_external} = profiles_protected
 
-    const { error } = await supabase
-      .from("profiles_protected")
-      .update({
-        administrator: roles.has(ROLES.administrator),
+    const roleObject = subscription_external ? {
         moderator: roles.has(ROLES.moderator),
         scripter: roles.has(ROLES.scripter),
         tester: roles.has(ROLES.tester),
@@ -71,7 +76,19 @@ export const roleListen = async (client: ExtendedClient) => {
         premium: roles.has(ROLES.premium),
         developer: roles.has(ROLES.developer),
         timeout: roles.has(ROLES.timeout),
-      })
+      } :
+      {
+        moderator: roles.has(ROLES.moderator),
+        scripter: roles.has(ROLES.scripter),
+        tester: roles.has(ROLES.tester),
+        developer: roles.has(ROLES.developer),
+        timeout: roles.has(ROLES.timeout),
+      }
+    
+
+    const { error } = await supabase
+      .from("profiles_protected")
+      .update(roleObject)
       .eq("id", id)
 
     await addNewUser(user.id, 2 * 60)
