@@ -1,3 +1,12 @@
+## [0.2.5](https://github.com/Torwent/wasp-discord/compare/v0.2.4...v0.2.5) (2023-07-26)
+
+
+### Bug Fixes
+
+* **roles:** wasp-bot won't change database roles for roles managed internally anymore ([1e22d96](https://github.com/Torwent/wasp-discord/commit/1e22d9628ddb85bdbca9d7817cfef9648338721e))
+
+
+
 ## [0.2.4](https://github.com/Torwent/wasp-discord/compare/v0.2.3...v0.2.4) (2023-06-27)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * changed docker network to "hive" to be more thematic ([1018469](https://github.com/Torwent/wasp-discord/commit/10184692fbc3e0ae6257a992f793b0ae5c4e8385))
-
-
-
-# [0.2.0](https://github.com/Torwent/wasp-discord/compare/v0.1.13...v0.2.0) (2023-06-16)
-
-
-### Features
-
-* read notes ([6488834](https://github.com/Torwent/wasp-discord/commit/648883487d6dd9270bbf9a1e9b1afca0b4c71c55))
 
 
 
