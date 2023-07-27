@@ -1,3 +1,12 @@
+## [0.2.7](https://github.com/Torwent/wasp-discord/compare/v0.2.6...v0.2.7) (2023-07-27)
+
+
+### Bug Fixes
+
+* tweak to prevent discord bot from crashing ([540d42c](https://github.com/Torwent/wasp-discord/commit/540d42cf7ef38b214a0ed4598c7cba2a45b96996))
+
+
+
 ## [0.2.6](https://github.com/Torwent/wasp-discord/compare/v0.2.5...v0.2.6) (2023-07-26)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * fixed some logic flaws with the last commit ([499c1b6](https://github.com/Torwent/wasp-discord/commit/499c1b68f294b430a8117de731fbe66858ffb493))
-
-
-
-## [0.2.2](https://github.com/Torwent/wasp-discord/compare/v0.2.1...v0.2.2) (2023-06-21)
-
-
-### Bug Fixes
-
-* read notes ([a5c176f](https://github.com/Torwent/wasp-discord/commit/a5c176fe0a96c3bdc805b4166dc3577a97ddf60f))
 
 
 
