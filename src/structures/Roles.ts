@@ -58,12 +58,15 @@ export const roleListen = async (client: ExtendedClient) => {
     const { data, error: IDError } = await supabase
       .from("profiles_public")
       .select("id, profiles_protected (subscription_external)")
-      .eq("discord_id", user.id).limit(1).returns<SBProfile[]>()
+      .eq("discord_id", user.id).returns<SBProfile[]>()
 
-    if (IDError) {
-      console.error(IDError)
-      return
-    }
+    if (IDError) 
+      return console.error(IDError)
+    
+
+    if (data.length === 0)
+      return console.error("Data of " + user.id + " has 0 length")
+    
 
     const { id, profiles_protected: {subscription_external} } = data[0]
 
