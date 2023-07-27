@@ -54,24 +54,17 @@ export async function login(client: ExtendedClient) {
         payload: RealtimePostgresUpdatePayload<{ [key: string]: any }>
       ) => {
         const id = payload.new.id
-        const { data, error } = await supabase.rpc("get_discord_id", {
-          user_id: id,
-        })
-        if (error) {
-          console.error(error)
-          return
-        }
+        const { data, error } = await supabase.rpc("get_discord_id", { user_id: id })
+        if (error) return console.error(error)
+      
 
         const discordId = data as string
 
-        if (await isUserModified(discordId)) {
-          console.log(
-            "Supabase - User with ID: ",
-            discordId,
-            " was recently modified."
+        if (await isUserModified(discordId)) 
+          return console.log(
+            "Supabase - User with ID: " + discordId + " was recently modified."
           )
-          return
-        }
+        
 
         const member = guild.members.cache.get(discordId)
 
