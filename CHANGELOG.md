@@ -1,3 +1,12 @@
+## [0.2.9](https://github.com/Torwent/wasp-discord/compare/v0.2.8...v0.2.9) (2023-08-17)
+
+
+### Bug Fixes
+
+* downgrade discordjs ([53414a9](https://github.com/Torwent/wasp-discord/commit/53414a94ecb0ac998efdcd6913ba84fba4eadfac))
+
+
+
 ## [0.2.8](https://github.com/Torwent/wasp-discord/compare/v0.2.7...v0.2.8) (2023-08-17)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * **roles:** wasp-bot won't change database roles for roles managed internally anymore ([1e22d96](https://github.com/Torwent/wasp-discord/commit/1e22d9628ddb85bdbca9d7817cfef9648338721e))
-
-
-
-## [0.2.4](https://github.com/Torwent/wasp-discord/compare/v0.2.3...v0.2.4) (2023-06-27)
-
-
-### Bug Fixes
-
-* doesn't need docker network anymore ([3080294](https://github.com/Torwent/wasp-discord/commit/30802946fed1426c7ae3804b85db0abe2c870b06))
 
 
 
