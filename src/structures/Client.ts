@@ -1,17 +1,12 @@
 //import { forumListen, forumUnarchiveListen } from "./Forum"
 import {
-  ActivityType,
-  ApplicationCommandDataResolvable,
-  Client,
-  ClientEvents,
-  Collection,
+	ActivityType,
+	ApplicationCommandDataResolvable,
+	Client,
+	ClientEvents,
+	Collection
 } from "discord.js"
-import {
-  ButtonType,
-  CommandType,
-  MenuType,
-  ModalType,
-} from "../types/interactions"
+import { ButtonType, CommandType, MenuType, ModalType } from "../types/interactions"
 import glob from "glob"
 import { promisify } from "util"
 import { RegisterCommandsOptions } from "../types/client"
@@ -22,120 +17,112 @@ import { roleListen } from "./Roles"
 const globPromise = promisify(glob)
 
 export class ExtendedClient extends Client {
-  commands: Collection<string, CommandType> = new Collection()
-  buttons: Collection<string, ButtonType> = new Collection()
-  menus: Collection<string, MenuType> = new Collection()
-  modals: Collection<string, ModalType> = new Collection()
+	commands: Collection<string, CommandType> = new Collection()
+	buttons: Collection<string, ButtonType> = new Collection()
+	menus: Collection<string, MenuType> = new Collection()
+	modals: Collection<string, ModalType> = new Collection()
 
-  constructor() {
-    super({ intents: 32767 })
-  }
+	constructor() {
+		super({ intents: 32767 })
+	}
 
-  async start() {
-    await this.registerModules()
-    await this.login(process.env.BOT_TOKEN)
-  }
+	async start() {
+		await this.registerModules()
+		await this.login(process.env.BOT_TOKEN)
+	}
 
-  async importFile(filePath: string) {
-    return (await import(filePath))?.default
-  }
+	async importFile(filePath: string) {
+		return (await import(filePath))?.default
+	}
 
-  async registerCommands({ commands, GUILD_ID }: RegisterCommandsOptions) {
-    if (GUILD_ID) {
-      this.guilds.cache.get(GUILD_ID)?.commands.set(commands)
-      console.log(`Registering commands to ${GUILD_ID}`)
-      return
-    }
+	async registerCommands({ commands, GUILD_ID }: RegisterCommandsOptions) {
+		if (GUILD_ID) {
+			this.guilds.cache.get(GUILD_ID)?.commands.set(commands)
+			console.log(`Registering commands to ${GUILD_ID}`)
+			return
+		}
 
-    this.application?.commands.set(commands)
-    console.log("Registering global commands")
-  }
+		this.application?.commands.set(commands)
+		console.log("Registering global commands")
+	}
 
-  // Register modules (Commands, Buttons, Menus, Modals, ...)
-  async registerModules() {
-    const path = __dirname.replaceAll("\\", "/") //windows issue maybe? \ needs to be replaced with /
+	// Register modules (Commands, Buttons, Menus, Modals, ...)
+	async registerModules() {
+		const path = __dirname.replaceAll("\\", "/") //windows issue maybe? \ needs to be replaced with /
 
-    // Commands
-    const slashCommands: ApplicationCommandDataResolvable[] = []
-    const commandFiles = await globPromise(
-      `${path}/../interactions/commands/**/*{.ts,.js}`
-    )
+		// Commands
+		const slashCommands: ApplicationCommandDataResolvable[] = []
+		const commandFiles = await globPromise(`${path}/../interactions/commands/**/*{.ts,.js}`)
 
-    commandFiles.forEach(async (filePath) => {
-      const command: CommandType = await this.importFile(filePath)
-      if (!command.name) return
-      console.log("Adding command: ", command.name)
+		commandFiles.forEach(async (filePath) => {
+			const command: CommandType = await this.importFile(filePath)
+			if (!command.name) return
+			console.log("Adding command: ", command.name)
 
-      this.commands.set(command.name, command)
-      slashCommands.push(command)
-    })
+			this.commands.set(command.name, command)
+			slashCommands.push(command)
+		})
 
-    // Buttons
-    const buttonFiles = await globPromise(
-      `${path}/../interactions/buttons/**/*{.ts,.js}`
-    )
+		// Buttons
+		const buttonFiles = await globPromise(`${path}/../interactions/buttons/**/*{.ts,.js}`)
 
-    buttonFiles.forEach(async (filePath) => {
-      const buttonCommand: ButtonType = await this.importFile(filePath)
-      if (!buttonCommand.customId) return
-      console.log("Adding button: ", buttonCommand.customId)
+		buttonFiles.forEach(async (filePath) => {
+			const buttonCommand: ButtonType = await this.importFile(filePath)
+			if (!buttonCommand.customId) return
+			console.log("Adding button: ", buttonCommand.customId)
 
-      this.buttons.set(buttonCommand.customId, buttonCommand)
-    })
+			this.buttons.set(buttonCommand.customId, buttonCommand)
+		})
 
-    // Menus
-    const menuFiles = await globPromise(
-      `${path}/../interactions/menus/**/*{.ts,.js}`
-    )
+		// Menus
+		const menuFiles = await globPromise(`${path}/../interactions/menus/**/*{.ts,.js}`)
 
-    menuFiles.forEach(async (filePath) => {
-      const menuCommand: MenuType = await this.importFile(filePath)
-      if (!menuCommand.customId) return
-      console.log("Adding menu: ", menuCommand.customId)
+		menuFiles.forEach(async (filePath) => {
+			const menuCommand: MenuType = await this.importFile(filePath)
+			if (!menuCommand.customId) return
+			console.log("Adding menu: ", menuCommand.customId)
 
-      this.menus.set(menuCommand.customId, menuCommand)
-    })
+			this.menus.set(menuCommand.customId, menuCommand)
+		})
 
-    //Modals
-    const modalFiles = await globPromise(
-      `${path}/../interactions/modals/**/*{.ts,.js}`
-    )
+		//Modals
+		const modalFiles = await globPromise(`${path}/../interactions/modals/**/*{.ts,.js}`)
 
-    modalFiles.forEach(async (filePath) => {
-      const modalCommand: ModalType = await this.importFile(filePath)
-      if (!modalCommand.customId) return
-      console.log("Adding modal: ", modalCommand.customId)
+		modalFiles.forEach(async (filePath) => {
+			const modalCommand: ModalType = await this.importFile(filePath)
+			if (!modalCommand.customId) return
+			console.log("Adding modal: ", modalCommand.customId)
 
-      this.modals.set(modalCommand.customId, modalCommand)
-    })
+			this.modals.set(modalCommand.customId, modalCommand)
+		})
 
-    this.on("ready", async () => {
-      await this.registerCommands({
-        commands: slashCommands,
-        GUILD_ID: process.env.GUILD_ID,
-      })
+		this.on("ready", async () => {
+			await this.registerCommands({
+				commands: slashCommands,
+				GUILD_ID: process.env.GUILD_ID
+			})
 
-      this.user.setPresence({
-        activities: [
-          {
-            name: "OSRS with Simba",
-            type: ActivityType.Playing,
-          },
-        ],
-        status: "online",
-      })
+			this.user.setPresence({
+				activities: [
+					{
+						name: "OSRS with Simba",
+						type: ActivityType.Playing
+					}
+				],
+				status: "online"
+			})
 
-      await wssListen(this)
-      await roleListen(this)
-      //await forumListen(this)
-      //await forumUnarchiveListen(this)
-    })
+			await wssListen(this)
+			await roleListen(this)
+			//await forumListen(this)
+			//await forumUnarchiveListen(this)
+		})
 
-    // Event
-    const eventFiles = await globPromise(`${path}/../events/*{.ts,.js}`)
-    eventFiles.forEach(async (filePath) => {
-      const event: Event<keyof ClientEvents> = await this.importFile(filePath)
-      this.on(event.event, event.run)
-    })
-  }
+		// Event
+		const eventFiles = await globPromise(`${path}/../events/*{.ts,.js}`)
+		eventFiles.forEach(async (filePath) => {
+			const event: Event<keyof ClientEvents> = await this.importFile(filePath)
+			this.on(event.event, event.run)
+		})
+	}
 }
