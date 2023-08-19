@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/Torwent/wasp-discord/compare/v0.2.9...v0.3.0) (2023-08-19)
+
+
+### Features
+
+* update project to my new nodejs template ([e35175b](https://github.com/Torwent/wasp-discord/commit/e35175bc416b472fd137a464002ce1f122183681))
+
+
+
 ## [0.2.9](https://github.com/Torwent/wasp-discord/compare/v0.2.8...v0.2.9) (2023-08-17)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * minor tweak to last commit ([076fc87](https://github.com/Torwent/wasp-discord/commit/076fc87664580489e6c607d52603e4ae628c8e12))
-
-
-
-## [0.2.5](https://github.com/Torwent/wasp-discord/compare/v0.2.4...v0.2.5) (2023-07-26)
-
-
-### Bug Fixes
-
-* **roles:** wasp-bot won't change database roles for roles managed internally anymore ([1e22d96](https://github.com/Torwent/wasp-discord/commit/1e22d9628ddb85bdbca9d7817cfef9648338721e))
 
 
 
