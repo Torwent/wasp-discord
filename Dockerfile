@@ -16,7 +16,7 @@ RUN npx pnpm run build
 FROM node:20-alpine AS runner
 WORKDIR /usr/src/app
 RUN adduser -S torwent -D -u 10000 -s /bin/nologin
-COPY --from=builder /usr/src/app/dist ./build
+COPY --from=builder /usr/src/app/build ./build
 COPY --from=builder /usr/src/app/node_modules ./node_modules
 COPY --from=builder /usr/src/app/package.json ./package.json
 COPY stack.env ./.env
