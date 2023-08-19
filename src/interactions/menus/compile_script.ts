@@ -1,4 +1,4 @@
-import { Menu } from "../../structures/Interactions"
+import { Menu } from "$structures/Interactions"
 import { threadReply } from "../components/close_thread"
 import { openThread } from "../components/script"
 

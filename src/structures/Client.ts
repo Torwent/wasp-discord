@@ -6,13 +6,12 @@ import {
 	ClientEvents,
 	Collection
 } from "discord.js"
-import { ButtonType, CommandType, MenuType, ModalType } from "../types/interactions"
+import { ButtonType, CommandType, MenuType, ModalType } from "$lib/types/interactions"
 import glob from "glob"
 import { promisify } from "util"
-import { RegisterCommandsOptions } from "../types/client"
-import { Event } from "./Event"
-import { wssListen } from "./WebSocket"
-import { roleListen } from "./Roles"
+import { RegisterCommandsOptions } from "$lib/types/client"
+import { Event } from "$structures/Event"
+import { roleListen } from "$structures/Roles"
 
 const globPromise = promisify(glob)
 
@@ -112,7 +111,6 @@ export class ExtendedClient extends Client {
 				status: "online"
 			})
 
-			await wssListen(this)
 			await roleListen(this)
 			//await forumListen(this)
 			//await forumUnarchiveListen(this)

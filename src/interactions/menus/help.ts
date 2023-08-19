@@ -5,7 +5,7 @@ import {
 	TextInputBuilder,
 	TextInputStyle
 } from "discord.js"
-import { Menu } from "../../structures/Interactions"
+import { Menu } from "$structures/Interactions"
 import { compileReply } from "../components/compile"
 
 const modal = new ModalBuilder().setCustomId("help").setTitle("Script Information")

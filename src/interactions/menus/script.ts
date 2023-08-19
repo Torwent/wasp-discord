@@ -1,4 +1,4 @@
-import { Menu } from "../../structures/Interactions"
+import { Menu } from "$structures/Interactions"
 import { threadReply } from "../components/close_thread"
 
 export default new Menu({

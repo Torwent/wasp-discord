@@ -11,7 +11,7 @@ import {
 	ButtonInteraction,
 	InteractionButtonComponentData
 } from "discord.js"
-import { ExtendedClient } from "../structures/Client"
+import { ExtendedClient } from "$structures/Client"
 
 /** Slash command
  * {

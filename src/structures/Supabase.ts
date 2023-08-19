@@ -2,7 +2,7 @@ import { RealtimeChannel, RealtimePostgresUpdatePayload, createClient } from "@s
 import { ExtendedClient } from "./Client"
 import { ROLES } from "./Roles"
 import { addNewUser, isUserModified } from "./users"
-import { Database } from "../types/supabase"
+import { Database } from "../lib/types/supabase"
 
 let realtime: RealtimeChannel
 

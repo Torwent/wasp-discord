@@ -1,5 +1,5 @@
 import { GuildTextBasedChannel } from "discord.js"
-import { Command } from "../../../structures/Interactions"
+import { Command } from "$structures/Interactions"
 
 export default new Command({
 	name: "clear",

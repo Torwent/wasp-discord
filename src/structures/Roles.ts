@@ -1,8 +1,8 @@
 import { Events } from "discord.js"
-import { ExtendedClient } from "./Client"
-import { isLoggedIn, login, supabase } from "./Supabase"
-import { addNewUser, isUserModified } from "./users"
-import { Profile } from "../types/collection"
+import { ExtendedClient } from "$structures/Client"
+import { isLoggedIn, login, supabase } from "$structures/Supabase"
+import { addNewUser, isUserModified } from "$structures/users"
+import { Profile } from "$lib/types/collection"
 
 export const ROLES =
 	process.env.ENVIRONMENT === "production"
@@ -13,7 +13,6 @@ export const ROLES =
 				tester: "907209408860291113",
 				vip: "931167526681972746",
 				premium: "820985772140134440",
-				developer: "864744526894333963",
 				timeout: "1102052216157786192"
 		  }
 		: {
@@ -23,7 +22,6 @@ export const ROLES =
 				tester: "1067734814796550179",
 				vip: "1067734814796550178",
 				premium: "1067734814796550177",
-				developer: "1067734814796550176",
 				timeout: "1115527081745465375"
 		  }
 
@@ -49,12 +47,12 @@ export const roleListen = async (client: ExtendedClient) => {
 			.schema("profiles")
 			.from("profiles")
 			.select(
-				`id, roles!left (moderator, scriper, tester, vip, premium, developer, timeout), subscription!left (external)`
+				`id, roles!left (moderator, scripter, tester, vip, premium, timeout), subscriptions!left (external)`
 			)
 			.eq("discord", user.id)
 			.limit(1)
 			.limit(1, { foreignTable: "roles" })
-			.limit(1, { foreignTable: "subscription" })
+			.limit(1, { foreignTable: "subscriptions" })
 			.returns<Profile[]>()
 
 		if (IDError) return console.error(IDError)
@@ -73,14 +71,12 @@ export const roleListen = async (client: ExtendedClient) => {
 					tester: roles.has(ROLES.tester),
 					vip: roles.has(ROLES.vip),
 					premium: roles.has(ROLES.premium),
-					developer: roles.has(ROLES.developer),
 					timeout: roles.has(ROLES.timeout)
 			  }
 			: {
 					moderator: roles.has(ROLES.moderator),
 					scripter: roles.has(ROLES.scripter),
 					tester: roles.has(ROLES.tester),
-					developer: roles.has(ROLES.developer),
 					timeout: roles.has(ROLES.timeout)
 			  }
 

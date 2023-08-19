@@ -5,12 +5,11 @@ module.exports = {
 	plugins: ["@typescript-eslint"],
 	ignorePatterns: ["*.cjs"],
 	parserOptions: {
-		sourceType: "module",
-		ecmaVersion: 2020
+		ecmaVersion: "latest",
+		sourceType: "module"
 	},
 	env: {
 		browser: true,
-		es2017: true,
 		node: true
 	}
 }

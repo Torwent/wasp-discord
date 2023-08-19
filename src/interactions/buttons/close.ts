@@ -1,4 +1,4 @@
-import { Button } from "../../structures/Interactions"
+import { Button } from "$structures/Interactions"
 import { ButtonStyle } from "discord.js"
 
 export default new Button({

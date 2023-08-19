@@ -1,5 +1,5 @@
-import { Command } from "../../../structures/Interactions"
-import { supabase } from "../../../structures/Supabase"
+import { Command } from "$structures/Interactions"
+import { supabase } from "$structures/Supabase"
 
 export default new Command({
 	name: "wsid",

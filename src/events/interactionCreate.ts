@@ -1,8 +1,8 @@
-import { ButtonExtendedInteraction, ModalExtendedInteraction } from "../types/interactions"
+import { ButtonExtendedInteraction, ModalExtendedInteraction } from "../lib/types/interactions"
 import { CommandInteractionOptionResolver } from "discord.js"
 import { client } from ".."
-import { Event } from "../structures/Event"
-import { CommandExtendedInteraction, MenuExtendedInteraction } from "../types/interactions"
+import { Event } from "$structures/Event"
+import { CommandExtendedInteraction, MenuExtendedInteraction } from "../lib/types/interactions"
 
 export default new Event("interactionCreate", async (interaction) => {
 	console.log(

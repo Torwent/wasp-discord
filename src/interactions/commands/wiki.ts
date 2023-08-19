@@ -1,4 +1,4 @@
-import { Command } from "../../structures/Interactions"
+import { Command } from "$structures/Interactions"
 
 export default new Command({
 	name: "wiki",

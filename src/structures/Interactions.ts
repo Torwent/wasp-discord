@@ -1,4 +1,4 @@
-import { ButtonType, CommandType, MenuType, ModalType } from "../types/interactions"
+import { ButtonType, CommandType, MenuType, ModalType } from "../lib/types/interactions"
 
 export class Command {
 	constructor(commandOptions: CommandType) {

@@ -1,9 +1,10 @@
-import { MenuExtendedInteraction } from "../../types/interactions"
+import { MenuExtendedInteraction } from "$lib/types/interactions"
 import { ActionRowBuilder, StringSelectMenuBuilder } from "discord.js"
-import { ModalExtendedInteraction } from "../../types/interactions"
+import { ModalExtendedInteraction } from "$lib/types/interactions"
 
 const rowCompile = new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
 	new StringSelectMenuBuilder()
+
 		.setCustomId("compile_simba")
 		.setPlaceholder("Choose an option")
 		.setMinValues(1)

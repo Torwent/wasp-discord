@@ -1,3 +1,4 @@
+/*
 import { Events } from "discord.js"
 import { threadReOpen } from "../interactions/components/close_thread"
 import { openThread } from "../interactions/components/open_thread"
@@ -6,7 +7,7 @@ import { ExtendedClient } from "./Client"
 const HELP_ID =
 	process.env.ENVIRONMENT === "production" ? "1019686348623454270" : "1067745162735927379"
 
-/*
+
 export const forumListen = async (client: ExtendedClient) => {
   console.log("Listening for forum posts!")
 

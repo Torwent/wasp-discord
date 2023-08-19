@@ -1,6 +1,6 @@
-import { Modal } from "../../structures/Interactions"
-import { supabase } from "../../structures/Supabase"
-import { Script } from "../../types/collection"
+import { Modal } from "$structures/Interactions"
+import { supabase } from "$structures/Supabase"
+import { Script } from "$lib/types/collection"
 import { modalCompileReply } from "../components/compile"
 
 export default new Modal({

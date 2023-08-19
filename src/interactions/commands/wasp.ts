@@ -1,4 +1,4 @@
-import { Command } from "../../structures/Interactions"
+import { Command } from "$structures/Interactions"
 
 async function cmd() {
 	return new Command({
@@ -54,7 +54,7 @@ async function cmd() {
 			{
 				type: 3,
 				name: "devs",
-				description: "Search a developer"
+				description: "Search a scripter"
 			},
 			{
 				type: 6,
