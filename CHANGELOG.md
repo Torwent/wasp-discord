@@ -1,3 +1,12 @@
+## [0.3.1](https://github.com/Torwent/wasp-discord/compare/v0.3.0...v0.3.1) (2023-08-19)
+
+
+### Bug Fixes
+
+* rename dist to build ([9edb0e4](https://github.com/Torwent/wasp-discord/commit/9edb0e4f22fdcb3c7512059184429f58ed8f551c))
+
+
+
 # [0.3.0](https://github.com/Torwent/wasp-discord/compare/v0.2.9...v0.3.0) (2023-08-19)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * tweak to prevent discord bot from crashing ([540d42c](https://github.com/Torwent/wasp-discord/commit/540d42cf7ef38b214a0ed4598c7cba2a45b96996))
-
-
-
-## [0.2.6](https://github.com/Torwent/wasp-discord/compare/v0.2.5...v0.2.6) (2023-07-26)
-
-
-### Bug Fixes
-
-* minor tweak to last commit ([076fc87](https://github.com/Torwent/wasp-discord/commit/076fc87664580489e6c607d52603e4ae628c8e12))
 
 
 
