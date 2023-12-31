@@ -13,6 +13,7 @@ export default new Command({
 		}
 	],
 	run: async ({ interaction }) => {
+		interaction.deferReply({ ephemeral: true })
 		let user = ""
 		interaction.options.data.forEach((entry) => {
 			if (entry.name === "user") {
@@ -22,7 +23,7 @@ export default new Command({
 		})
 
 		if (user === "") {
-			await interaction.editReply("WaspScripts ID: User is not in the discord server.")
+			await interaction.followUp("WaspScripts ID: User is not in the discord server.")
 			return
 		}
 
@@ -39,7 +40,7 @@ export default new Command({
 		}
 		data
 		if (data.length === 0) {
-			await interaction.editReply("WaspScripts ID: User not found.")
+			await interaction.followUp("WaspScripts ID: User not found.")
 			return
 		}
 
