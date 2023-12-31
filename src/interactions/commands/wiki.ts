@@ -20,6 +20,7 @@ export default new Command({
 	],
 
 	run: async ({ interaction }) => {
+		await interaction.deferReply()
 		let link = "https://oldschool.runescape.wiki/?search="
 
 		if (interaction.options.data.length > 0) {

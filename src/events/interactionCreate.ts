@@ -16,7 +16,6 @@ export default new Event("interactionCreate", async (interaction) => {
 
 	// Slash command interactions
 	if (interaction.isChatInputCommand()) {
-		await interaction.deferReply()
 		const command = client.commands.get(interaction.commandName)
 		if (!command) return interaction.followUp("That command does not exist!")
 

@@ -6,6 +6,7 @@ export default new Command({
 	description: "Clears messages from the channel",
 	defaultMemberPermissions: ["Administrator"],
 	run: async ({ interaction }) => {
+		await interaction.deferReply()
 		const channel: GuildTextBasedChannel = interaction.channel
 
 		const messages = await channel.messages.fetch()

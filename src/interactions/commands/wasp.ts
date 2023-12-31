@@ -65,6 +65,7 @@ async function cmd() {
 		],
 
 		run: async ({ interaction }) => {
+			await interaction.deferReply()
 			let link = "https://waspscripts.com"
 			if (interaction.options.data.length > 0) {
 				interaction.options.data.forEach((entry) => {
