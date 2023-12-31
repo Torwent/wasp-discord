@@ -1,3 +1,12 @@
+## [0.3.4](https://github.com/Torwent/wasp-discord/compare/v0.3.3...v0.3.4) (2023-12-31)
+
+
+### Bug Fixes
+
+* tweaks to wsid ([28ff773](https://github.com/Torwent/wasp-discord/commit/28ff7733c60822ff0d9d66a6aefb9bdd6dfa09be))
+
+
+
 ## [0.3.3](https://github.com/Torwent/wasp-discord/compare/v0.3.2...v0.3.3) (2023-12-31)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * update project to my new nodejs template ([e35175b](https://github.com/Torwent/wasp-discord/commit/e35175bc416b472fd137a464002ce1f122183681))
-
-
-
-## [0.2.9](https://github.com/Torwent/wasp-discord/compare/v0.2.8...v0.2.9) (2023-08-17)
-
-
-### Bug Fixes
-
-* downgrade discordjs ([53414a9](https://github.com/Torwent/wasp-discord/commit/53414a94ecb0ac998efdcd6913ba84fba4eadfac))
 
 
 
