@@ -1,3 +1,12 @@
+## [0.3.3](https://github.com/Torwent/wasp-discord/compare/v0.3.2...v0.3.3) (2023-12-31)
+
+
+### Bug Fixes
+
+* make /wsid ephemeral ([09e28ad](https://github.com/Torwent/wasp-discord/commit/09e28ad222d83eaf92863cad802157b052ea0a10))
+
+
+
 ## [0.3.2](https://github.com/Torwent/wasp-discord/compare/v0.3.1...v0.3.2) (2023-12-31)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * downgrade discordjs ([53414a9](https://github.com/Torwent/wasp-discord/commit/53414a94ecb0ac998efdcd6913ba84fba4eadfac))
-
-
-
-## [0.2.8](https://github.com/Torwent/wasp-discord/compare/v0.2.7...v0.2.8) (2023-08-17)
-
-
-### Bug Fixes
-
-* update to fit the new database structures ([498e603](https://github.com/Torwent/wasp-discord/commit/498e603f808a05b1e885df8a8647110f1f93ef51))
 
 
 
