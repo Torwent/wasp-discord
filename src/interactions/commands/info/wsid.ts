@@ -23,7 +23,7 @@ export default new Command({
 		})
 
 		if (user === "") {
-			await interaction.editReply("WaspScripts ID: User is not in the discord server.")
+			await interaction.editReply("WaspScripts ID not found.")
 			return
 		}
 
@@ -40,10 +40,10 @@ export default new Command({
 		}
 		data
 		if (data.length === 0) {
-			await interaction.editReply("WaspScripts ID: User not found.")
+			await interaction.editReply("WaspScripts ID not found.")
 			return
 		}
 
-		await interaction.editReply("WaspScripts ID: " + data[0].id)
+		await interaction.editReply(data[0].id)
 	}
 })
