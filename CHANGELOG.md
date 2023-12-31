@@ -1,3 +1,12 @@
+## [0.3.2](https://github.com/Torwent/wasp-discord/compare/v0.3.1...v0.3.2) (2023-12-31)
+
+
+### Bug Fixes
+
+* update waspbot to remove the premium and vip roles ([04d7ced](https://github.com/Torwent/wasp-discord/commit/04d7ced8e9a17a0224f53a9dbfd7ee551e20bdcd))
+
+
+
 ## [0.3.1](https://github.com/Torwent/wasp-discord/compare/v0.3.0...v0.3.1) (2023-08-19)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * update to fit the new database structures ([498e603](https://github.com/Torwent/wasp-discord/commit/498e603f808a05b1e885df8a8647110f1f93ef51))
-
-
-
-## [0.2.7](https://github.com/Torwent/wasp-discord/compare/v0.2.6...v0.2.7) (2023-07-27)
-
-
-### Bug Fixes
-
-* tweak to prevent discord bot from crashing ([540d42c](https://github.com/Torwent/wasp-discord/commit/540d42cf7ef38b214a0ed4598c7cba2a45b96996))
 
 
 
