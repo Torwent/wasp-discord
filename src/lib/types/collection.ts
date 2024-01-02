@@ -5,7 +5,7 @@ export type Prices = Database["public"]["Tables"]["prices"]["Row"]
 export type ProfileBase = Database["profiles"]["Tables"]["profiles"]["Row"]
 export type ProfileRoles = Database["profiles"]["Tables"]["roles"]["Row"]
 export type ProfilePrivate = Database["profiles"]["Tables"]["private"]["Row"]
-export type ProfileSubscription = Database["profiles"]["Tables"]["subscriptions"]["Row"]
+export type ProfileSubscription = Database["profiles"]["Tables"]["subscription"]["Row"]
 
 export interface Profile extends ProfileBase {
 	private: ProfilePrivate
