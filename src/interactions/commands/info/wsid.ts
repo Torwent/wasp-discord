@@ -14,13 +14,7 @@ export default new Command({
 	],
 	run: async ({ interaction }) => {
 		await interaction.deferReply({ ephemeral: true })
-		let user = ""
-		interaction.options.data.forEach((entry) => {
-			if (entry.name === "user") {
-				user = entry.value as string
-				return
-			}
-		})
+		const user = interaction.options.data[0].value as string
 
 		if (user === "") {
 			await interaction.editReply("WaspScripts ID not found.")

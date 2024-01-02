@@ -241,44 +241,6 @@ export interface Database {
           }
         ]
       }
-      subscriptions: {
-        Row: {
-          cancel: boolean
-          date_end: string
-          date_start: string
-          external: boolean
-          id: string
-          price_id: string
-          subscription_id: string | null
-        }
-        Insert: {
-          cancel?: boolean
-          date_end?: string
-          date_start?: string
-          external?: boolean
-          id: string
-          price_id?: string
-          subscription_id?: string | null
-        }
-        Update: {
-          cancel?: boolean
-          date_end?: string
-          date_start?: string
-          external?: boolean
-          id?: string
-          price_id?: string
-          subscription_id?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "subscriptions_price_id_fkey"
-            columns: ["price_id"]
-            isOneToOne: false
-            referencedRelation: "prices"
-            referencedColumns: ["stripe_id"]
-          }
-        ]
-      }
       subscriptions_bak: {
         Row: {
           cancel: boolean
@@ -444,11 +406,9 @@ export interface Database {
             }
             Returns: boolean
           }
-      get_access: {
-        Args: {
-          user_id: string
-        }
-        Returns: unknown
+      cron_check_subscriptions: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
       }
       get_avatar: {
         Args: {
@@ -1418,10 +1378,6 @@ export interface Database {
           script_id: string
         }
         Returns: boolean
-      }
-      remove_expired_subscriptions: {
-        Args: Record<PropertyKey, never>
-        Returns: undefined
       }
       script_exists: {
         Args: {
