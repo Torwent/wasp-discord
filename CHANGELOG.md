@@ -1,3 +1,12 @@
+## [0.3.6](https://github.com/Torwent/wasp-discord/compare/v0.3.5...v0.3.6) (2024-01-02)
+
+
+### Bug Fixes
+
+* update packages and add multiple scripts found with /access protection ([4e4d694](https://github.com/Torwent/wasp-discord/commit/4e4d6948c2ed922a0aeffbccb6da190715a8100e))
+
+
+
 ## [0.3.5](https://github.com/Torwent/wasp-discord/compare/v0.3.4...v0.3.5) (2024-01-02)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * update waspbot to remove the premium and vip roles ([04d7ced](https://github.com/Torwent/wasp-discord/commit/04d7ced8e9a17a0224f53a9dbfd7ee551e20bdcd))
-
-
-
-## [0.3.1](https://github.com/Torwent/wasp-discord/compare/v0.3.0...v0.3.1) (2023-08-19)
-
-
-### Bug Fixes
-
-* rename dist to build ([9edb0e4](https://github.com/Torwent/wasp-discord/commit/9edb0e4f22fdcb3c7512059184429f58ed8f551c))
 
 
 
