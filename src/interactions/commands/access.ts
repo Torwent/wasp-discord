@@ -75,26 +75,20 @@ export default new Command({
 			return
 		}
 
-		const { data: scriptsData, error: scriptError } = await supabase
+		const { data: scriptData, error: scriptError } = await supabase
 			.schema("scripts")
 			.from("scripts")
 			.select("id, title, categories")
 			.eq("published", true)
 			.ilike("search", "%" + script.trim().replaceAll(" ", "%") + "%")
+			.single()
 
-		if (scriptError || scriptsData.length === 0) {
+		if (scriptError) {
 			await interaction.editReply("Script was not found.")
 			return
 		}
 
-		if (scriptsData.length > 1) {
-			await interaction.editReply(
-				"Multiple scripts found for this search:" + scriptsData.map((s) => " " + s.title).toString()
-			)
-			return
-		}
-
-		const { id: script_id, categories } = scriptsData[0]
+		const { id: script_id, categories } = scriptData
 
 		if (categories.includes("Free")) {
 			await interaction.editReply("true")
