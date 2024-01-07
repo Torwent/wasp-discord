@@ -2,6 +2,7 @@ import { RealtimeChannel, RealtimePostgresUpdatePayload, createClient } from "@s
 import { ExtendedClient } from "./Client"
 import { ROLES } from "./Roles"
 import { Database } from "../lib/types/supabase"
+import { addNewUser } from "./users"
 
 let realtime: RealtimeChannel
 
@@ -66,6 +67,7 @@ export async function login(client: ExtendedClient) {
 						}
 					})
 				}
+				await addNewUser(discordId, 60)
 			}
 		)
 		.subscribe()

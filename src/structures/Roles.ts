@@ -70,7 +70,7 @@ export const roleListen = async (client: ExtendedClient) => {
 			.update(roleObject)
 			.eq("id", id)
 
-		await addNewUser(user.id, 5)
+		await addNewUser(user.id, 60)
 
 		if (error) {
 			console.error(error)
