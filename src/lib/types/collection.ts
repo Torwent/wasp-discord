@@ -10,7 +10,6 @@ export type ProfileSubscription = Database["profiles"]["Tables"]["subscription"]
 export interface Profile extends ProfileBase {
 	private: ProfilePrivate
 	roles: ProfileRoles
-	subscriptions: ProfileSubscription
 }
 
 export type Stats = Database["public"]["Tables"]["stats"]["Row"]

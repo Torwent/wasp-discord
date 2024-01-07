@@ -46,11 +46,10 @@ export const roleListen = async (client: ExtendedClient) => {
 		const { data, error: IDError } = await supabase
 			.schema("profiles")
 			.from("profiles")
-			.select(`id, roles!left (moderator, scripter, tester, timeout), subscription!left (external)`)
+			.select(`id, roles!left (moderator, scripter, tester, timeout)`)
 			.eq("discord", user.id)
 			.limit(1)
 			.limit(1, { foreignTable: "roles" })
-			.limit(1, { foreignTable: "subscription" })
 			.returns<Profile[]>()
 
 		if (IDError) return console.error(IDError)
