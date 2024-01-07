@@ -1,3 +1,12 @@
+## [0.3.8](https://github.com/Torwent/wasp-discord/compare/v0.3.7...v0.3.8) (2024-01-07)
+
+
+### Bug Fixes
+
+* add the vip and premium roles back ([73d70aa](https://github.com/Torwent/wasp-discord/commit/73d70aad732b136ab1962e4136e5476061fac1ea))
+
+
+
 ## [0.3.7](https://github.com/Torwent/wasp-discord/compare/v0.3.6...v0.3.7) (2024-01-02)
 
 
@@ -36,15 +45,6 @@
 ### Bug Fixes
 
 * tweaks to wsid ([28ff773](https://github.com/Torwent/wasp-discord/commit/28ff7733c60822ff0d9d66a6aefb9bdd6dfa09be))
-
-
-
-## [0.3.3](https://github.com/Torwent/wasp-discord/compare/v0.3.2...v0.3.3) (2023-12-31)
-
-
-### Bug Fixes
-
-* make /wsid ephemeral ([09e28ad](https://github.com/Torwent/wasp-discord/commit/09e28ad222d83eaf92863cad802157b052ea0a10))
 
 
 
