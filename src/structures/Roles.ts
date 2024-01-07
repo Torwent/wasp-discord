@@ -41,7 +41,7 @@ export const roleListen = async (client: ExtendedClient) => {
 		const loggedIn = await isLoggedIn()
 		if (!loggedIn) await login(client)
 
-		console.log("Updating user: ", user.id)
+		console.log("Updating user discord side: ", user.id)
 
 		const { data, error: IDError } = await supabase
 			.schema("profiles")

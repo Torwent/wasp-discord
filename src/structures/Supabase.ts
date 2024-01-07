@@ -1,7 +1,6 @@
 import { RealtimeChannel, RealtimePostgresUpdatePayload, createClient } from "@supabase/supabase-js"
 import { ExtendedClient } from "./Client"
 import { ROLES } from "./Roles"
-import { addNewUser, isUserModified } from "./users"
 import { Database } from "../lib/types/supabase"
 
 let realtime: RealtimeChannel
@@ -55,6 +54,7 @@ export async function login(client: ExtendedClient) {
 				if (error) return console.error(error)
 
 				const discordId = data[0].discord
+				console.log("Updating user database side: ", discordId)
 
 				const member = guild.members.cache.get(discordId)
 
@@ -65,8 +65,6 @@ export async function login(client: ExtendedClient) {
 							else member.roles.remove(ROLES[key])
 						}
 					})
-
-					await addNewUser(discordId, 5)
 				}
 			}
 		)
