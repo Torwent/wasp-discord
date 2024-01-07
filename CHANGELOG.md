@@ -1,3 +1,12 @@
+## [0.3.10](https://github.com/Torwent/wasp-discord/compare/v0.3.9...v0.3.10) (2024-01-07)
+
+
+### Bug Fixes
+
+* add debugging ([a8d81db](https://github.com/Torwent/wasp-discord/commit/a8d81db42d0eed4e94b4bf9f31bbb9ef8d61b715))
+
+
+
 ## [0.3.9](https://github.com/Torwent/wasp-discord/compare/v0.3.8...v0.3.9) (2024-01-07)
 
 
@@ -36,15 +45,6 @@
 ### Bug Fixes
 
 * update packages and add multiple scripts found with /access protection ([4e4d694](https://github.com/Torwent/wasp-discord/commit/4e4d6948c2ed922a0aeffbccb6da190715a8100e))
-
-
-
-## [0.3.5](https://github.com/Torwent/wasp-discord/compare/v0.3.4...v0.3.5) (2024-01-02)
-
-
-### Bug Fixes
-
-* add access command ([2f4f3a2](https://github.com/Torwent/wasp-discord/commit/2f4f3a2785877ba4369c542257cb0bcb55e5a943))
 
 
 
