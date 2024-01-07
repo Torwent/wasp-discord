@@ -1,3 +1,12 @@
+## [0.3.12](https://github.com/Torwent/wasp-discord/compare/v0.3.11...v0.3.12) (2024-01-07)
+
+
+### Bug Fixes
+
+* add more protections to avoid feedback loops ([8c56dfe](https://github.com/Torwent/wasp-discord/commit/8c56dfebc10b121884bc9481fbd3f5e896443117))
+
+
+
 ## [0.3.11](https://github.com/Torwent/wasp-discord/compare/v0.3.10...v0.3.11) (2024-01-07)
 
 
@@ -31,20 +40,6 @@
 ### Bug Fixes
 
 * add the vip and premium roles back ([73d70aa](https://github.com/Torwent/wasp-discord/commit/73d70aad732b136ab1962e4136e5476061fac1ea))
-
-
-
-## [0.3.7](https://github.com/Torwent/wasp-discord/compare/v0.3.6...v0.3.7) (2024-01-02)
-
-
-### Bug Fixes
-
-* readd glob package ([ac9e67c](https://github.com/Torwent/wasp-discord/commit/ac9e67c0656a93cc88d18498431f671af294eb95))
-
-
-### Reverts
-
-* Revert "fix: update packages and add multiple scripts found with /access protection" ([5e41977](https://github.com/Torwent/wasp-discord/commit/5e41977c0e21b0692a4f83bcd8140dbe89f3fa83))
 
 
 
