@@ -1,3 +1,12 @@
+## [0.3.11](https://github.com/Torwent/wasp-discord/compare/v0.3.10...v0.3.11) (2024-01-07)
+
+
+### Bug Fixes
+
+* readd delay when users get updated ([d7a23b9](https://github.com/Torwent/wasp-discord/commit/d7a23b9a79eeb7dd8aa121567e6529f5d9593cfc))
+
+
+
 ## [0.3.10](https://github.com/Torwent/wasp-discord/compare/v0.3.9...v0.3.10) (2024-01-07)
 
 
@@ -36,15 +45,6 @@
 ### Reverts
 
 * Revert "fix: update packages and add multiple scripts found with /access protection" ([5e41977](https://github.com/Torwent/wasp-discord/commit/5e41977c0e21b0692a4f83bcd8140dbe89f3fa83))
-
-
-
-## [0.3.6](https://github.com/Torwent/wasp-discord/compare/v0.3.5...v0.3.6) (2024-01-02)
-
-
-### Bug Fixes
-
-* update packages and add multiple scripts found with /access protection ([4e4d694](https://github.com/Torwent/wasp-discord/commit/4e4d6948c2ed922a0aeffbccb6da190715a8100e))
 
 
 
