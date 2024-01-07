@@ -1,3 +1,12 @@
+## [0.3.9](https://github.com/Torwent/wasp-discord/compare/v0.3.8...v0.3.9) (2024-01-07)
+
+
+### Bug Fixes
+
+* minor fixes for the last commit ([999d6da](https://github.com/Torwent/wasp-discord/commit/999d6da05951024de5dff79ddb8e9c6c26ff6c7f))
+
+
+
 ## [0.3.8](https://github.com/Torwent/wasp-discord/compare/v0.3.7...v0.3.8) (2024-01-07)
 
 
@@ -36,15 +45,6 @@
 ### Bug Fixes
 
 * add access command ([2f4f3a2](https://github.com/Torwent/wasp-discord/commit/2f4f3a2785877ba4369c542257cb0bcb55e5a943))
-
-
-
-## [0.3.4](https://github.com/Torwent/wasp-discord/compare/v0.3.3...v0.3.4) (2023-12-31)
-
-
-### Bug Fixes
-
-* tweaks to wsid ([28ff773](https://github.com/Torwent/wasp-discord/commit/28ff7733c60822ff0d9d66a6aefb9bdd6dfa09be))
 
 
 
