@@ -56,9 +56,6 @@ export async function login(client: ExtendedClient) {
 
 				const discordId = data[0].discord
 
-				if (await isUserModified(discordId))
-					return console.log("Supabase - User with ID: " + discordId + " was recently modified.")
-
 				const member = guild.members.cache.get(discordId)
 
 				if (member) {
@@ -69,7 +66,7 @@ export async function login(client: ExtendedClient) {
 						}
 					})
 
-					await addNewUser(discordId, 2 * 60)
+					await addNewUser(discordId, 5)
 				}
 			}
 		)

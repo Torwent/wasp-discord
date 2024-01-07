@@ -11,6 +11,8 @@ export const ROLES =
 				moderator: "1018906735123124315",
 				scripter: "1069140447647240254",
 				tester: "907209408860291113",
+				vip: "1193104319122260018",
+				premium: "1193104090264252448",
 				timeout: "1102052216157786192"
 		  }
 		: {
@@ -18,6 +20,8 @@ export const ROLES =
 				moderator: "1067734814796550180",
 				scripter: "1115527233277272116",
 				tester: "1067734814796550179",
+				vip: "1067734814796550178",
+				premium: "1067734814796550177",
 				timeout: "1115527081745465375"
 		  }
 
@@ -42,13 +46,11 @@ export const roleListen = async (client: ExtendedClient) => {
 		const { data, error: IDError } = await supabase
 			.schema("profiles")
 			.from("profiles")
-			.select(
-				`id, roles!left (moderator, scripter, tester, timeout), subscriptions!left (external)`
-			)
+			.select(`id, roles!left (moderator, scripter, tester, timeout), subscription!left (external)`)
 			.eq("discord", user.id)
 			.limit(1)
 			.limit(1, { foreignTable: "roles" })
-			.limit(1, { foreignTable: "subscriptions" })
+			.limit(1, { foreignTable: "subscription" })
 			.returns<Profile[]>()
 
 		if (IDError) return console.error(IDError)
@@ -69,7 +71,7 @@ export const roleListen = async (client: ExtendedClient) => {
 			.update(roleObject)
 			.eq("id", id)
 
-		await addNewUser(user.id, 2 * 60)
+		await addNewUser(user.id, 5)
 
 		if (error) {
 			console.error(error)
