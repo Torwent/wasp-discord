@@ -2,7 +2,7 @@ import { RealtimeChannel, RealtimePostgresUpdatePayload, createClient } from "@s
 import { ExtendedClient } from "./Client"
 import { ROLES } from "./Roles"
 import { Database } from "../lib/types/supabase"
-import { addNewUser } from "./users"
+import { addNewUser, isUserModified } from "./users"
 
 let realtime: RealtimeChannel
 
@@ -55,6 +55,12 @@ export async function login(client: ExtendedClient) {
 				if (error) return console.error(error)
 
 				const discordId = data[0].discord
+
+				if (await isUserModified(discordId)) {
+					console.log("Discord - User with ID: ", discordId, " was recently modified.")
+					return
+				}
+
 				console.log("Updating user database side: ", discordId)
 
 				const member = guild.members.cache.get(discordId)
@@ -67,7 +73,7 @@ export async function login(client: ExtendedClient) {
 						}
 					})
 				}
-				await addNewUser(discordId, 60)
+				await addNewUser(discordId, 3 * 60)
 			}
 		)
 		.subscribe()
