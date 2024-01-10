@@ -17,7 +17,7 @@ export default new Command({
 		const user = interaction.options.data[0].value as string
 
 		if (user === "") {
-			await interaction.editReply("WaspScripts ID not found.")
+			await interaction.editReply("Discord ID is empty.")
 			return
 		}
 
@@ -27,17 +27,14 @@ export default new Command({
 			.select("id")
 			.eq("discord", user)
 			.limit(1)
+			.maybeSingle()
 
 		if (error) {
 			console.error(error)
-			return
-		}
-		data
-		if (data.length === 0) {
 			await interaction.editReply("WaspScripts ID not found.")
 			return
 		}
 
-		await interaction.editReply(data[0].id)
+		await interaction.editReply(data.id)
 	}
 })
