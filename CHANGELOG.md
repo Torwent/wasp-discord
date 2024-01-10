@@ -1,3 +1,12 @@
+# [0.4.0](https://github.com/Torwent/wasp-discord/compare/v0.3.12...v0.4.0) (2024-01-10)
+
+
+### Features
+
+* add `/did` which is basically a reverse `/wsid` ([9e57c6e](https://github.com/Torwent/wasp-discord/commit/9e57c6e87e2a906729ed5ed22ff99d89d165eba2))
+
+
+
 ## [0.3.12](https://github.com/Torwent/wasp-discord/compare/v0.3.11...v0.3.12) (2024-01-07)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * minor fixes for the last commit ([999d6da](https://github.com/Torwent/wasp-discord/commit/999d6da05951024de5dff79ddb8e9c6c26ff6c7f))
-
-
-
-## [0.3.8](https://github.com/Torwent/wasp-discord/compare/v0.3.7...v0.3.8) (2024-01-07)
-
-
-### Bug Fixes
-
-* add the vip and premium roles back ([73d70aa](https://github.com/Torwent/wasp-discord/commit/73d70aad732b136ab1962e4136e5476061fac1ea))
 
 
 
