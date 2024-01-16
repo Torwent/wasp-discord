@@ -1,3 +1,12 @@
+## [0.4.1](https://github.com/Torwent/wasp-discord/compare/v0.4.0...v0.4.1) (2024-01-16)
+
+
+### Bug Fixes
+
+* /server command now counts premium users, admins and mods ([04d43e8](https://github.com/Torwent/wasp-discord/commit/04d43e8ca3bd8168dc1da15e20fa20790ca1de92))
+
+
+
 # [0.4.0](https://github.com/Torwent/wasp-discord/compare/v0.3.12...v0.4.0) (2024-01-10)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * add debugging ([a8d81db](https://github.com/Torwent/wasp-discord/commit/a8d81db42d0eed4e94b4bf9f31bbb9ef8d61b715))
-
-
-
-## [0.3.9](https://github.com/Torwent/wasp-discord/compare/v0.3.8...v0.3.9) (2024-01-07)
-
-
-### Bug Fixes
-
-* minor fixes for the last commit ([999d6da](https://github.com/Torwent/wasp-discord/commit/999d6da05951024de5dff79ddb8e9c6c26ff6c7f))
 
 
 
