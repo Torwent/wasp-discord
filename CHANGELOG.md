@@ -1,3 +1,12 @@
+## [0.5.1](https://github.com/Torwent/wasp-discord/compare/v0.5.0...v0.5.1) (2024-02-23)
+
+
+### Bug Fixes
+
+* modify command permissions to use roles ([6b826c0](https://github.com/Torwent/wasp-discord/commit/6b826c0de5eaa1271ae58c0fdc9e7b149ad12e88))
+
+
+
 # [0.5.0](https://github.com/Torwent/wasp-discord/compare/v0.4.1...v0.5.0) (2024-02-23)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * add more protections to avoid feedback loops ([8c56dfe](https://github.com/Torwent/wasp-discord/commit/8c56dfebc10b121884bc9481fbd3f5e896443117))
-
-
-
-## [0.3.11](https://github.com/Torwent/wasp-discord/compare/v0.3.10...v0.3.11) (2024-01-07)
-
-
-### Bug Fixes
-
-* readd delay when users get updated ([d7a23b9](https://github.com/Torwent/wasp-discord/commit/d7a23b9a79eeb7dd8aa121567e6529f5d9593cfc))
 
 
 
