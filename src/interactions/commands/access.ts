@@ -33,6 +33,16 @@ export default new Command({
 	],
 	run: async ({ interaction }) => {
 		await interaction.deferReply({ ephemeral: true })
+
+		const role = interaction.member.roles.cache.find(
+			(r) => r.name === "Scripter" || r.name === "Moderator"
+		)
+
+		if (role == null) {
+			await interaction.editReply("You are not allowed to use this command.")
+			return
+		}
+
 		const user = interaction.options.data[0].value as string
 
 		if (user === "") {

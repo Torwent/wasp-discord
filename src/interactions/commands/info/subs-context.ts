@@ -1,13 +1,22 @@
 import { Command } from "$structures/Interactions"
 import { supabase } from "$structures/Supabase"
-import { ApplicationCommandType } from "discord.js"
+import { ApplicationCommandType, PermissionFlagsBits } from "discord.js"
 
 export default new Command({
 	name: "WaspScripts Subscriptions",
-	defaultMemberPermissions: ["Administrator", "ModerateMembers"],
 	type: ApplicationCommandType.User,
 	run: async ({ interaction }) => {
 		await interaction.deferReply({ ephemeral: true })
+
+		const role = interaction.member.roles.cache.find(
+			(r) => r.name === "Scripter" || r.name === "Moderator" || r.name === "Administrator"
+		)
+
+		if (role == null) {
+			await interaction.editReply("You are not allowed to use this command.")
+			return
+		}
+
 		let user = interaction.options.data[0].value as string
 
 		if (user === "") {

@@ -1,8 +1,9 @@
 import { Command } from "$structures/Interactions"
-import { EmbedBuilder } from "discord.js"
+import { EmbedBuilder, PermissionFlagsBits } from "discord.js"
 
 export default new Command({
 	name: "server",
+	defaultMemberPermissions: [PermissionFlagsBits.ModerateMembers],
 	description: "Replies with server info",
 	run: async ({ interaction }) => {
 		await interaction.deferReply()
