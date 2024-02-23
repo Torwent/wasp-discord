@@ -58,8 +58,8 @@ export default new Command({
 		let message =
 			"WSID: `" + data.id + "`, Discord ID: `" + user + "`, Customer ID: `" + data.customer_id + "`"
 
-		if (roles.find((r) => r.name === "Moderator" || r.name === "Administrator"))
-			message += "`, Email: `" + data.private.email + "`"
+		if (roles.find((r) => r.name === "Administrator"))
+			message += ", Email: `" + data.private.email + "`"
 
 		message += "\nRoles: `" + rolesData + "`"
 
