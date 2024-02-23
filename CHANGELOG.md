@@ -1,3 +1,12 @@
+## [0.5.2](https://github.com/Torwent/wasp-discord/compare/v0.5.1...v0.5.2) (2024-02-23)
+
+
+### Bug Fixes
+
+* user info email can only be seen by mods and admins now ([2a6937a](https://github.com/Torwent/wasp-discord/commit/2a6937aeb0bf2b40e2f58a1a5e640d8657456c63))
+
+
+
 ## [0.5.1](https://github.com/Torwent/wasp-discord/compare/v0.5.0...v0.5.1) (2024-02-23)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * add `/did` which is basically a reverse `/wsid` ([9e57c6e](https://github.com/Torwent/wasp-discord/commit/9e57c6e87e2a906729ed5ed22ff99d89d165eba2))
-
-
-
-## [0.3.12](https://github.com/Torwent/wasp-discord/compare/v0.3.11...v0.3.12) (2024-01-07)
-
-
-### Bug Fixes
-
-* add more protections to avoid feedback loops ([8c56dfe](https://github.com/Torwent/wasp-discord/commit/8c56dfebc10b121884bc9481fbd3f5e896443117))
 
 
 
