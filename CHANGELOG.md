@@ -1,3 +1,12 @@
+## [0.5.3](https://github.com/Torwent/wasp-discord/compare/v0.5.2...v0.5.3) (2024-02-23)
+
+
+### Bug Fixes
+
+* only admins can now see user emails <[@323291726821326851](https://github.com/323291726821326851)> ([821ca88](https://github.com/Torwent/wasp-discord/commit/821ca886b164e8a6babeb5f707086b8844962ca9))
+
+
+
 ## [0.5.2](https://github.com/Torwent/wasp-discord/compare/v0.5.1...v0.5.2) (2024-02-23)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * /server command now counts premium users, admins and mods ([04d43e8](https://github.com/Torwent/wasp-discord/commit/04d43e8ca3bd8168dc1da15e20fa20790ca1de92))
-
-
-
-# [0.4.0](https://github.com/Torwent/wasp-discord/compare/v0.3.12...v0.4.0) (2024-01-10)
-
-
-### Features
-
-* add `/did` which is basically a reverse `/wsid` ([9e57c6e](https://github.com/Torwent/wasp-discord/commit/9e57c6e87e2a906729ed5ed22ff99d89d165eba2))
 
 
 
