@@ -59,6 +59,7 @@ export class ExtendedClient extends Client {
 			console.log("Adding command: ", command.name)
 
 			this.commands.set(command.name, command)
+
 			slashCommands.push(command)
 		})
 

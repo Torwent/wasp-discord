@@ -1,17 +1,10 @@
 import { Command } from "$structures/Interactions"
 import { supabase } from "$structures/Supabase"
+import { ApplicationCommandType } from "discord.js"
 
 export default new Command({
-	name: "wsid",
-	description: "Gets the user waspscripts id",
-	options: [
-		{
-			type: 6,
-			name: "user",
-			description: "Discord user",
-			required: true
-		}
-	],
+	name: "WaspScripts ID",
+	type: ApplicationCommandType.User,
 	run: async ({ interaction }) => {
 		await interaction.deferReply({ ephemeral: true })
 		const user = interaction.options.data[0].value as string

@@ -28,6 +28,20 @@ export default new Event("interactionCreate", async (interaction) => {
 		return
 	}
 
+	// Slash command interactions
+	if (interaction.isUserContextMenuCommand()) {
+		const command = client.commands.get(interaction.commandName)
+		if (!command) return interaction.followUp("That command does not exist!")
+
+		command.run({
+			client,
+			interaction: interaction as CommandExtendedInteraction,
+			args: interaction.options as CommandInteractionOptionResolver
+		})
+
+		return
+	}
+
 	//Button interactions
 	if (interaction.isButton()) {
 		const button = client.buttons.get(interaction.customId)

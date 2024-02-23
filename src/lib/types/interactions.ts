@@ -1,5 +1,4 @@
 import {
-	ChatInputApplicationCommandData,
 	CommandInteraction,
 	CommandInteractionOptionResolver,
 	GuildMember,
@@ -9,7 +8,8 @@ import {
 	ModalSubmitInteraction,
 	ModalComponentData,
 	ButtonInteraction,
-	InteractionButtonComponentData
+	InteractionButtonComponentData,
+	ApplicationCommandData
 } from "discord.js"
 import { ExtendedClient } from "$structures/Client"
 
@@ -34,7 +34,7 @@ type CommandRunFunction = (options: CommandRunOptions) => any
 
 export type CommandType = {
 	run: CommandRunFunction
-} & ChatInputApplicationCommandData
+} & ApplicationCommandData
 
 /** Button command
  * {
