@@ -7,11 +7,12 @@ export default new Command({
 	type: ApplicationCommandType.User,
 	run: async ({ interaction }) => {
 		await interaction.deferReply({ ephemeral: true })
-		const role = interaction.member.roles.cache.find(
+		const roles = interaction.member.roles.cache
+		const hasRole = roles.find(
 			(r) => r.name === "Scripter" || r.name === "Moderator" || r.name === "Administrator"
 		)
 
-		if (role == null) {
+		if (hasRole == null) {
 			await interaction.editReply("You are not allowed to use this command.")
 			return
 		}
@@ -46,16 +47,21 @@ export default new Command({
 			return
 		}
 
-		let roles: string
-		if (data.roles.premium) roles += "Premium "
-		if (data.roles.vip) roles += "VIP "
-		if (data.roles.tester) roles += "Tester "
-		if (data.roles.scripter) roles += "Scripter "
-		if (data.roles.moderator) roles += "Moderator "
-		if (data.roles.administrator) roles += "Administrator"
+		let rolesData: string
+		if (data.roles.premium) rolesData += "Premium "
+		if (data.roles.vip) rolesData += "VIP "
+		if (data.roles.tester) rolesData += "Tester "
+		if (data.roles.scripter) rolesData += "Scripter "
+		if (data.roles.moderator) rolesData += "Moderator "
+		if (data.roles.administrator) rolesData += "Administrator"
 
-		const message = `
-			WSID: \`${data.id}\`, Discord ID: \`${user}\`, Customer ID: \`${data.customer_id}\`, Email: \`${data.private.email}\`\nRoles: \`${roles}\``
+		let message =
+			"WSID: `" + data.id + "`, Discord ID: `" + user + "`, Customer ID: `" + data.customer_id + "`"
+
+		if (roles.find((r) => r.name === "Moderator" || r.name === "Administrator"))
+			message += "`, Email: `" + data.private.email + "`"
+
+		message += "\nRoles: `" + rolesData + "`"
 
 		await interaction.editReply(message)
 	}
