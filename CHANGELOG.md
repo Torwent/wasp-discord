@@ -1,3 +1,12 @@
+## [0.5.4](https://github.com/Torwent/wasp-discord/compare/v0.5.3...v0.5.4) (2024-03-11)
+
+
+### Bug Fixes
+
+* read ntoes ([f5feb48](https://github.com/Torwent/wasp-discord/commit/f5feb48603b3669a04dbbf255112e59f5044a81d))
+
+
+
 ## [0.5.3](https://github.com/Torwent/wasp-discord/compare/v0.5.2...v0.5.3) (2024-02-23)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * added several context menu commands, some admin and mod only. ([25c1cb8](https://github.com/Torwent/wasp-discord/commit/25c1cb8e3a3d2281ecfdc72574f8db8fb64db3e2))
-
-
-
-## [0.4.1](https://github.com/Torwent/wasp-discord/compare/v0.4.0...v0.4.1) (2024-01-16)
-
-
-### Bug Fixes
-
-* /server command now counts premium users, admins and mods ([04d43e8](https://github.com/Torwent/wasp-discord/commit/04d43e8ca3bd8168dc1da15e20fa20790ca1de92))
 
 
 
