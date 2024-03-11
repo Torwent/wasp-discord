@@ -1,5 +1,5 @@
 import { Command } from "$structures/Interactions"
-import { supabase } from "$structures/Supabase"
+import { isLoggedIn, login, supabase } from "$structures/Supabase"
 import { ApplicationCommandType } from "discord.js"
 
 export default new Command({
@@ -21,6 +21,16 @@ export default new Command({
 
 		if (user === "") {
 			await interaction.editReply("Discord ID is empty.")
+			return
+		}
+
+		const { error: authError } = await supabase.auth.signInWithPassword({
+			email: process.env.SERVICE_USER,
+			password: process.env.SERVICE_PASS
+		})
+		if (authError) {
+			console.error(authError)
+			await interaction.editReply("Failed to login to the database.")
 			return
 		}
 

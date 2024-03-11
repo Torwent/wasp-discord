@@ -9,7 +9,11 @@ export default new Command({
 		await interaction.deferReply({ ephemeral: true })
 
 		const role = interaction.member.roles.cache.find(
-			(r) => r.name === "Scripter" || r.name === "Moderator" || r.name === "Administrator"
+			(r) =>
+				r.name === "Tester" ||
+				r.name === "Scripter" ||
+				r.name === "Moderator" ||
+				r.name === "Administrator"
 		)
 
 		if (role == null) {
