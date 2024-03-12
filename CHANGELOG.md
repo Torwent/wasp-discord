@@ -1,3 +1,12 @@
+## [0.5.5](https://github.com/Torwent/wasp-discord/compare/v0.5.4...v0.5.5) (2024-03-12)
+
+
+### Bug Fixes
+
+* merged the subs and free access command. changed the format too ([6c9052b](https://github.com/Torwent/wasp-discord/commit/6c9052bc7ea6833b9e7fd56a775f0eca1af66cb9))
+
+
+
 ## [0.5.4](https://github.com/Torwent/wasp-discord/compare/v0.5.3...v0.5.4) (2024-03-11)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * modify command permissions to use roles ([6b826c0](https://github.com/Torwent/wasp-discord/commit/6b826c0de5eaa1271ae58c0fdc9e7b149ad12e88))
-
-
-
-# [0.5.0](https://github.com/Torwent/wasp-discord/compare/v0.4.1...v0.5.0) (2024-02-23)
-
-
-### Features
-
-* added several context menu commands, some admin and mod only. ([25c1cb8](https://github.com/Torwent/wasp-discord/commit/25c1cb8e3a3d2281ecfdc72574f8db8fb64db3e2))
 
 
 
