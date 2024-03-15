@@ -1,3 +1,12 @@
+## [0.5.6](https://github.com/Torwent/wasp-discord/compare/v0.5.5...v0.5.6) (2024-03-15)
+
+
+### Bug Fixes
+
+* read notes ([d0869e3](https://github.com/Torwent/wasp-discord/commit/d0869e30c4f930eeacd0c247cf445b127045cca8))
+
+
+
 ## [0.5.5](https://github.com/Torwent/wasp-discord/compare/v0.5.4...v0.5.5) (2024-03-12)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * user info email can only be seen by mods and admins now ([2a6937a](https://github.com/Torwent/wasp-discord/commit/2a6937aeb0bf2b40e2f58a1a5e640d8657456c63))
-
-
-
-## [0.5.1](https://github.com/Torwent/wasp-discord/compare/v0.5.0...v0.5.1) (2024-02-23)
-
-
-### Bug Fixes
-
-* modify command permissions to use roles ([6b826c0](https://github.com/Torwent/wasp-discord/commit/6b826c0de5eaa1271ae58c0fdc9e7b149ad12e88))
 
 
 
