@@ -7,30 +7,12 @@ import { addNewUser, isUserModified } from "./users"
 let realtime: RealtimeChannel
 
 // Create a single supabase client for interacting with your database
-export const supabase = createClient<Database>(process.env.SB_URL, process.env.SB_ANON_KEY, {
+export const supabase = createClient<Database>(process.env.SB_URL, process.env.SERVICE_KEY, {
 	auth: { autoRefreshToken: true, persistSession: false }
 })
 
-export async function isLoggedIn() {
-	const {
-		data: { session }
-	} = await supabase.auth.getSession()
-
-	if (session == null) {
-		realtime.unsubscribe()
-		return false
-	}
-
-	return true
-}
-
-export async function login(client: ExtendedClient) {
-	console.log("Logging in to supabase")
-	const { error } = await supabase.auth.signInWithPassword({
-		email: process.env.SERVICE_USER,
-		password: process.env.SERVICE_PASS
-	})
-	if (error) console.error(error)
+export async function listenToDB(client: ExtendedClient) {
+	console.log("Listening to supabase roles table changes")
 
 	const guild = client.guilds.cache.get(process.env.GUILD_ID)
 

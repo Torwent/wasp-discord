@@ -28,16 +28,6 @@ export default new Command({
 			return
 		}
 
-		const { error: authError } = await supabase.auth.signInWithPassword({
-			email: process.env.SERVICE_USER,
-			password: process.env.SERVICE_PASS
-		})
-		if (authError) {
-			console.error(authError)
-			await interaction.editReply("Failed to login to the database.")
-			return
-		}
-
 		const { data: userData, error: userError } = await supabase
 			.schema("profiles")
 			.from("profiles")
@@ -165,13 +155,14 @@ export default new Command({
 		let message: string = ""
 
 		if (subscriptions.length) {
-			message += "Subscriptions:\n```\n"
+			message += "### Subscriptions:\n```\n"
 
 			for (let i = 0; i < subscriptions.length; i++) {
 				const sub = subscriptions[i]
-				message += "Name: " + sub.name + "\n"
-				message += "Product: " + sub.product + ", Subscription: " + sub.subscription + "\n"
-				message += "Start: " + sub.date_start + ", End: " + sub.date_end + ", Cancel: " + sub.cancel
+				message += "Name        : " + sub.name + "\n"
+				message += "Product     : " + sub.product + "\n"
+				message += "Subscription: " + sub.subscription + "\n"
+				message += "Start: " + sub.date_start + " End: " + sub.date_end + ", Cancel: " + sub.cancel
 				if (i < subscriptions.length) message += "\n\n"
 			}
 			message += "```"
@@ -179,11 +170,11 @@ export default new Command({
 
 		if (free_access.length) {
 			if (subscriptions.length > 0) message += "\n"
-			message += "Free Access:\n```\n"
+			message += "### Free Access:\n```\n"
 
 			for (let i = 0; i < free_access.length; i++) {
 				const access = free_access[i]
-				message += "Name: " + access.name + "\n"
+				message += "Name   : " + access.name + "\n"
 				message += "Product: " + access.product + "\n"
 				message += "Start: " + access.date_start + ", End: " + access.date_end
 				if (i < subscriptions.length) message += "\n\n"
@@ -191,6 +182,6 @@ export default new Command({
 			message += "```"
 		}
 
-		message += await interaction.editReply(message)
+		await interaction.editReply(message)
 	}
 })

@@ -1,5 +1,5 @@
 import { Command } from "$structures/Interactions"
-import { isLoggedIn, login, supabase } from "$structures/Supabase"
+import { supabase } from "$structures/Supabase"
 import { ApplicationCommandType } from "discord.js"
 
 export default new Command({
@@ -21,16 +21,6 @@ export default new Command({
 
 		if (user === "") {
 			await interaction.editReply("Discord ID is empty.")
-			return
-		}
-
-		const { error: authError } = await supabase.auth.signInWithPassword({
-			email: process.env.SERVICE_USER,
-			password: process.env.SERVICE_PASS
-		})
-		if (authError) {
-			console.error(authError)
-			await interaction.editReply("Failed to login to the database.")
 			return
 		}
 
@@ -57,7 +47,7 @@ export default new Command({
 			return
 		}
 
-		let rolesData: string
+		let rolesData: string = ""
 		if (data.roles.premium) rolesData += "Premium "
 		if (data.roles.vip) rolesData += "VIP "
 		if (data.roles.tester) rolesData += "Tester "
@@ -65,13 +55,17 @@ export default new Command({
 		if (data.roles.moderator) rolesData += "Moderator "
 		if (data.roles.administrator) rolesData += "Administrator"
 
-		let message =
-			"WSID: `" + data.id + "`, Discord ID: `" + user + "`, Customer ID: `" + data.customer_id + "`"
+		let message = "```\n"
+		message += "Wasp ID   : " + data.id + "\n"
+		message += "Discord ID: " + user + "\n"
+		message += "Stripe ID : " + data.customer_id + "\n"
 
 		if (roles.find((r) => r.name === "Administrator"))
-			message += ", Email: `" + data.private.email + "`"
+			message += "Email     : " + data.private.email + "\n"
+		message += "\n"
 
-		message += "\nRoles: `" + rolesData + "`"
+		message += "Roles: " + rolesData + "\n"
+		message += "```"
 
 		await interaction.editReply(message)
 	}

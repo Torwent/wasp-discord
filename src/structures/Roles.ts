@@ -1,6 +1,6 @@
 import { Events } from "discord.js"
 import { ExtendedClient } from "$structures/Client"
-import { isLoggedIn, login, supabase } from "$structures/Supabase"
+import { listenToDB, supabase } from "$structures/Supabase"
 import { addNewUser, isUserModified } from "$structures/users"
 import { Profile } from "$lib/types/collection"
 
@@ -27,7 +27,7 @@ export const ROLES =
 
 export const roleListen = async (client: ExtendedClient) => {
 	console.log("Listening for role changes!")
-	await login(client)
+	await listenToDB(client)
 
 	client.on(Events.GuildMemberUpdate, async (user) => {
 		if (await isUserModified(user.id)) {
@@ -37,9 +37,6 @@ export const roleListen = async (client: ExtendedClient) => {
 
 		const updatedUser = user.guild.members.cache.get(user.id)
 		const roles = updatedUser.roles.cache
-
-		const loggedIn = await isLoggedIn()
-		if (!loggedIn) await login(client)
 
 		console.log("Updating user discord side: ", user.id)
 
