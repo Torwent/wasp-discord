@@ -5,11 +5,7 @@ const command: Command = {
 	description: "Replies with Pong!",
 	options: [],
 
-	run: async ({ interaction }) => {
-		console.log("pong!")
-		await interaction.deferReply()
-		interaction.followUp("Pong!")
-	}
+	run: async ({ interaction }) => interaction.reply("Pong!")
 }
 
 export default command

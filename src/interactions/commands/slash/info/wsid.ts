@@ -1,10 +1,17 @@
 import type { Command } from "$lib/interaction"
 import { supabase } from "$lib/supabase"
-import { ApplicationCommandType } from "discord.js"
 
 const command: Command = {
-	name: "WaspScripts ID",
-	type: ApplicationCommandType.User,
+	name: "wsid",
+	description: "Gets the user waspscripts id",
+	options: [
+		{
+			type: 6,
+			name: "user",
+			description: "Discord user",
+			required: true
+		}
+	],
 	run: async ({ interaction }) => {
 		await interaction.deferReply({ ephemeral: true })
 		const user = interaction.options.data[0].value as string

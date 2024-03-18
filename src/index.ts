@@ -10,6 +10,7 @@ import {
 import { Glob } from "bun"
 import type { Command, RegisterCommandsOptions } from "$lib/interaction"
 import type { ClientEvent } from "$lib/event"
+import { databaseListen } from "$lib/supabase"
 
 class ExtendedClient extends Client {
 	commands: Collection<string, Command> = new Collection()
@@ -66,6 +67,7 @@ class ExtendedClient extends Client {
 	}
 
 	async start() {
+		await databaseListen()
 		await this.registerModules()
 		await this.registerEvents()
 		await this.login(process.env.BOT_TOKEN)
