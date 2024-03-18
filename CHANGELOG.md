@@ -1,3 +1,12 @@
+## [0.6.1](https://github.com/Torwent/wasp-discord/compare/v0.6.0...v0.6.1) (2024-03-18)
+
+
+### Bug Fixes
+
+* more changes to the GH action ([c2ee7a9](https://github.com/Torwent/wasp-discord/commit/c2ee7a9b089870ef59570c3f7ebc86582bf8b303))
+
+
+
 # [0.6.0](https://github.com/Torwent/wasp-discord/compare/v0.5.5...v0.6.0) (2024-03-18)
 
 
@@ -38,15 +47,6 @@
 ### Bug Fixes
 
 * only admins can now see user emails <[@323291726821326851](https://github.com/323291726821326851)> ([821ca88](https://github.com/Torwent/wasp-discord/commit/821ca886b164e8a6babeb5f707086b8844962ca9))
-
-
-
-## [0.5.2](https://github.com/Torwent/wasp-discord/compare/v0.5.1...v0.5.2) (2024-02-23)
-
-
-### Bug Fixes
-
-* user info email can only be seen by mods and admins now ([2a6937a](https://github.com/Torwent/wasp-discord/commit/2a6937aeb0bf2b40e2f58a1a5e640d8657456c63))
 
 
 
