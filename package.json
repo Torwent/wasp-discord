@@ -2,6 +2,7 @@
 	"name": "wasp-discord",
 	"scripts": {
 		"start": "bun src/index.ts",
+		"compile": "bun build ./src/index.ts --compile --outfile cli",
 		"gentypes": "supabase gen types typescript --linked > src/lib/supabase.ts",
 		"dev": "bun run --watch src/index.ts"
 	},

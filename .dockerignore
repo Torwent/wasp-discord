@@ -6,8 +6,10 @@
 .eslintrc.cjs
 .prettierignore
 .prettierrc
+.github
 build
 node_modules
 Dockerfile*
 docker-compose*
-README.md
+*.md
+LICENSE
