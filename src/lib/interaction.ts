@@ -2,23 +2,28 @@ import type {
 	Client,
 	ApplicationCommandData,
 	CommandInteraction,
-	CommandInteractionOptionResolver
+	CommandInteractionOptionResolver,
+	GuildMember,
+	ApplicationCommandDataResolvable
 } from "discord.js"
+
+export interface RegisterCommandsOptions {
+	GUILD_ID?: string
+	commands: ApplicationCommandDataResolvable[]
+}
+
+export interface CommandExtendedInteraction extends CommandInteraction {
+	member: GuildMember
+}
 
 interface CommandRunOptions {
 	client: Client
-	interaction: CommandInteraction
+	interaction: CommandExtendedInteraction
 	args: CommandInteractionOptionResolver
 }
 
 type CommandRunFunction = (options: CommandRunOptions) => any
 
-export type CommandType = {
+export type Command = {
 	run: CommandRunFunction
 } & ApplicationCommandData
-
-export class Command {
-	constructor(commandOptions: CommandType) {
-		Object.assign(this, commandOptions)
-	}
-}
