@@ -83,7 +83,7 @@ export default new Command({
 			return
 		}
 
-		if (((subData == null || subData.length === 0) && freeData == null) || freeData.length === 0) {
+		if ((subData == null || subData.length === 0) && (freeData == null || freeData.length === 0)) {
 			await interaction.editReply("No subscriptions or free access data was found for this user.")
 			return
 		}
