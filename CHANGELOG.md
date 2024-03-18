@@ -1,3 +1,12 @@
+## [0.5.7](https://github.com/Torwent/wasp-discord/compare/v0.5.6...v0.5.7) (2024-03-18)
+
+
+### Bug Fixes
+
+* access-context.ts ([2ff46fb](https://github.com/Torwent/wasp-discord/commit/2ff46fb1790162061f30c75231b707d95db41268))
+
+
+
 ## [0.5.6](https://github.com/Torwent/wasp-discord/compare/v0.5.5...v0.5.6) (2024-03-15)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * only admins can now see user emails <[@323291726821326851](https://github.com/323291726821326851)> ([821ca88](https://github.com/Torwent/wasp-discord/commit/821ca886b164e8a6babeb5f707086b8844962ca9))
-
-
-
-## [0.5.2](https://github.com/Torwent/wasp-discord/compare/v0.5.1...v0.5.2) (2024-02-23)
-
-
-### Bug Fixes
-
-* user info email can only be seen by mods and admins now ([2a6937a](https://github.com/Torwent/wasp-discord/commit/2a6937aeb0bf2b40e2f58a1a5e640d8657456c63))
 
 
 
