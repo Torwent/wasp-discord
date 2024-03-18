@@ -1,3 +1,12 @@
+## [0.6.3](https://github.com/Torwent/wasp-discord/compare/v0.6.2...v0.6.3) (2024-03-18)
+
+
+### Bug Fixes
+
+* more tweaks ([c69cedc](https://github.com/Torwent/wasp-discord/commit/c69cedca4c422f2151e10e13f21be92602eaf9b8))
+
+
+
 ## [0.6.2](https://github.com/Torwent/wasp-discord/compare/v0.6.1...v0.6.2) (2024-03-18)
 
 
@@ -38,15 +47,6 @@
 ### Bug Fixes
 
 * merged the subs and free access command. changed the format too ([6c9052b](https://github.com/Torwent/wasp-discord/commit/6c9052bc7ea6833b9e7fd56a775f0eca1af66cb9))
-
-
-
-## [0.5.4](https://github.com/Torwent/wasp-discord/compare/v0.5.3...v0.5.4) (2024-03-11)
-
-
-### Bug Fixes
-
-* read ntoes ([f5feb48](https://github.com/Torwent/wasp-discord/commit/f5feb48603b3669a04dbbf255112e59f5044a81d))
 
 
 
