@@ -1,3 +1,12 @@
+## [0.6.2](https://github.com/Torwent/wasp-discord/compare/v0.6.1...v0.6.2) (2024-03-18)
+
+
+### Bug Fixes
+
+* dockerfiles ([cece11a](https://github.com/Torwent/wasp-discord/commit/cece11afb42b6fe73a43a359bdc426b57c8a9cd6))
+
+
+
 ## [0.6.1](https://github.com/Torwent/wasp-discord/compare/v0.6.0...v0.6.1) (2024-03-18)
 
 
@@ -38,15 +47,6 @@
 ### Bug Fixes
 
 * read ntoes ([f5feb48](https://github.com/Torwent/wasp-discord/commit/f5feb48603b3669a04dbbf255112e59f5044a81d))
-
-
-
-## [0.5.3](https://github.com/Torwent/wasp-discord/compare/v0.5.2...v0.5.3) (2024-02-23)
-
-
-### Bug Fixes
-
-* only admins can now see user emails <[@323291726821326851](https://github.com/323291726821326851)> ([821ca88](https://github.com/Torwent/wasp-discord/commit/821ca886b164e8a6babeb5f707086b8844962ca9))
 
 
 
