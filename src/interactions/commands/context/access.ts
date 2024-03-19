@@ -159,10 +159,11 @@ const command: Command = {
 
 			for (let i = 0; i < subscriptions.length; i++) {
 				const sub = subscriptions[i]
-				message += "Name        : " + sub.name + "\n"
-				message += "Product     : " + sub.product + "\n"
-				message += "Subscription: " + sub.subscription + "\n"
-				message += "Start: " + sub.date_start + " End: " + sub.date_end + ", Cancel: " + sub.cancel
+				message += "Name        : " + sub?.name + "\n"
+				message += "Product     : " + sub?.product + "\n"
+				message += "Subscription: " + sub?.subscription + "\n"
+				message +=
+					"Start: " + sub?.date_start + " End: " + sub?.date_end + ", Cancel: " + sub?.cancel
 				if (i < subscriptions.length) message += "\n\n"
 			}
 			message += "```"
@@ -174,9 +175,9 @@ const command: Command = {
 
 			for (let i = 0; i < free_access.length; i++) {
 				const access = free_access[i]
-				message += "Name   : " + access.name + "\n"
-				message += "Product: " + access.product + "\n"
-				message += "Start: " + access.date_start + ", End: " + access.date_end
+				message += "Name   : " + access?.name + "\n"
+				message += "Product: " + access?.product + "\n"
+				message += "Start: " + access?.date_start + ", End: " + access?.date_end
 				if (i < subscriptions.length) message += "\n\n"
 			}
 			message += "```"

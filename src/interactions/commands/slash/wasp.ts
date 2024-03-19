@@ -9,58 +9,19 @@ const command: Command = {
 			name: "page",
 			description: "Page",
 			choices: [
-				{
-					name: "Setup",
-					value: "/setup"
-				},
-				{
-					name: "Manual setup",
-					value: "/tutorials/setup-windows-by-torwent"
-				},
-				{
-					name: "Scripts",
-					value: "/scripts"
-				},
-				{
-					name: "Premium",
-					value: "/premium"
-				},
-				{
-					name: "Faq",
-					value: "/faq"
-				},
-				{
-					name: "Tutorials",
-					value: "/tutorials"
-				}
+				{ name: "Setup", value: "/setup" },
+				{ name: "Manual setup", value: "/tutorials/setup-windows-by-torwent" },
+				{ name: "Scripts", value: "/scripts" },
+				{ name: "Premium", value: "/premium" },
+				{ name: "Faq", value: "/faq" },
+				{ name: "Tutorials", value: "/tutorials" }
 			]
 		},
-		{
-			type: 3,
-			name: "script",
-			description: "Search a script"
-		},
-		{
-			type: 3,
-			name: "tutorials",
-			description: "Search a tutorial"
-		},
-		{
-			type: 3,
-			name: "stats",
-			description: "Search a stats user"
-		},
-		{
-			type: 3,
-			name: "devs",
-			description: "Search a scripter"
-		},
-		{
-			type: 6,
-			name: "user",
-			description: "user to ping",
-			required: false
-		}
+		{ type: 3, name: "script", description: "Search a script" },
+		{ type: 3, name: "tutorials", description: "Search a tutorial" },
+		{ type: 3, name: "stats", description: "Search a stats user" },
+		{ type: 3, name: "devs", description: "Search a scripter" },
+		{ type: 6, name: "user", description: "user to ping", required: false }
 	],
 
 	run: async ({ interaction }) => {

@@ -1,69 +1,60 @@
+import "./lib/alias"
+import "$lib/env"
 import {
 	type ApplicationCommandDataResolvable,
-	Client,
-	Events,
-	GatewayIntentBits,
+	type ClientEvents,
 	ActivityType,
+	Client,
 	Collection,
-	type ClientEvents
+	GatewayIntentBits
 } from "discord.js"
-import { Glob } from "bun"
-import type { Command, RegisterCommandsOptions } from "$lib/interaction"
-import type { ClientEvent } from "$lib/event"
+import { glob } from "glob"
+import { Command } from "$lib/interaction"
+import { ClientEvent } from "$lib/event"
 import { databaseListen } from "$lib/supabase"
 
-class ExtendedClient extends Client {
+export class ExtendedClient extends Client {
 	commands: Collection<string, Command> = new Collection()
 
-	async registerCommands({ commands, GUILD_ID }: RegisterCommandsOptions) {
-		if (GUILD_ID) {
-			this.guilds.cache.get(GUILD_ID)?.commands.set(commands)
-			console.log(`Registering commands to ${GUILD_ID}`)
-			return
-		}
-
-		this.application?.commands.set(commands)
-		console.log("Registering global commands")
-	}
-
+	// Register modules (Commands, Buttons, Menus, Modals, ...)
 	async registerModules() {
-		// Commands
-		const path = process.cwd() + "/src/interactions/commands/"
-		const slashCommands: ApplicationCommandDataResolvable[] = []
-		const files = new Glob("**/*{.ts,.js}")
+		const commands: ApplicationCommandDataResolvable[] = []
 
-		for await (const file of files.scan({ cwd: "./src/interactions/commands" })) {
-			const command: Command = (await import(path + file))?.default
-			if (!command.name) return
+		const path = __dirname.replaceAll("\\", "/") + "/interactions/commands/"
+		const files = await glob(path + "**/*{.ts,.js}")
+		files.forEach(async (file) => {
+			const imported = await import(file)
+			if (!imported) return
+			const command: Command = imported.default
+
 			console.log("Adding command: ", command.name)
-
 			this.commands.set(command.name, command)
+			commands.push(command)
+		})
 
-			slashCommands.push(command)
-		}
+		this.once("ready", async () => {
+			const guild = process.env.GUILD_ID
+			this.guilds.cache.get(guild).commands.set(commands)
+			console.log("Registering commands to: " + guild)
 
-		this.once(Events.ClientReady, async (bot) => {
-			await this.registerCommands({
-				commands: slashCommands,
-				GUILD_ID: process.env.GUILD_ID
-			})
-
-			bot.user.setPresence({
+			this.user.setPresence({
 				activities: [{ name: "OSRS with Simba", type: ActivityType.Playing }],
 				status: "online"
 			})
-
-			console.log(`Ready! Logged in as ${bot.user.tag}`)
+			console.log(`Ready! Logged in as ${this.user.tag}`)
 		})
 	}
 
 	async registerEvents() {
-		const path = process.cwd() + "/src/events/"
-		const files = new Glob("**/*{.ts,.js}")
-		for await (const file of files.scan({ cwd: "./src/events" })) {
-			const event: ClientEvent<keyof ClientEvents> = (await import(path + file))?.default
+		const path = __dirname.replaceAll("\\", "/") + "/events/"
+		const files = await glob(path + "**/*{.ts,.js}")
+		files.forEach(async (file) => {
+			const imported = await import(file)
+			if (!imported) return
+			const event: ClientEvent<keyof ClientEvents> = imported.default
 			this.on(event.event, event.run)
-		}
+			console.log("Listening to event: ", event.event)
+		})
 	}
 
 	async start() {
@@ -75,4 +66,4 @@ class ExtendedClient extends Client {
 }
 
 export const client = new ExtendedClient({ intents: [GatewayIntentBits.Guilds, 32767] })
-await client.start()
+client.start()

@@ -1,10 +1,12 @@
-declare module "bun" {
-	interface Env {
-		BOT_TOKEN: string
-		GUILD_ID: string
-		SB_URL: string
-		SB_ANON_KEY: string
-		SERVICE_KEY: string
+declare global {
+	namespace NodeJS {
+		interface ProcessEnv {
+			BOT_TOKEN: string
+			GUILD_ID: string
+			SB_URL: string
+			SERVICE_KEY: string
+			ENVIRONMENT: "development" | "production"
+		}
 	}
 }
 

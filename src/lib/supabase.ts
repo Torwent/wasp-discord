@@ -1,4 +1,4 @@
-import { RealtimeChannel, createClient } from "@supabase/supabase-js"
+import { createClient } from "@supabase/supabase-js"
 import type { Database } from "./types/supabase"
 import { client } from ".."
 

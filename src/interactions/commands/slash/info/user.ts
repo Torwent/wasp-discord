@@ -4,14 +4,7 @@ import { supabase } from "$lib/supabase"
 const command: Command = {
 	name: "user",
 	description: "Gets the waspscripts user info",
-	options: [
-		{
-			type: 6,
-			name: "user",
-			description: "Discord user",
-			required: true
-		}
-	],
+	options: [{ type: 6, name: "user", description: "Discord user", required: true }],
 	run: async ({ interaction }) => {
 		await interaction.deferReply({ ephemeral: true })
 		const roles = interaction.member.roles.cache
