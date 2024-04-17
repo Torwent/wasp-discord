@@ -1,3 +1,21 @@
+# [0.7.0](https://github.com/Torwent/wasp-discord/compare/v0.6.2...v0.7.0) (2024-04-17)
+
+
+### Bug Fixes
+
+* major cleanup and added commands for all context interactions ([4a0606d](https://github.com/Torwent/wasp-discord/commit/4a0606d30837488a371df05598459316b29f340f))
+* more tweaks ([c69cedc](https://github.com/Torwent/wasp-discord/commit/c69cedca4c422f2151e10e13f21be92602eaf9b8))
+* roles should now sync with DB properly ([b5b623f](https://github.com/Torwent/wasp-discord/commit/b5b623f10e174b2d800799b1ebf9d64a6794e3ad))
+* several tweaks ([bca65b1](https://github.com/Torwent/wasp-discord/commit/bca65b1dca60cc69e089a06f34b053815e5589f2))
+* update gh action ([cd346f5](https://github.com/Torwent/wasp-discord/commit/cd346f5af421e513d75bfddf374edb40465e3196))
+
+
+### Features
+
+* added old access command ([7757b4f](https://github.com/Torwent/wasp-discord/commit/7757b4ffcc7597e0e9d70d58dbad172f06b87ad1))
+
+
+
 ## [0.6.2](https://github.com/Torwent/wasp-discord/compare/v0.6.1...v0.6.2) (2024-03-18)
 
 
@@ -38,15 +56,6 @@
 ### Bug Fixes
 
 * merged the subs and free access command. changed the format too ([6c9052b](https://github.com/Torwent/wasp-discord/commit/6c9052bc7ea6833b9e7fd56a775f0eca1af66cb9))
-
-
-
-## [0.5.4](https://github.com/Torwent/wasp-discord/compare/v0.5.3...v0.5.4) (2024-03-11)
-
-
-### Bug Fixes
-
-* read ntoes ([f5feb48](https://github.com/Torwent/wasp-discord/commit/f5feb48603b3669a04dbbf255112e59f5044a81d))
 
 
 
