@@ -3,7 +3,7 @@ import { supabase } from "$lib/supabase"
 import { ApplicationCommandType } from "discord.js"
 
 const command: Command = {
-	name: "WaspScripts Access",
+	name: "WaspScripts Previous Access",
 	type: ApplicationCommandType.User,
 	run: async ({ interaction }) => {
 		await interaction.deferReply({ ephemeral: true })
@@ -52,12 +52,12 @@ const command: Command = {
 		const promises = await Promise.all([
 			supabase
 				.schema("profiles")
-				.from("subscription")
+				.from("subscriptions_old")
 				.select("product, subscription, date_start, date_end, cancel")
 				.eq("id", user),
 			supabase
 				.schema("profiles")
-				.from("free_access")
+				.from("free_access_old")
 				.select("product, date_start, date_end")
 				.eq("id", user)
 		])
@@ -155,20 +155,20 @@ const command: Command = {
 		let message = ""
 
 		if (subscriptions.length) {
-			message += "### Subscriptions:\n```\n"
+			message += "### Old Subscriptions:\n```\n"
 
 			for (let i = 0; i < subscriptions.length; i++) {
 				const sub = subscriptions[i]
-				message += "Name        : " + sub.name + "\n"
-				message += "Product     : " + sub.product + "\n"
-				message += "Subscription: " + sub.subscription + "\n"
+				message += "Name        : " + sub?.name + "\n"
+				message += "Product     : " + sub?.product + "\n"
+				message += "Subscription: " + sub?.subscription + "\n"
 				message +=
 					"Start: " +
 					new Date(sub.date_start).toLocaleString("PT-pt") +
 					" End: " +
 					new Date(sub.date_end).toLocaleString("PT-pt") +
 					", Cancel: " +
-					sub.cancel
+					sub?.cancel
 				if (i < subscriptions.length) message += "\n\n"
 			}
 			message += "```"
@@ -176,12 +176,12 @@ const command: Command = {
 
 		if (free_access.length) {
 			if (subscriptions.length > 0) message += "\n"
-			message += "### Free Access:\n```\n"
+			message += "### Old Free Access:\n```\n"
 
 			for (let i = 0; i < free_access.length; i++) {
 				const access = free_access[i]
-				message += "Name   : " + access.name + "\n"
-				message += "Product: " + access.product + "\n"
+				message += "Name   : " + access?.name + "\n"
+				message += "Product: " + access?.product + "\n"
 				message +=
 					"Start: " +
 					new Date(access.date_start).toLocaleString("PT-pt") +
