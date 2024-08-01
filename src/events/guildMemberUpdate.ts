@@ -3,6 +3,7 @@ import { supabase } from "$lib/supabase"
 
 const discordRoles = {
 	moderator: "1018906735123124315",
+	scripter: "1069140447647240254",
 	tester: "907209408860291113",
 	timeout: "1102052216157786192"
 }
@@ -14,7 +15,7 @@ export default new ClientEvent("guildMemberUpdate", async (user) => {
 	const { data, error: userError } = await supabase
 		.schema("profiles")
 		.from("profiles")
-		.select("id, roles(moderator, tester, timeout)")
+		.select("id, roles(moderator, scripter, tester, timeout)")
 		.eq("discord", user.id)
 		.limit(1)
 		.limit(1, { foreignTable: "roles" })
@@ -35,12 +36,14 @@ export default new ClientEvent("guildMemberUpdate", async (user) => {
 
 	const roleObject = {
 		moderator: roles.has(discordRoles.moderator),
+		scripter: roles.has(discordRoles.scripter),
 		tester: roles.has(discordRoles.tester),
 		timeout: roles.has(discordRoles.timeout)
 	}
 
 	if (
 		data.roles.moderator === roleObject.moderator &&
+		data.roles.scripter === roleObject.scripter &&
 		data.roles.tester === roleObject.tester &&
 		data.roles.timeout === roleObject.timeout
 	) {
