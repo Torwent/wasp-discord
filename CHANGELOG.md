@@ -1,3 +1,12 @@
+## [0.7.1](https://github.com/Torwent/wasp-discord/compare/v0.7.0...v0.7.1) (2024-08-01)
+
+
+### Bug Fixes
+
+* tracks scripter role again ([bf503c4](https://github.com/Torwent/wasp-discord/commit/bf503c4b8ecd0b9b3697af78c5d191ddeae87550))
+
+
+
 # [0.7.0](https://github.com/Torwent/wasp-discord/compare/v0.6.2...v0.7.0) (2024-04-17)
 
 
@@ -47,15 +56,6 @@
 ### Features
 
 * finish rewritting wasp-discord in bun ([9a40efb](https://github.com/Torwent/wasp-discord/commit/9a40efb9301619adfee3bf0923b2dea96d135938))
-
-
-
-## [0.5.5](https://github.com/Torwent/wasp-discord/compare/v0.5.4...v0.5.5) (2024-03-12)
-
-
-### Bug Fixes
-
-* merged the subs and free access command. changed the format too ([6c9052b](https://github.com/Torwent/wasp-discord/commit/6c9052bc7ea6833b9e7fd56a775f0eca1af66cb9))
 
 
 
