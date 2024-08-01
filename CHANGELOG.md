@@ -1,3 +1,12 @@
+## [0.7.2](https://github.com/Torwent/wasp-discord/compare/v0.7.1...v0.7.2) (2024-08-01)
+
+
+### Bug Fixes
+
+* add more info when commands fail ([d071d03](https://github.com/Torwent/wasp-discord/commit/d071d037c7fcf670f5302ea8c67421782d817ce7))
+
+
+
 ## [0.7.1](https://github.com/Torwent/wasp-discord/compare/v0.7.0...v0.7.1) (2024-08-01)
 
 
@@ -40,22 +49,6 @@
 ### Bug Fixes
 
 * more changes to the GH action ([c2ee7a9](https://github.com/Torwent/wasp-discord/commit/c2ee7a9b089870ef59570c3f7ebc86582bf8b303))
-
-
-
-# [0.6.0](https://github.com/Torwent/wasp-discord/compare/v0.5.5...v0.6.0) (2024-03-18)
-
-
-### Bug Fixes
-
-* add some basic stuff ([d4576d4](https://github.com/Torwent/wasp-discord/commit/d4576d464a28ef31465a158d9bcacfa43f953639))
-* several additions ([da1f11f](https://github.com/Torwent/wasp-discord/commit/da1f11fe02788a7c0fb6c3d71f72c8e19f68a49e))
-* update GH action ([949129d](https://github.com/Torwent/wasp-discord/commit/949129d980ffaa72bb85266dfcb361b6ed880749))
-
-
-### Features
-
-* finish rewritting wasp-discord in bun ([9a40efb](https://github.com/Torwent/wasp-discord/commit/9a40efb9301619adfee3bf0923b2dea96d135938))
 
 
 
