@@ -18,15 +18,15 @@
 	},
 	"keywords": [],
 	"dependencies": {
-		"@supabase/supabase-js": "^2.39.8",
-		"discord.js": "^14.14.1",
+		"@supabase/supabase-js": "^2.45.0",
+		"discord.js": "^14.15.3",
 		"dotenv": "^16.4.5",
-		"glob": "^10.3.10"
+		"glob": "^10.4.5"
 	},
 	"devDependencies": {
 		"@types/glob": "^7.2.0",
 		"@types/module-alias": "^2.0.4",
-		"@types/node": "^20.11.29",
+		"@types/node": "^20.14.13",
 		"@typescript-eslint/eslint-plugin": "^5.62.0",
 		"@typescript-eslint/parser": "^5.62.0",
 		"eslint": "^8.57.0",
@@ -36,7 +36,7 @@
 		"ts-node": "^10.9.2",
 		"ts-node-dev": "^2.0.0",
 		"tsconfig-paths": "^4.2.0",
-		"tslib": "^2.6.2",
-		"typescript": "^5.4.2"
+		"tslib": "^2.6.3",
+		"typescript": "^5.5.4"
 	}
 }
