@@ -1,3 +1,12 @@
+## [0.7.3](https://github.com/Torwent/wasp-discord/compare/v0.7.2...v0.7.3) (2024-09-13)
+
+
+### Bug Fixes
+
+* update ([8a8d444](https://github.com/Torwent/wasp-discord/commit/8a8d44495702897b357ea4aac4bacebf609f9cec))
+
+
+
 ## [0.7.2](https://github.com/Torwent/wasp-discord/compare/v0.7.1...v0.7.2) (2024-08-01)
 
 
@@ -40,15 +49,6 @@
 ### Bug Fixes
 
 * dockerfiles ([cece11a](https://github.com/Torwent/wasp-discord/commit/cece11afb42b6fe73a43a359bdc426b57c8a9cd6))
-
-
-
-## [0.6.1](https://github.com/Torwent/wasp-discord/compare/v0.6.0...v0.6.1) (2024-03-18)
-
-
-### Bug Fixes
-
-* more changes to the GH action ([c2ee7a9](https://github.com/Torwent/wasp-discord/commit/c2ee7a9b089870ef59570c3f7ebc86582bf8b303))
 
 
 
