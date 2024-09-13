@@ -1,3 +1,4 @@
+import env from "$lib/env"
 import { ClientEvent } from "$lib/event"
 
 const discordRoles = {
@@ -6,7 +7,7 @@ const discordRoles = {
 	tester: "907209408860291113"
 }
 
-const limit = 12
+const limit = parseInt(env.BAD_REACTION_LIMIT)
 
 export default new ClientEvent("messageReactionAdd", async (reaction) => {
 	if (reaction.partial) {
