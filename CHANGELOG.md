@@ -1,3 +1,12 @@
+## [0.7.4](https://github.com/Torwent/wasp-discord/compare/v0.7.3...v0.7.4) (2024-09-13)
+
+
+### Bug Fixes
+
+* add testing message deletion on bad reaction count ([74b773e](https://github.com/Torwent/wasp-discord/commit/74b773e86d347e0b3c342683470c64c7ed596db1))
+
+
+
 ## [0.7.3](https://github.com/Torwent/wasp-discord/compare/v0.7.2...v0.7.3) (2024-09-13)
 
 
@@ -40,15 +49,6 @@
 ### Features
 
 * added old access command ([7757b4f](https://github.com/Torwent/wasp-discord/commit/7757b4ffcc7597e0e9d70d58dbad172f06b87ad1))
-
-
-
-## [0.6.2](https://github.com/Torwent/wasp-discord/compare/v0.6.1...v0.6.2) (2024-03-18)
-
-
-### Bug Fixes
-
-* dockerfiles ([cece11a](https://github.com/Torwent/wasp-discord/commit/cece11afb42b6fe73a43a359bdc426b57c8a9cd6))
 
 
 
