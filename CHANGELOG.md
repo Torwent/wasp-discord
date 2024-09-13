@@ -1,3 +1,12 @@
+## [0.7.6](https://github.com/Torwent/wasp-discord/compare/v0.7.5...v0.7.6) (2024-09-13)
+
+
+### Bug Fixes
+
+* raise deletion threshold and made it actually delete messages ([4e775f4](https://github.com/Torwent/wasp-discord/commit/4e775f4557e7d6a7c0c8780fc4869f273e0bbc16))
+
+
+
 ## [0.7.5](https://github.com/Torwent/wasp-discord/compare/v0.7.4...v0.7.5) (2024-09-13)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * add more info when commands fail ([d071d03](https://github.com/Torwent/wasp-discord/commit/d071d037c7fcf670f5302ea8c67421782d817ce7))
-
-
-
-## [0.7.1](https://github.com/Torwent/wasp-discord/compare/v0.7.0...v0.7.1) (2024-08-01)
-
-
-### Bug Fixes
-
-* tracks scripter role again ([bf503c4](https://github.com/Torwent/wasp-discord/commit/bf503c4b8ecd0b9b3697af78c5d191ddeae87550))
 
 
 
