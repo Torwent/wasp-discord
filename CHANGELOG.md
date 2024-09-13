@@ -1,3 +1,12 @@
+## [0.7.7](https://github.com/Torwent/wasp-discord/compare/v0.7.6...v0.7.7) (2024-09-13)
+
+
+### Bug Fixes
+
+* read notes ([b648ce4](https://github.com/Torwent/wasp-discord/commit/b648ce4948c8564ec70dc46f203f97970b297627))
+
+
+
 ## [0.7.6](https://github.com/Torwent/wasp-discord/compare/v0.7.5...v0.7.6) (2024-09-13)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * update ([8a8d444](https://github.com/Torwent/wasp-discord/commit/8a8d44495702897b357ea4aac4bacebf609f9cec))
-
-
-
-## [0.7.2](https://github.com/Torwent/wasp-discord/compare/v0.7.1...v0.7.2) (2024-08-01)
-
-
-### Bug Fixes
-
-* add more info when commands fail ([d071d03](https://github.com/Torwent/wasp-discord/commit/d071d037c7fcf670f5302ea8c67421782d817ce7))
 
 
 
