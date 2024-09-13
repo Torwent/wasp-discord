@@ -2,11 +2,11 @@ import { ClientEvent } from "$lib/event"
 
 const discordRoles = {
 	moderator: "1018906735123124315",
-	scripter: "1069140447647240254", //"1115527233277272116",
-	tester: "907209408860291113" //"1067734814796550179"
+	scripter: "1069140447647240254",
+	tester: "907209408860291113"
 }
 
-const limit = 5
+const limit = 12
 
 export default new ClientEvent("messageReactionAdd", async (reaction) => {
 	if (reaction.partial) {
@@ -66,8 +66,14 @@ export default new ClientEvent("messageReactionAdd", async (reaction) => {
 
 	await Promise.all(reactionPromises)
 
-	if (scripterVoters.length + testerVoters.length > 4)
-		message.reply("This message should be deleted. This is being tested for now.")
+	if (scripterVoters.length + testerVoters.length >= limit) {
+		await message.reply(
+			"This message was voted to be deleted by " +
+				limit +
+				"+ scripters and testers. If this is being abused please contact <@202210488493408256>"
+		)
+		await message.delete()
+	}
 
 	return
 })
