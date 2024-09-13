@@ -6,7 +6,8 @@ import {
 	ActivityType,
 	Client,
 	Collection,
-	GatewayIntentBits
+	GatewayIntentBits,
+	Partials
 } from "discord.js"
 import { glob } from "glob"
 import { Command } from "$lib/interaction"
@@ -120,5 +121,13 @@ export class ExtendedClient extends Client {
 	}
 }
 
-export const client = new ExtendedClient({ intents: [GatewayIntentBits.Guilds, 32767] })
+export const client = new ExtendedClient({
+	intents: [
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.GuildMessageReactions,
+		32767
+	],
+	partials: [Partials.Message, Partials.Channel, Partials.Reaction]
+})
 client.start()
