@@ -1,3 +1,12 @@
+# [0.8.0](https://github.com/Torwent/wasp-discord/compare/v0.7.7...v0.8.0) (2024-09-15)
+
+
+### Features
+
+* add quickhelp command ([0ce6dd1](https://github.com/Torwent/wasp-discord/commit/0ce6dd17176fe4c2d47f949096cb10d38cdd02ba))
+
+
+
 ## [0.7.7](https://github.com/Torwent/wasp-discord/compare/v0.7.6...v0.7.7) (2024-09-13)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * add testing message deletion on bad reaction count ([74b773e](https://github.com/Torwent/wasp-discord/commit/74b773e86d347e0b3c342683470c64c7ed596db1))
-
-
-
-## [0.7.3](https://github.com/Torwent/wasp-discord/compare/v0.7.2...v0.7.3) (2024-09-13)
-
-
-### Bug Fixes
-
-* update ([8a8d444](https://github.com/Torwent/wasp-discord/commit/8a8d44495702897b357ea4aac4bacebf609f9cec))
 
 
 
