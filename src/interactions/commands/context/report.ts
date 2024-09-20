@@ -70,11 +70,9 @@ const command: Command = {
 	type: ApplicationCommandType.Message,
 	run: async ({ interaction }) => {
 		await interaction.deferReply({ ephemeral: true })
-
 		const message = interaction.options.data[0]
-		const channel = message.channel
 
-		if (protectedChannels.includes(channel.id)) {
+		if (protectedChannels.includes(interaction.channelId)) {
 			await interaction.editReply("Messages on this channel cannot be managed.")
 			return
 		}
