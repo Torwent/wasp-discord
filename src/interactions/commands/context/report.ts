@@ -3,8 +3,8 @@ import { ApplicationCommandType, Collection, Role } from "discord.js"
 
 const minutes = 10
 const pointsLimit = 100
-const management = "878406756676567071"
-const protectedChannels = ["795611058072846336", "884019408496906240", "893074615532941312"]
+const admins = ["202210488493408256", "830442256984047636"]
+const protectedChannels = ["📢announcements", "🎋updates", "🗳polls"]
 
 interface Reporter {
 	id: string
@@ -24,8 +24,11 @@ const reportedUsers: Map<string, ReportedUser> = new Map()
 const recentTimeouts: Map<string, TimedoutUser> = new Map()
 
 function getReporterPoints(roles: Collection<string, Role>) {
-	if (roles.find((r) => r.name === "Tester" || r.name === "Scripter")) return 12
-	if (roles.find((r) => r.name === "VIP" || r.name === "Premium")) return 6
+	if (roles.find((r) => r.name === "Moderator")) return 20
+	if (roles.find((r) => r.name === "Scripter")) return 15
+	if (roles.find((r) => r.name === "Tester")) return 12
+	if (roles.find((r) => r.name === "VIP")) return 9
+	if (roles.find((r) => r.name === "Premium")) return 6
 	return 0
 }
 
@@ -72,7 +75,7 @@ const command: Command = {
 		await interaction.deferReply({ ephemeral: true })
 		const message = interaction.options.data[0]
 
-		if (protectedChannels.includes(interaction.channelId)) {
+		if (protectedChannels.includes(interaction.channel.name)) {
 			await interaction.editReply("Messages on this channel cannot be managed.")
 			return
 		}
@@ -85,7 +88,7 @@ const command: Command = {
 				"User discord ID is empty. Maybe this user already left the server?"
 			)
 			return
-		} else if (reported.id === "202210488493408256" || reported.id === "830442256984047636") {
+		} else if (admins.includes(reported.id)) {
 			await interaction.editReply("You can't manage this user.")
 			return
 		}
@@ -109,9 +112,17 @@ const command: Command = {
 		if (!reportedUser) {
 			reportedUser = { id: reported.id, reporters: new Map() }
 		} else if (reportedUser.reporters.has(caller.id)) {
-			await interaction.editReply(
-				`You've already reported this user, your report will be valid for ${minutes} minutes.`
-			)
+			if (admins.includes(caller.id)) {
+				await interaction.editReply(
+					`You've already reported this user, your report will be valid for ${minutes} minutes. The user has : ${getReportedPoints(
+						reportedUser
+					)} points.`
+				)
+			} else {
+				await interaction.editReply(
+					`You've already reported this user, your report will be valid for ${minutes} minutes.`
+				)
+			}
 			return
 		}
 
@@ -155,9 +166,9 @@ const command: Command = {
 		}, 24 * 60 * 60 * 1000)
 
 		const content = message.message.content
-		const managementCH = interaction.guild.channels.cache.get(management)
-		if (!managementCH.isTextBased()) return
-		managementCH.send(
+		const management = interaction.guild.channels.cache.find((ch) => ch.name === "🎮management")
+		if (!management.isTextBased()) return
+		management.send(
 			`<@${reported.id}> was timed out for ${time} minutes for the following message:\n\n${content}`
 		)
 
