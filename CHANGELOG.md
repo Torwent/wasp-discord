@@ -1,3 +1,12 @@
+# [0.9.0](https://github.com/Torwent/wasp-discord/compare/v0.8.0...v0.9.0) (2024-09-20)
+
+
+### Features
+
+* new report system ([4e8989c](https://github.com/Torwent/wasp-discord/commit/4e8989cf2be063398fdb5caab8fbca65f078f3a6))
+
+
+
 # [0.8.0](https://github.com/Torwent/wasp-discord/compare/v0.7.7...v0.8.0) (2024-09-15)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * reaction message ([b5de791](https://github.com/Torwent/wasp-discord/commit/b5de79117c718fc38faa1986435abd65741bf911))
-
-
-
-## [0.7.4](https://github.com/Torwent/wasp-discord/compare/v0.7.3...v0.7.4) (2024-09-13)
-
-
-### Bug Fixes
-
-* add testing message deletion on bad reaction count ([74b773e](https://github.com/Torwent/wasp-discord/commit/74b773e86d347e0b3c342683470c64c7ed596db1))
 
 
 
