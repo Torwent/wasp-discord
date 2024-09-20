@@ -1,3 +1,12 @@
+## [0.9.2](https://github.com/Torwent/wasp-discord/compare/v0.9.1...v0.9.2) (2024-09-20)
+
+
+### Bug Fixes
+
+* some tweaks ([5322880](https://github.com/Torwent/wasp-discord/commit/53228806891bdf90bb95a3997455f88c18b23ee0))
+
+
+
 ## [0.9.1](https://github.com/Torwent/wasp-discord/compare/v0.9.0...v0.9.1) (2024-09-20)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * read notes ([b648ce4](https://github.com/Torwent/wasp-discord/commit/b648ce4948c8564ec70dc46f203f97970b297627))
-
-
-
-## [0.7.6](https://github.com/Torwent/wasp-discord/compare/v0.7.5...v0.7.6) (2024-09-13)
-
-
-### Bug Fixes
-
-* raise deletion threshold and made it actually delete messages ([4e775f4](https://github.com/Torwent/wasp-discord/commit/4e775f4557e7d6a7c0c8780fc4869f273e0bbc16))
 
 
 
