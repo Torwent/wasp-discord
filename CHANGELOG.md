@@ -1,3 +1,12 @@
+## [0.9.1](https://github.com/Torwent/wasp-discord/compare/v0.9.0...v0.9.1) (2024-09-20)
+
+
+### Bug Fixes
+
+* typo ([58a527b](https://github.com/Torwent/wasp-discord/commit/58a527b944410c7faceefef8b8b5a07da1a4af5c))
+
+
+
 # [0.9.0](https://github.com/Torwent/wasp-discord/compare/v0.8.0...v0.9.0) (2024-09-20)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * raise deletion threshold and made it actually delete messages ([4e775f4](https://github.com/Torwent/wasp-discord/commit/4e775f4557e7d6a7c0c8780fc4869f273e0bbc16))
-
-
-
-## [0.7.5](https://github.com/Torwent/wasp-discord/compare/v0.7.4...v0.7.5) (2024-09-13)
-
-
-### Bug Fixes
-
-* reaction message ([b5de791](https://github.com/Torwent/wasp-discord/commit/b5de79117c718fc38faa1986435abd65741bf911))
 
 
 
