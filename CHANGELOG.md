@@ -1,3 +1,12 @@
+## [0.9.3](https://github.com/Torwent/wasp-discord/compare/v0.9.2...v0.9.3) (2024-09-21)
+
+
+### Bug Fixes
+
+* lot's of tweaks ([9bb6e07](https://github.com/Torwent/wasp-discord/commit/9bb6e07047f9d9d788ec60ad445c2837f131459e))
+
+
+
 ## [0.9.2](https://github.com/Torwent/wasp-discord/compare/v0.9.1...v0.9.2) (2024-09-20)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * add quickhelp command ([0ce6dd1](https://github.com/Torwent/wasp-discord/commit/0ce6dd17176fe4c2d47f949096cb10d38cdd02ba))
-
-
-
-## [0.7.7](https://github.com/Torwent/wasp-discord/compare/v0.7.6...v0.7.7) (2024-09-13)
-
-
-### Bug Fixes
-
-* read notes ([b648ce4](https://github.com/Torwent/wasp-discord/commit/b648ce4948c8564ec70dc46f203f97970b297627))
 
 
 
