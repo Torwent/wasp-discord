@@ -1,3 +1,12 @@
+## [0.9.4](https://github.com/Torwent/wasp-discord/compare/v0.9.3...v0.9.4) (2024-09-21)
+
+
+### Bug Fixes
+
+* increase the report window from 10 minutes to 15 ([2096f3d](https://github.com/Torwent/wasp-discord/commit/2096f3dc16dc1d8197bc7302ba42afd9b3dea28f))
+
+
+
 ## [0.9.3](https://github.com/Torwent/wasp-discord/compare/v0.9.2...v0.9.3) (2024-09-21)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * new report system ([4e8989c](https://github.com/Torwent/wasp-discord/commit/4e8989cf2be063398fdb5caab8fbca65f078f3a6))
-
-
-
-# [0.8.0](https://github.com/Torwent/wasp-discord/compare/v0.7.7...v0.8.0) (2024-09-15)
-
-
-### Features
-
-* add quickhelp command ([0ce6dd1](https://github.com/Torwent/wasp-discord/commit/0ce6dd17176fe4c2d47f949096cb10d38cdd02ba))
 
 
 
