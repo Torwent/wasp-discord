@@ -1,7 +1,7 @@
 import type { Command } from "$lib/interaction"
 import { ApplicationCommandType, Collection, Role, TextChannel } from "discord.js"
 
-const minutes = 10
+const minutes = 15
 const pointsLimit = 100
 const protectedChannels = [
 	"❗rules",
