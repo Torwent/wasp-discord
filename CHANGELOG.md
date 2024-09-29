@@ -1,3 +1,12 @@
+## [0.9.6](https://github.com/Torwent/wasp-discord/compare/v0.9.5...v0.9.6) (2024-09-29)
+
+
+### Bug Fixes
+
+* several tweaks ([76ee4b8](https://github.com/Torwent/wasp-discord/commit/76ee4b8233e61e9b4a134ae56334ec44cfdab741))
+
+
+
 ## [0.9.5](https://github.com/Torwent/wasp-discord/compare/v0.9.4...v0.9.5) (2024-09-29)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * some tweaks ([5322880](https://github.com/Torwent/wasp-discord/commit/53228806891bdf90bb95a3997455f88c18b23ee0))
-
-
-
-## [0.9.1](https://github.com/Torwent/wasp-discord/compare/v0.9.0...v0.9.1) (2024-09-20)
-
-
-### Bug Fixes
-
-* typo ([58a527b](https://github.com/Torwent/wasp-discord/commit/58a527b944410c7faceefef8b8b5a07da1a4af5c))
 
 
 
