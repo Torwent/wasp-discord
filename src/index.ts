@@ -10,7 +10,8 @@ import {
 	GuildTextBasedChannel,
 	Partials,
 	Guild,
-	Role
+	Role,
+	ApplicationCommandType
 } from "discord.js"
 import { glob } from "glob"
 import { Command } from "$lib/interaction"
@@ -50,7 +51,20 @@ export class ExtendedClient extends Client {
 			if (!imported) return
 			const command: Command = imported.default
 
-			console.log("Adding command: ", command.name)
+			switch (command.type) {
+				case ApplicationCommandType.User:
+					console.log("Adding user context command: ", command.name)
+					break
+
+				case ApplicationCommandType.Message:
+					console.log("Adding message context command: ", command.name)
+					break
+
+				default:
+					console.log("Adding slash command: ", command.name)
+					break
+			}
+
 			this.commands.set(command.name, command)
 			commands.push(command)
 		})

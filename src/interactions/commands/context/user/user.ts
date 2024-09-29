@@ -1,4 +1,5 @@
 import type { Command } from "$lib/interaction"
+import { getRole } from "$lib/lib"
 import { supabase } from "$lib/supabase"
 import { ApplicationCommandType } from "discord.js"
 
@@ -8,11 +9,9 @@ const command: Command = {
 	run: async ({ interaction }) => {
 		await interaction.deferReply({ ephemeral: true })
 		const roles = interaction.member.roles.cache
-		const hasRole = roles.find(
-			(r) => r.name === "Scripter" || r.name === "Moderator" || r.name === "Administrator"
-		)
+		const role = getRole(interaction.member, ["Scripter", "Moderator", "Administrator"])
 
-		if (hasRole == null) {
+		if (role == null) {
 			await interaction.editReply("You are not allowed to use this command.")
 			return
 		}

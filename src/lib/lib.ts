@@ -42,8 +42,8 @@ export const protectedChannels = [
 
 interface Reporter {
 	id: string
-	channel: string
-	message: string
+	channel: string | null
+	message: string | null
 	points: number
 }
 
@@ -79,8 +79,8 @@ export function addReporter(
 	reported: ReportedUser,
 	id: string,
 	points: number,
-	channel: string,
-	message: string
+	channel: string | null,
+	message: string | null
 ) {
 	reported.reporters.set(id, {
 		id: id,

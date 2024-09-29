@@ -1,5 +1,5 @@
 import type { Command } from "$lib/interaction"
-import { supabase } from "$lib/supabase"
+import { getWSID, supabase } from "$lib/supabase"
 import { ApplicationCommandType } from "discord.js"
 
 const command: Command = {
@@ -14,26 +14,9 @@ const command: Command = {
 			return
 		}
 
-		const { data, error } = await supabase
-			.schema("profiles")
-			.from("profiles")
-			.select("id")
-			.eq("discord", user)
-			.limit(1)
-			.maybeSingle()
+		const id = await getWSID(user)
 
-		if (error) {
-			console.error(error)
-			await interaction.editReply("WaspScripts ID not found.")
-			return
-		}
-
-		if (data == null) {
-			await interaction.editReply("WaspScripts ID not found.")
-			return
-		}
-
-		await interaction.editReply(data.id)
+		await interaction.editReply(id)
 	}
 }
 

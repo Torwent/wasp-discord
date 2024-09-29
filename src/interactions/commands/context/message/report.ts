@@ -14,7 +14,7 @@ import {
 import { ApplicationCommandType, TextChannel } from "discord.js"
 
 const command: Command = {
-	name: "Report",
+	name: "Report message",
 	type: ApplicationCommandType.Message,
 	run: async ({ interaction }) => {
 		await interaction.deferReply({ ephemeral: true })
@@ -29,12 +29,13 @@ const command: Command = {
 		const reported = message.message.member
 
 		if (reported.id === "") {
-			await interaction.editReply(
-				"User discord ID is empty. Maybe this user already left the server?"
-			)
+			await interaction.editReply("User Discord ID is empty. Maybe they already left the server?")
 			return
 		} else if (reported.id === interaction.guild.ownerId) {
-			await interaction.editReply("You can't manage this user.")
+			await interaction.editReply("You can't report this user.")
+			return
+		} else if (reported.user.bot) {
+			await interaction.editReply("You can't report a bot.")
 			return
 		}
 
@@ -52,7 +53,6 @@ const command: Command = {
 		}
 
 		let reportedUser = reportedUsers.get(reported.id)
-
 		if (!reportedUser) reportedUser = { id: reported.id, reporters: new Map() }
 
 		if (reportedUser.reporters.has(caller.id)) {
@@ -72,19 +72,8 @@ const command: Command = {
 
 		addReporter(reportedUser, caller.id, points, interaction.channelId, message.message.id)
 
-		if (caller.id === interaction.guild.ownerId) {
-			await interaction.editReply(
-				`<@${
-					reported.id
-				}> has been reported by you. If enough people report them in a short time window they will be muted. The user has : ${getReportedPoints(
-					reportedUser
-				)} points.`
-			)
-		} else {
-			await interaction.editReply(
-				`<@${reported.id}> has been reported by you. If enough people report them in a short time window they will be muted.`
-			)
-		}
+		const msg = `You've reported <@${reported.id}>. If enough people report them in a short time window they will be muted.`
+		await interaction.editReply(msg)
 
 		if (getReportedPoints(reportedUser) <= pointsLimit) {
 			console.log("Reported user doesn't deserve a mute yet.")
