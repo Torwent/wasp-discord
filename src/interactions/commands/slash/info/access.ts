@@ -1,4 +1,5 @@
 import type { Command } from "$lib/interaction"
+import { getRole } from "$lib/lib"
 import { supabase } from "$lib/supabase"
 
 const command: Command = {
@@ -8,13 +9,7 @@ const command: Command = {
 	run: async ({ interaction }) => {
 		await interaction.deferReply({ ephemeral: true })
 
-		const role = interaction.member.roles.cache.find(
-			(r) =>
-				r.name === "Tester" ||
-				r.name === "Scripter" ||
-				r.name === "Moderator" ||
-				r.name === "Administrator"
-		)
+		const role = getRole(interaction.member, ["Tester", "Scripter", "Moderator", "Administrator"])
 
 		if (role == null) {
 			await interaction.editReply("You are not allowed to use this command.")

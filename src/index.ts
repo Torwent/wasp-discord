@@ -2,19 +2,41 @@ import "./lib/alias"
 import "$lib/env"
 import {
 	type ApplicationCommandDataResolvable,
-	type ClientEvents,
+	ClientEvents,
 	ActivityType,
 	Client,
 	Collection,
 	GatewayIntentBits,
-	Partials
+	GuildTextBasedChannel,
+	Partials,
+	Guild,
+	Role
 } from "discord.js"
 import { glob } from "glob"
 import { Command } from "$lib/interaction"
 import { ClientEvent } from "$lib/event"
 import { supabase } from "$lib/supabase"
+import { setupChannels } from "$lib/lib"
 
 export class ExtendedClient extends Client {
+	cache: {
+		guild: Guild
+		owner: string
+		channels: {
+			management: GuildTextBasedChannel
+			achievements: GuildTextBasedChannel
+			bans: GuildTextBasedChannel
+		}
+		roles: {
+			premium: Role
+			vip: Role
+			tester: Role
+			scripter: Role
+			moderator: Role
+			administrator: Role
+		}
+	}
+
 	commands: Collection<string, Command> = new Collection()
 
 	// Register modules (Commands, Buttons, Menus, Modals, ...)
@@ -34,8 +56,10 @@ export class ExtendedClient extends Client {
 		})
 
 		this.once("ready", async () => {
-			const guildStr = process.env.GUILD_ID
-			const guild = this.guilds.cache.get(guildStr)
+			const guild = this.guilds.cache.get(process.env.GUILD_ID)
+
+			await setupChannels(guild)
+
 			guild.commands.set(commands)
 			console.log("Registering commands to: " + guild.id)
 
@@ -130,4 +154,5 @@ export const client = new ExtendedClient({
 	],
 	partials: [Partials.Message, Partials.Channel, Partials.Reaction]
 })
+
 client.start()
