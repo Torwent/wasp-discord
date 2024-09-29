@@ -1,3 +1,12 @@
+## [0.9.5](https://github.com/Torwent/wasp-discord/compare/v0.9.4...v0.9.5) (2024-09-29)
+
+
+### Bug Fixes
+
+* several improvements to the report system ([01e096b](https://github.com/Torwent/wasp-discord/commit/01e096b497756b562345702ada65ee6de7a0d264))
+
+
+
 ## [0.9.4](https://github.com/Torwent/wasp-discord/compare/v0.9.3...v0.9.4) (2024-09-21)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * typo ([58a527b](https://github.com/Torwent/wasp-discord/commit/58a527b944410c7faceefef8b8b5a07da1a4af5c))
-
-
-
-# [0.9.0](https://github.com/Torwent/wasp-discord/compare/v0.8.0...v0.9.0) (2024-09-20)
-
-
-### Features
-
-* new report system ([4e8989c](https://github.com/Torwent/wasp-discord/commit/4e8989cf2be063398fdb5caab8fbca65f078f3a6))
 
 
 
