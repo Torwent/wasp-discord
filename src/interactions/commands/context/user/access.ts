@@ -224,7 +224,7 @@ const command: Command = {
 		let message = ""
 
 		if (subscriptions.length) {
-			message += "### Subscriptions:\n```\n"
+			message += "\n### Subscriptions:\n```\n"
 
 			for (let i = 0; i < subscriptions.length; i++) {
 				const sub = subscriptions[i]
@@ -244,8 +244,7 @@ const command: Command = {
 		}
 
 		if (free_access.length) {
-			if (subscriptions.length > 0) message += "\n"
-			message += "### Free Access:\n```\n"
+			message += "\n### Free Access:\n```\n"
 
 			for (let i = 0; i < free_access.length; i++) {
 				const access = free_access[i]
@@ -261,9 +260,8 @@ const command: Command = {
 			message += "```"
 		}
 
-		message += "\n"
 		if (old_subscriptions.length) {
-			message += "### Old Subscriptions:\n```\n"
+			message += "\n### Old Subscriptions:\n```\n"
 
 			for (let i = 0; i < subscriptions.length; i++) {
 				const sub = subscriptions[i]
@@ -283,8 +281,7 @@ const command: Command = {
 		}
 
 		if (old_free_access.length) {
-			if (subscriptions.length > 0) message += "\n"
-			message += "### Old Free Access:\n```\n"
+			message += "\n### Old Free Access:\n```\n"
 
 			for (let i = 0; i < free_access.length; i++) {
 				const access = free_access[i]
@@ -299,6 +296,8 @@ const command: Command = {
 			}
 			message += "```"
 		}
+
+		if (message === "") message = "User has no subscription nor free access data"
 
 		await interaction.editReply(message)
 	}
