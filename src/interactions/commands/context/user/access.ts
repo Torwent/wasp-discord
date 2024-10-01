@@ -158,7 +158,7 @@ const command: Command = {
 		)
 
 		const old_subscriptions = await Promise.all(
-			subData.map(async (sub) => {
+			old_subData.map(async (sub) => {
 				const { data, error } = await supabase
 					.schema("scripts")
 					.from("products")
@@ -191,7 +191,7 @@ const command: Command = {
 		)
 
 		const old_free_access = await Promise.all(
-			freeData.map(async (sub) => {
+			old_freeData.map(async (sub) => {
 				const { data, error } = await supabase
 					.schema("scripts")
 					.from("products")
@@ -263,8 +263,8 @@ const command: Command = {
 		if (old_subscriptions.length) {
 			message += "\n### Old Subscriptions:\n```\n"
 
-			for (let i = 0; i < subscriptions.length; i++) {
-				const sub = subscriptions[i]
+			for (let i = 0; i < old_subscriptions.length; i++) {
+				const sub = old_subscriptions[i]
 				message += "Name        : " + sub?.name + "\n"
 				message += "Product     : " + sub?.product + "\n"
 				message += "Subscription: " + sub?.subscription + "\n"
@@ -283,8 +283,8 @@ const command: Command = {
 		if (old_free_access.length) {
 			message += "\n### Old Free Access:\n```\n"
 
-			for (let i = 0; i < free_access.length; i++) {
-				const access = free_access[i]
+			for (let i = 0; i < old_free_access.length; i++) {
+				const access = old_free_access[i]
 				message += "Name   : " + access?.name + "\n"
 				message += "Product: " + access?.product + "\n"
 				message +=
