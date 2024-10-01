@@ -1,3 +1,12 @@
+## [0.9.9](https://github.com/Torwent/wasp-discord/compare/v0.9.8...v0.9.9) (2024-10-01)
+
+
+### Bug Fixes
+
+* **access:** should now be working as intended ([4be0c6d](https://github.com/Torwent/wasp-discord/commit/4be0c6da2ea075a7bbbf480314fcbb6996d470ea))
+
+
+
 ## [0.9.8](https://github.com/Torwent/wasp-discord/compare/v0.9.7...v0.9.8) (2024-10-01)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * several improvements to the report system ([01e096b](https://github.com/Torwent/wasp-discord/commit/01e096b497756b562345702ada65ee6de7a0d264))
-
-
-
-## [0.9.4](https://github.com/Torwent/wasp-discord/compare/v0.9.3...v0.9.4) (2024-09-21)
-
-
-### Bug Fixes
-
-* increase the report window from 10 minutes to 15 ([2096f3d](https://github.com/Torwent/wasp-discord/commit/2096f3dc16dc1d8197bc7302ba42afd9b3dea28f))
 
 
 
