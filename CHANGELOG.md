@@ -1,3 +1,12 @@
+## [0.9.7](https://github.com/Torwent/wasp-discord/compare/v0.9.6...v0.9.7) (2024-10-01)
+
+
+### Bug Fixes
+
+* mods can't be muted anymore ([33ab70c](https://github.com/Torwent/wasp-discord/commit/33ab70c7faeb73a19bd7279a351984c976859fb5))
+
+
+
 ## [0.9.6](https://github.com/Torwent/wasp-discord/compare/v0.9.5...v0.9.6) (2024-09-29)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * lot's of tweaks ([9bb6e07](https://github.com/Torwent/wasp-discord/commit/9bb6e07047f9d9d788ec60ad445c2837f131459e))
-
-
-
-## [0.9.2](https://github.com/Torwent/wasp-discord/compare/v0.9.1...v0.9.2) (2024-09-20)
-
-
-### Bug Fixes
-
-* some tweaks ([5322880](https://github.com/Torwent/wasp-discord/commit/53228806891bdf90bb95a3997455f88c18b23ee0))
 
 
 
