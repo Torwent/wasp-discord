@@ -3,6 +3,7 @@ import {
 	addReporter,
 	getReportedPoints,
 	getReporterPoints,
+	getRole,
 	joinReporters,
 	management,
 	minutes,
@@ -31,7 +32,7 @@ const command: Command = {
 		if (reported.id === "") {
 			await interaction.editReply("User Discord ID is empty. Maybe they already left the server?")
 			return
-		} else if (reported.id === interaction.guild.ownerId) {
+		} else if (getRole(reported, ["Administrator", "Moderator"])) {
 			await interaction.editReply("You can't report this user.")
 			return
 		} else if (reported.user.bot) {
