@@ -1,6 +1,4 @@
 import { ClientEvent } from "$lib/event"
-import { bans } from "$lib/lib"
-import { MessageType, TextChannel } from "discord.js"
 
 // Cooldown map to store the last execution time for each user
 const cooldowns = new Map()
@@ -16,19 +14,6 @@ export default new ClientEvent("messageCreate", async (message) => {
 				await message.delete()
 				return
 			}
-		}
-	}
-
-	if (message.channel === bans) {
-		if (message.channel.isThread()) return
-
-		const channel = message.channel as TextChannel
-
-		if (message.type === MessageType.Reply) {
-			await message.delete()
-			return
-		} else {
-			await message.startThread({ name: "Ban #" + channel.threads.cache.size + 1 })
 		}
 	}
 
