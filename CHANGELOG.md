@@ -1,3 +1,12 @@
+## [0.10.2](https://github.com/Torwent/wasp-discord/compare/v0.10.1...v0.10.2) (2024-10-03)
+
+
+### Bug Fixes
+
+* **bans:** better #bans automation ([4fc2802](https://github.com/Torwent/wasp-discord/commit/4fc28020a6fa1e24787c37d7d61794e532f69a0b))
+
+
+
 ## [0.10.1](https://github.com/Torwent/wasp-discord/compare/v0.10.0...v0.10.1) (2024-10-02)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * **access:** small fix to the new merged access command ([564c6d1](https://github.com/Torwent/wasp-discord/commit/564c6d1671a87a6b544b324dfa485fa8ee95668e))
-
-
-
-## [0.9.7](https://github.com/Torwent/wasp-discord/compare/v0.9.6...v0.9.7) (2024-10-01)
-
-
-### Bug Fixes
-
-* mods can't be muted anymore ([33ab70c](https://github.com/Torwent/wasp-discord/commit/33ab70c7faeb73a19bd7279a351984c976859fb5))
 
 
 
