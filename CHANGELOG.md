@@ -1,3 +1,12 @@
+## [0.10.3](https://github.com/Torwent/wasp-discord/compare/v0.10.2...v0.10.3) (2024-10-06)
+
+
+### Bug Fixes
+
+* update canned response ([97b876c](https://github.com/Torwent/wasp-discord/commit/97b876c4a262ba1e68cd4c944b42d3aeb825ee55))
+
+
+
 ## [0.10.2](https://github.com/Torwent/wasp-discord/compare/v0.10.1...v0.10.2) (2024-10-03)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * **access:** should now be working as intended ([4be0c6d](https://github.com/Torwent/wasp-discord/commit/4be0c6da2ea075a7bbbf480314fcbb6996d470ea))
-
-
-
-## [0.9.8](https://github.com/Torwent/wasp-discord/compare/v0.9.7...v0.9.8) (2024-10-01)
-
-
-### Bug Fixes
-
-* **access:** small fix to the new merged access command ([564c6d1](https://github.com/Torwent/wasp-discord/commit/564c6d1671a87a6b544b324dfa485fa8ee95668e))
 
 
 
