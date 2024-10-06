@@ -1,8 +1,11 @@
 import type { Command } from "$lib/interaction"
+import { supabase } from "$lib/supabase"
 import { ApplicationCommandType } from "discord.js"
 
 const recentUsers = new Set()
 const minutes = 5
+
+let response: string | null = null
 
 const command: Command = {
 	name: "Quick Help",
@@ -25,7 +28,7 @@ const command: Command = {
 
 		if (recentUsers.has(caller.id)) {
 			await interaction.editReply(
-				"You can't use this command more than once every + " + minutes + " minute."
+				"You can't use this command more than once every " + minutes + " minutes."
 			)
 			return
 		}
@@ -38,24 +41,27 @@ const command: Command = {
 			return
 		}
 
-		message.message.reply(`
-Hello <@${user}>!
-Looks like the problem you've posted about is commonly solved by:
-- Making sure you are fully up-to-date on SRL-T, WaspLib, and the script itself.
- - See: https://discord.com/channels/795071177475227709/1249458850587869236
-- Making sure you are on Fixed - Classic Layout.
- - I've never had an issue on Fixed - Classic display mode and even use it when the author says resizable classic (🤢) works.
- - See: https://discord.com/channels/795071177475227709/1266728566024962100/1266728855398252604
-- Making sure your client settings are correct (Brightness/XP Bar/etc.):
- - Use the Settings Searcher script to make sure all of your settings are right.
- - See: https://discord.com/channels/795071177475227709/1150590225555402802/1251695172450779137
-- Making sure you are using the Wasp RuneLite profile.
- - RuneLite support is not carte blanche to use whatever plugins you want. Use only what is installed for you in the profile.
- - See: https://discord.com/channels/795071177475227709/1266728566024962100/1266728833302663260
-## Still having problems? Please provide a screenshot!
-Screenshots of your **WHOLE MONITOR (Simba + RL)** with sensitive information blocked out is more valuable and provides more information than pasting only a small portion of the Simba error.
-## These answers and the answers to EVEN MORE questions can be found in our FAQ: https://discord.com/channels/795071177475227709/1249455251761664041
-`)
+		if (!response) {
+			console.log("Fetching canned response from DB.")
+			const { data, error } = await supabase
+				.schema("info")
+				.from("discord")
+				.select("response")
+				.eq("id", "58ad4b5b-0109-42d3-aa1b-ef035ceb77eb")
+				.single()
+
+			if (error) {
+				console.error(error)
+				await interaction.editReply(
+					"Failed to get canned response from DB:\n```json\n" + JSON.stringify(error) + "\n```"
+				)
+				return
+			}
+
+			response = data.response
+		}
+
+		message.message.reply("Hello <@" + user + ">!\n\n" + response)
 		await interaction.editReply("The user has been messaged.")
 
 		recentUsers.add(caller.id)
