@@ -1,3 +1,12 @@
+## [0.10.5](https://github.com/Torwent/wasp-discord/compare/v0.10.4...v0.10.5) (2024-10-07)
+
+
+### Bug Fixes
+
+* several fixes ([fb7682c](https://github.com/Torwent/wasp-discord/commit/fb7682cf1824acc757e9165a181fa191a799a939))
+
+
+
 ## [0.10.4](https://github.com/Torwent/wasp-discord/compare/v0.10.3...v0.10.4) (2024-10-07)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * remove unused files ([578b398](https://github.com/Torwent/wasp-discord/commit/578b3985e39f10905569adc27ba06aa9d499e7a3))
-
-
-
-# [0.10.0](https://github.com/Torwent/wasp-discord/compare/v0.9.9...v0.10.0) (2024-10-02)
-
-
-### Features
-
-* added more auto-moderation ([2ca8e3a](https://github.com/Torwent/wasp-discord/commit/2ca8e3adcbee7f53aa8c2d335eab3d0dab183eae))
 
 
 
