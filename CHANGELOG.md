@@ -1,3 +1,12 @@
+## [0.10.4](https://github.com/Torwent/wasp-discord/compare/v0.10.3...v0.10.4) (2024-10-07)
+
+
+### Bug Fixes
+
+* user commands ([cf4afd7](https://github.com/Torwent/wasp-discord/commit/cf4afd79607a0fa33d99027fedfd34a2a86669e0))
+
+
+
 ## [0.10.3](https://github.com/Torwent/wasp-discord/compare/v0.10.2...v0.10.3) (2024-10-06)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * added more auto-moderation ([2ca8e3a](https://github.com/Torwent/wasp-discord/commit/2ca8e3adcbee7f53aa8c2d335eab3d0dab183eae))
-
-
-
-## [0.9.9](https://github.com/Torwent/wasp-discord/compare/v0.9.8...v0.9.9) (2024-10-01)
-
-
-### Bug Fixes
-
-* **access:** should now be working as intended ([4be0c6d](https://github.com/Torwent/wasp-discord/commit/4be0c6da2ea075a7bbbf480314fcbb6996d470ea))
 
 
 
