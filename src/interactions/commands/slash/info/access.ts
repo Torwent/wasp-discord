@@ -178,6 +178,7 @@ const command: Command = {
 			message += "```"
 		}
 
+		if (message.length > 1999) message = message.substring(0, 1999);
 		await interaction.editReply(message)
 	}
 }

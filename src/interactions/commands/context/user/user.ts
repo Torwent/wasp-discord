@@ -27,35 +27,17 @@ const command: Command = {
 			.schema("profiles")
 			.from("profiles")
 			.select(
-				"id, customer_id, private!profiles_id_fkey (email), roles!profiles_id_fkey (premium, vip, tester, scripter, moderator, administrator)"
+				"id, customer_id, private!profiles_id_fkey1 (email), roles!profiles_id_fkey2 (premium, vip, tester, scripter, moderator, administrator)"
 			)
 			.eq("discord", user)
-			.limit(1)
-			.limit(1, { foreignTable: "private" })
-			.limit(1, { foreignTable: "roles" })
 			.single()
 
 		if (error) {
-			console.error(error)
-			await interaction.editReply("WaspScripts ID not found.")
-			return
-		}
-
-		if (data == null) {
-			await interaction.editReply("WaspScripts ID not found.")
+			await interaction.editReply("Database error: \n```\n" + JSON.stringify(error) + "```")
 			return
 		}
 
 		const rolesData = data.roles
-		if (rolesData == null) {
-			await interaction.editReply("WaspScripts user is missing roles table entry.")
-			return
-		}
-
-		if (data.private == null) {
-			await interaction.editReply("WaspScripts user is missing private table entry.")
-			return
-		}
 
 		let rolesString = ""
 		Object.entries(rolesData).forEach((entry) => {

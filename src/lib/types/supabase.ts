@@ -390,6 +390,18 @@ export type Database = {
             referencedRelation: "users"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "profiles_id_fkey1"
+            columns: ["id"]
+            referencedRelation: "private"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "profiles_id_fkey2"
+            columns: ["id"]
+            referencedRelation: "roles"
+            referencedColumns: ["id"]
+          },
         ]
       }
       roles: {
