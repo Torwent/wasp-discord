@@ -5,7 +5,7 @@ import { Message, MessageType, TextChannel } from "discord.js"
 // Cooldown map to store the last execution time for each user
 const cooldowns = new Map()
 // Variable to store the last global execution time
-let lastGlobalExecution = 0
+const lastGlobalExecution = 0
 
 function getEnding(n: number) {
 	return "This message will self-destruct in **" + n + "** seconds."

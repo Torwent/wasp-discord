@@ -1,13 +1,13 @@
 import { Collection, Guild, GuildMember, GuildTextBasedChannel, Role } from "discord.js"
 
-async function getGuildChannel(guild: Guild, channel: String) {
+async function getGuildChannel(guild: Guild, channel: string) {
 	const channels = guild.channels.cache
 	return channels.find(
 		(ch) => !ch.isDMBased() && ch.isTextBased() && ch.name === channel
 	) as GuildTextBasedChannel
 }
 
-async function getGuildRole(guild: Guild, role: String) {
+async function getGuildRole(guild: Guild, role: string) {
 	return guild.roles.cache.find((r) => r.name === role)
 }
 

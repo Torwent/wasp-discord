@@ -15,7 +15,7 @@ export default new ClientEvent("guildMemberUpdate", async (user) => {
 	const { data, error: userError } = await supabase
 		.schema("profiles")
 		.from("profiles")
-		.select("id, roles!profiles_id_fkey2 (moderator, scripter, tester, timeout)")
+		.select("id, roles!profiles_id_fkey (moderator, scripter, tester, timeout)")
 		.eq("discord", user.id)
 		.single()
 

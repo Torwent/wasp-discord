@@ -46,7 +46,7 @@ const command: Command = {
 		}
 
 		const role = caller.roles.cache
-		let points = getReporterPoints(role)
+		const points = getReporterPoints(role)
 
 		if (points === 0) {
 			await interaction.editReply("You don't have a role that can contribute to manage the server.")
@@ -101,7 +101,7 @@ const command: Command = {
 
 		reportedUsers.delete(reported.id)
 		setTimeout(() => {
-			let timedoutUser = recentTimeouts.get(reported.id)
+			const timedoutUser = recentTimeouts.get(reported.id)
 			timedoutUser.times -= 1
 			if (timedoutUser.times <= 0) {
 				recentTimeouts.delete(reported.id)
