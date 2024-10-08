@@ -1,3 +1,12 @@
+## [0.10.6](https://github.com/Torwent/wasp-discord/compare/v0.10.5...v0.10.6) (2024-10-08)
+
+
+### Bug Fixes
+
+* access commands ([ee0d86e](https://github.com/Torwent/wasp-discord/commit/ee0d86ef05ff9c65b813f21f7850930532fb8f8a))
+
+
+
 ## [0.10.5](https://github.com/Torwent/wasp-discord/compare/v0.10.4...v0.10.5) (2024-10-07)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * **bans:** better #bans automation ([4fc2802](https://github.com/Torwent/wasp-discord/commit/4fc28020a6fa1e24787c37d7d61794e532f69a0b))
-
-
-
-## [0.10.1](https://github.com/Torwent/wasp-discord/compare/v0.10.0...v0.10.1) (2024-10-02)
-
-
-### Bug Fixes
-
-* remove unused files ([578b398](https://github.com/Torwent/wasp-discord/commit/578b3985e39f10905569adc27ba06aa9d499e7a3))
 
 
 
