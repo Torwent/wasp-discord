@@ -1,3 +1,12 @@
+## [0.10.7](https://github.com/Torwent/wasp-discord/compare/v0.10.6...v0.10.7) (2024-10-08)
+
+
+### Bug Fixes
+
+* a lot of error handling added ([dd0bb76](https://github.com/Torwent/wasp-discord/commit/dd0bb769024e315c999e9f811cb019a784064fae))
+
+
+
 ## [0.10.6](https://github.com/Torwent/wasp-discord/compare/v0.10.5...v0.10.6) (2024-10-08)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * update canned response ([97b876c](https://github.com/Torwent/wasp-discord/commit/97b876c4a262ba1e68cd4c944b42d3aeb825ee55))
-
-
-
-## [0.10.2](https://github.com/Torwent/wasp-discord/compare/v0.10.1...v0.10.2) (2024-10-03)
-
-
-### Bug Fixes
-
-* **bans:** better #bans automation ([4fc2802](https://github.com/Torwent/wasp-discord/commit/4fc28020a6fa1e24787c37d7d61794e532f69a0b))
 
 
 
