@@ -1,3 +1,12 @@
+## [0.10.8](https://github.com/Torwent/wasp-discord/compare/v0.10.7...v0.10.8) (2024-10-08)
+
+
+### Bug Fixes
+
+* packages and types update ([8d0c015](https://github.com/Torwent/wasp-discord/commit/8d0c015f55c74c7983da22b57fdbb982d00a8f3d))
+
+
+
 ## [0.10.7](https://github.com/Torwent/wasp-discord/compare/v0.10.6...v0.10.7) (2024-10-08)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * user commands ([cf4afd7](https://github.com/Torwent/wasp-discord/commit/cf4afd79607a0fa33d99027fedfd34a2a86669e0))
-
-
-
-## [0.10.3](https://github.com/Torwent/wasp-discord/compare/v0.10.2...v0.10.3) (2024-10-06)
-
-
-### Bug Fixes
-
-* update canned response ([97b876c](https://github.com/Torwent/wasp-discord/commit/97b876c4a262ba1e68cd4c944b42d3aeb825ee55))
 
 
 
