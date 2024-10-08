@@ -7,19 +7,19 @@ const command: Command = {
 	description: "Gets the user subscriptions and free access information",
 	options: [{ type: 6, name: "user", description: "Discord user", required: true }],
 	run: async ({ interaction }) => {
-		await interaction.deferReply({ ephemeral: true })
+		await interaction.deferReply({ ephemeral: true }).catch(err => console.error(err))
 
 		const role = getRole(interaction.member, ["Tester", "Scripter", "Moderator", "Administrator"])
 
 		if (role == null) {
-			await interaction.editReply("You are not allowed to use this command.")
+			await interaction.editReply("You are not allowed to use this command.").catch(err => console.error(err))
 			return
 		}
 
 		let user = interaction.options.data[0].value as string
 
 		if (user === "") {
-			await interaction.editReply("Discord ID is empty.")
+			await interaction.editReply("Discord ID is empty.").catch(err => console.error(err))
 			return
 		}
 
@@ -33,12 +33,12 @@ const command: Command = {
 
 		if (userError) {
 			console.error(userError)
-			await interaction.editReply("WaspScripts ID not found.")
+			await interaction.editReply("WaspScripts ID not found.").catch(err => console.error(err))
 			return
 		}
 
 		if (userData == null) {
-			await interaction.editReply("WaspScripts ID not found.")
+			await interaction.editReply("WaspScripts ID not found.").catch(err => console.error(err))
 			return
 		}
 
@@ -74,12 +74,12 @@ const command: Command = {
 				response = "Error trying to get user free access."
 			}
 
-			await interaction.editReply(response)
+			await interaction.editReply(response).catch(err => console.error(err))
 			return
 		}
 
 		if ((subData == null || subData.length === 0) && (freeData == null || freeData.length === 0)) {
-			await interaction.editReply("No subscriptions or free access data was found for this user.")
+			await interaction.editReply("No subscriptions or free access data was found for this user.").catch(err => console.error(err))
 			return
 		}
 
@@ -166,8 +166,7 @@ const command: Command = {
 
 			for (let i = 0; i < free_access.length; i++) {
 				const access = free_access[i]
-				message += "Name: " + access.name + " Product: " + access.product + "\n"
-				message += "From: " + access.date_start + " To: " + access.date_end
+				message += "Name: " + access.name + " Product: " + access.product + " From: " + access.date_start + " To: " + access.date_end
 				if (i < subscriptions.length) message += "\n"
 			}
 			message += "\n"
@@ -176,7 +175,7 @@ const command: Command = {
 		if (message.length > 1990) message = message.substring(0, 1990) + "\n...\n"
 		message += "```"
 
-		await interaction.editReply(message)
+		await interaction.editReply(message).catch(err => console.error(err))
 	}
 }
 
