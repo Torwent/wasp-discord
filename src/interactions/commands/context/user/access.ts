@@ -42,7 +42,7 @@ const command: Command = {
 			supabase
 				.schema("profiles")
 				.from("subscriptions_old")
-				.select("product, subscription, date_start, date_end, cancel")
+				.select("product, subscription, date_start, date_end")
 				.eq("id", user),
 			supabase
 				.schema("profiles")
@@ -52,28 +52,29 @@ const command: Command = {
 		])
 
 		for (let i = 0; i < promises.length; i++) {
-			let errorMsg = "Error trying to get:"
+			let message = "Error trying to get:\n"
 			if (promises[i].error) {
 				console.error(promises[i].error)
 				switch (i) {
 					case 0:
-						errorMsg += " subscriptions "
+						message += "subscriptions:"
 						break
 					case 1:
-						errorMsg += " free_access "
+						message += "free_access:"
 						break
 
 					case 2:
-						errorMsg += " old_subscriptions "
+						message += "old_subscriptions:"
 						break
 					case 3:
-						errorMsg += "old_free_access "
+						message += "old_free_access:"
 						break
 				}
+				message += "\n```\n" + JSON.stringify(promises[i].error) + "\n```\n\n"
 			}
 
-			if (errorMsg !== "Error trying to get:") {
-				await interaction.editReply(errorMsg + ".")
+			if (message !== "Error trying to get:\n") {
+				await interaction.editReply(message)
 				return
 			}
 		}
@@ -103,15 +104,9 @@ const command: Command = {
 					.single()
 
 				if (error) {
-					console.error(error)
 					await interaction.editReply(
-						"Error trying to get product data for product: " + sub.product
+						"Error trying to get product data for product: \n```\n" + JSON.stringify(error) + "```"
 					)
-					return
-				}
-
-				if (data == null) {
-					await interaction.editReply("Error, no product data for product: " + sub.product)
 					return
 				}
 
@@ -119,40 +114,34 @@ const command: Command = {
 					name: data.name,
 					product: sub.product,
 					subscription: sub.subscription,
-					date_start: sub.date_start,
-					date_end: sub.date_end,
+					date_start: new Date(sub.date_start).toLocaleString("PT-pt").split(",")[0].trim(),
+					date_end: new Date(sub.date_end).toLocaleString("PT-pt").split(",")[0].trim(),
 					cancel: sub.cancel
 				}
 			})
 		)
 
 		const free_access = await Promise.all(
-			freeData.map(async (sub) => {
+			freeData.map(async (access) => {
 				const { data, error } = await supabase
 					.schema("scripts")
 					.from("products")
 					.select("name")
-					.eq("id", sub.product)
+					.eq("id", access.product)
 					.single()
 
 				if (error) {
-					console.error(error)
 					await interaction.editReply(
-						"Error trying to get product data for product: " + sub.product
+						"Error trying to get product data for product: \n```\n" + JSON.stringify(error) + "```"
 					)
-					return
-				}
-
-				if (data == null) {
-					await interaction.editReply("Error, no product data for product: " + sub.product)
 					return
 				}
 
 				return {
 					name: data.name,
-					product: sub.product,
-					date_start: sub.date_start,
-					date_end: sub.date_end
+					product: access.product,
+					date_start: new Date(access.date_start).toLocaleString("PT-pt").split(",")[0].trim(),
+					date_end: new Date(access.date_end).toLocaleString("PT-pt").split(",")[0].trim()
 				}
 			})
 		)
@@ -167,15 +156,9 @@ const command: Command = {
 					.single()
 
 				if (error) {
-					console.error(error)
 					await interaction.editReply(
-						"Error trying to get product data for product: " + sub.product
+						"Error trying to get product data for product: \n```\n" + JSON.stringify(error) + "```"
 					)
-					return
-				}
-
-				if (data == null) {
-					await interaction.editReply("Error, no product data for product: " + sub.product)
 					return
 				}
 
@@ -183,122 +166,95 @@ const command: Command = {
 					name: data.name,
 					product: sub.product,
 					subscription: sub.subscription,
-					date_start: sub.date_start,
-					date_end: sub.date_end,
-					cancel: sub.cancel
+					date_start: new Date(sub.date_start).toLocaleString("PT-pt").split(",")[0].trim(),
+					date_end: new Date(sub.date_end).toLocaleString("PT-pt").split(",")[0].trim()
 				}
 			})
 		)
 
 		const old_free_access = await Promise.all(
-			old_freeData.map(async (sub) => {
+			old_freeData.map(async (access) => {
 				const { data, error } = await supabase
 					.schema("scripts")
 					.from("products")
 					.select("name")
-					.eq("id", sub.product)
+					.eq("id", access.product)
 					.single()
 
 				if (error) {
-					console.error(error)
 					await interaction.editReply(
-						"Error trying to get product data for product: " + sub.product
+						"Error trying to get product data for product: \n```\n" + JSON.stringify(error) + "```"
 					)
-					return
-				}
-
-				if (data == null) {
-					await interaction.editReply("Error, no product data for product: " + sub.product)
 					return
 				}
 
 				return {
 					name: data.name,
-					product: sub.product,
-					date_start: sub.date_start,
-					date_end: sub.date_end
+					product: access.product,
+					date_start: new Date(access.date_start).toLocaleString("PT-pt").split(",")[0].trim(),
+					date_end: new Date(access.date_end).toLocaleString("PT-pt").split(",")[0].trim()
 				}
 			})
 		)
 
-		let message = ""
+		if (
+			subscriptions.length === 0 && free_access.length === 0 && old_subscriptions.length === 0 && old_free_access.length === 0
+		) {
+			await interaction.editReply("User has no subscription nor free access data.")
+			return
+		}
 
-		if (subscriptions.length) {
-			message += "\n### Subscriptions:\n```\n"
+		let message = "```\n"
+
+		if (subscriptions.length > 0) {
+			message += "Subscriptions:\n"
 
 			for (let i = 0; i < subscriptions.length; i++) {
 				const sub = subscriptions[i]
-				message += "Name        : " + sub.name + "\n"
-				message += "Product     : " + sub.product + "\n"
-				message += "Subscription: " + sub.subscription + "\n"
-				message +=
-					"Start: " +
-					new Date(sub.date_start).toLocaleString("PT-pt") +
-					" End: " +
-					new Date(sub.date_end).toLocaleString("PT-pt") +
-					", Cancel: " +
-					sub.cancel
-				if (i < subscriptions.length) message += "\n\n"
+				message += "Name: " + sub.name + " Product: " + sub.product + " Subscription: " + sub.subscription + "\n"
+				message += "From: " + sub.date_start + " To: " + sub.date_end + " Cancel: " + sub.cancel
+				message += "\n"
 			}
-			message += "```"
+			message += "\n"
 		}
 
-		if (free_access.length) {
-			message += "\n### Free Access:\n```\n"
+		if (free_access.length > 0) {
+			message += "Free Access:\n"
 
 			for (let i = 0; i < free_access.length; i++) {
 				const access = free_access[i]
-				message += "Name   : " + access.name + "\n"
-				message += "Product: " + access.product + "\n"
-				message +=
-					"Start: " +
-					new Date(access.date_start).toLocaleString("PT-pt") +
-					", End: " +
-					new Date(access.date_end).toLocaleString("PT-pt")
-				if (i < subscriptions.length) message += "\n\n"
+				message += "Name: " + access.name + " Product: " + access.product + "\n"
+				message += "From: " + access.date_start + " To: " + access.date_end
+				message += "\n"
 			}
-			message += "```"
+			message += "\n"
 		}
 
-		if (old_subscriptions.length) {
-			message += "\n### Old Subscriptions:\n```\n"
+		if (old_subscriptions.length > 0) {
+			message += "Old Subscriptions:\n"
 
 			for (let i = 0; i < old_subscriptions.length; i++) {
 				const sub = old_subscriptions[i]
-				message += "Name        : " + sub?.name + "\n"
-				message += "Product     : " + sub?.product + "\n"
-				message += "Subscription: " + sub?.subscription + "\n"
-				message +=
-					"Start: " +
-					new Date(sub.date_start).toLocaleString("PT-pt") +
-					" End: " +
-					new Date(sub.date_end).toLocaleString("PT-pt") +
-					", Cancel: " +
-					sub?.cancel
-				if (i < subscriptions.length) message += "\n\n"
+				message += "Name: " + sub?.name + " Product: " + sub?.product + " Subscription: " + sub?.subscription + "\n"
+				message += "From: " + sub.date_start + " To: " + sub.date_end
+				message += "\n"
 			}
-			message += "```"
+			message += "\n"
 		}
 
-		if (old_free_access.length) {
-			message += "\n### Old Free Access:\n```\n"
-
+		if (old_free_access.length > 0) {
+			message += "Old Free Access:\n"
 			for (let i = 0; i < old_free_access.length; i++) {
 				const access = old_free_access[i]
-				message += "Name   : " + access?.name + "\n"
-				message += "Product: " + access?.product + "\n"
-				message +=
-					"Start: " +
-					new Date(access.date_start).toLocaleString("PT-pt") +
-					", End: " +
-					new Date(access.date_end).toLocaleString("PT-pt")
-				if (i < subscriptions.length) message += "\n\n"
+				message += "Name: " + access.name + " Product: " + access.product + "\n"
+				message += "From: " + access.date_start + " To: " + access.date_end 
+				if (i > old_free_access.length) message += "\n"
 			}
-			message += "```"
 		}
 
-		if (message === "") message = "User has no subscription nor free access data"
+		if (message.length > 1990) message = message.substring(0, 1990) + "\n...\n"
 
+		message += "```"
 		await interaction.editReply(message)
 	}
 }

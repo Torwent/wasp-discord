@@ -109,76 +109,73 @@ const command: Command = {
 					name: data.name,
 					product: sub.product,
 					subscription: sub.subscription,
-					date_start: sub.date_start,
-					date_end: sub.date_end,
+					date_start: new Date(sub.date_start).toLocaleString("PT-pt").split(",")[0].trim(),
+					date_end: new Date(sub.date_end).toLocaleString("PT-pt").split(",")[0].trim(),
 					cancel: sub.cancel
 				}
 			})
 		)
 
 		const free_access = await Promise.all(
-			freeData.map(async (sub) => {
+			freeData.map(async (access) => {
 				const { data, error } = await supabase
 					.schema("scripts")
 					.from("products")
 					.select("name")
-					.eq("id", sub.product)
+					.eq("id", access.product)
 					.single()
 
 				if (error) {
 					console.error(error)
 					await interaction.editReply(
-						"Error trying to get product data for product: " + sub.product
+						"Error trying to get product data for product: " + access.product
 					)
 					return
 				}
 
 				if (data == null) {
-					await interaction.editReply("Error, no product data for product: " + sub.product)
+					await interaction.editReply("Error, no product data for product: " + access.product)
 					return
 				}
 
 				return {
 					name: data.name,
-					product: sub.product,
-					date_start: sub.date_start,
-					date_end: sub.date_end
+					product: access.product,
+					date_start: new Date(access.date_start).toLocaleString("PT-pt").split(",")[0].trim(),
+					date_end: new Date(access.date_end).toLocaleString("PT-pt").split(",")[0].trim()
 				}
 			})
 		)
 
-		let message = ""
+		let message = "```\n"
 
-		if (subscriptions.length) {
-			message += "### Subscriptions:\n```\n"
+		if (subscriptions.length > 0) {
+			message += "Subscriptions:\n"
 
 			for (let i = 0; i < subscriptions.length; i++) {
 				const sub = subscriptions[i]
-				message += "Name        : " + sub?.name + "\n"
-				message += "Product     : " + sub?.product + "\n"
-				message += "Subscription: " + sub?.subscription + "\n"
-				message +=
-					"Start: " + sub?.date_start + " End: " + sub?.date_end + ", Cancel: " + sub?.cancel
-				if (i < subscriptions.length) message += "\n\n"
+				message += "Name: " + sub.name + " Product: " + sub.product + " Subscription: " + sub.subscription + "\n"
+				message += "From: " + sub.date_start + " To: " + sub.date_end + " Cancel: " + sub.cancel
+				message += "\n"
 			}
-			message += "```"
+			message += "\n"
 		}
 
-		if (free_access.length) {
-			if (subscriptions.length > 0) message += "\n"
-			message += "### Free Access:\n```\n"
+		if (free_access.length > 0) {
+			message += "Free Access:\n"
 
 			for (let i = 0; i < free_access.length; i++) {
 				const access = free_access[i]
-				message += "Name   : " + access?.name + "\n"
-				message += "Product: " + access?.product + "\n"
-				message += "Start: " + access?.date_start + ", End: " + access?.date_end
-				if (i < subscriptions.length) message += "\n\n"
+				message += "Name: " + access.name + " Product: " + access.product + "\n"
+				message += "From: " + access.date_start + " To: " + access.date_end
+				if (i < subscriptions.length) message += "\n"
 			}
-			message += "```"
+			message += "\n"
 		}
 
-		if (message.length > 1999) message = message.substring(0, 1999);
+		if (message.length > 1990) message = message.substring(0, 1990) + "\n...\n"
+		message += "```"
+
 		await interaction.editReply(message)
 	}
 }
