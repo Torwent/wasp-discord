@@ -35,6 +35,28 @@ export default new ClientEvent("messageCreate", async (message) => {
 		}
 	}
 
+	if (message.channel === achievements) {
+	        if (message.channel.isThread()) return
+	
+	        const channel = message.channel as TextChannel
+	
+		if (message.type === MessageType.Reply) {
+			let msg = "<@" + message.author.id + "> your message has been deleted.\n\n"
+			msg += "Please keep conversations within threads.\n\n"
+			
+			let n = 30
+			const reply = await message.reply(msg + getEnding(n--))
+			await message.delete()
+			
+			await timedReply(reply, msg, n)
+			return
+		}
+
+	        const thread = await message.startThread()
+	        let msg = ":tada:"
+	        await thread.send(msg)
+    	}
+	
 	if (message.channel === bans) {
 		if (message.channel.isThread()) return
 
