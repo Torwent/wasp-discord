@@ -1,5 +1,5 @@
 import { ClientEvent } from "$lib/event"
-import { bans } from "$lib/lib"
+import { achievements, bans } from "$lib/lib"
 import { Message, MessageType, TextChannel } from "discord.js"
 
 // Cooldown map to store the last execution time for each user
@@ -36,11 +36,29 @@ export default new ClientEvent("messageCreate", async (message) => {
 	}
 
 	if (message.channel === achievements) {
-	        if (message.channel.isThread()) return
-	
-	        const channel = message.channel as TextChannel
-	
-		if (message.type === MessageType.Reply) {
+	    if (message.channel.isThread()) return
+	    const channel = message.channel as TextChannel
+		
+		if (message.attachments.size <= 0) {
+			let msg = "<@" + message.author.id + "> your message has been deleted.\n\n"
+			msg += "This is a media only server, please post a picture of your achievement 😄\n\n"
+			let n = 30
+			const reply = await message.reply(msg + getEnding(n--))
+			await message.delete()
+			
+			await timedReply(reply, msg, n)
+			return
+		}
+
+		for (const attachment of message.attachments.values()) {
+			const contentType = attachment.contentType || attachment.name
+			if (!contentType.startsWith("image") || contentType === "image/gif") {
+				await message.delete()
+				return
+			}
+		}
+		
+		if ((message.type === MessageType.Reply)) {
 			let msg = "<@" + message.author.id + "> your message has been deleted.\n\n"
 			msg += "Please keep conversations within threads.\n\n"
 			
@@ -52,10 +70,9 @@ export default new ClientEvent("messageCreate", async (message) => {
 			return
 		}
 
-	        const thread = await message.startThread()
-	        let msg = ":tada:"
-	        await thread.send(msg)
-    	}
+		const thread = await message.startThread({ name: "Achievement #" + (channel.threads.cache.size + 1) })
+		await thread.send(":tada:")
+	}
 	
 	if (message.channel === bans) {
 		if (message.channel.isThread()) return
@@ -95,31 +112,5 @@ export default new ClientEvent("messageCreate", async (message) => {
 		msg +=
 			" and try to not attack anyone just because you don't believe them or simply don't agree with them."
 		await thread.send(msg)
-	}
-
-	const role = message.mentions.roles.find((role) => role.name === "Moderator")
-	if (role) {
-		const userId = message.author.id
-		const now = Date.now() // Current time in milliseconds
-
-		const cooldownAmountUser = 5 * 60 * 1000
-		const cooldownAmountGlobal = 1 * 60 * 1000
-
-		if (now - lastGlobalExecution < cooldownAmountGlobal) return
-
-		if (cooldowns.has(userId)) {
-			const lastTime = cooldowns.get(userId)
-
-			if (now - lastTime < cooldownAmountUser) return
-		}
-
-		cooldowns.set(userId, now)
-
-		let msg = "<@" + userId + "> you can report the user by:\n"
-		msg += "1. Right clicking them or their message\n"
-		msg += "2. Click Apps\n"
-		msg += "3. Click Report user/message"
-
-		await message.reply({ content: msg })
 	}
 })
