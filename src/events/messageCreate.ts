@@ -24,11 +24,17 @@ async function timedReply(reply: Message, msg: string, n: number) {
 export default new ClientEvent("messageCreate", async (message) => {
 	if (message.author.bot) return
 
-	if (message.attachments.size > 0) {
+	if (message.attachments.size > 0) {	
 		for (const attachment of message.attachments.values()) {
+			console.log(attachment)
 			const contentType = attachment.contentType || attachment.name
 
 			if (contentType.startsWith("audio") || /\.(mp3|wav|ogg|flac)$/i.test(contentType)) {
+				await message.delete()
+				return
+			}
+
+			if ((!contentType.startsWith("image") || contentType === "image/gif") && (message.channel === achievements)) {
 				await message.delete()
 				return
 			}
@@ -38,24 +44,16 @@ export default new ClientEvent("messageCreate", async (message) => {
 	if (message.channel === achievements) {
 	    if (message.channel.isThread()) return
 	    const channel = message.channel as TextChannel
-		
-		if (message.attachments.size <= 0) {
+
+		if (message.attachments.size === 0) {
 			let msg = "<@" + message.author.id + "> your message has been deleted.\n\n"
 			msg += "This is a media only server, please post a picture of your achievement 😄\n\n"
-			let n = 30
+			let n = 15
 			const reply = await message.reply(msg + getEnding(n--))
 			await message.delete()
 			
 			await timedReply(reply, msg, n)
 			return
-		}
-
-		for (const attachment of message.attachments.values()) {
-			const contentType = attachment.contentType || attachment.name
-			if (!contentType.startsWith("image") || contentType === "image/gif") {
-				await message.delete()
-				return
-			}
 		}
 		
 		if ((message.type === MessageType.Reply)) {
