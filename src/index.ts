@@ -161,14 +161,19 @@ export class ExtendedClient extends Client {
 
 export const client = new ExtendedClient({
 	intents: [
-		
+		GatewayIntentBits.DirectMessages,
+		GatewayIntentBits.GuildIntegrations,
+		GatewayIntentBits.DirectMessagePolls,
+		GatewayIntentBits.DirectMessageReactions,
+		GatewayIntentBits.DirectMessageTyping,
 		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMembers,
 		GatewayIntentBits.GuildMessages,
 		GatewayIntentBits.GuildMessageReactions,
 		GatewayIntentBits.MessageContent,
 		32767
 	],
-	partials: [Partials.Message, Partials.Channel, Partials.Reaction]
+	partials: [Partials.Message, Partials.Channel, Partials.Reaction, Partials.User]
 })
 
 client.start()

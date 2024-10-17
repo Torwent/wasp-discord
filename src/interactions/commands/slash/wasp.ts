@@ -1,8 +1,11 @@
 import type { Command } from "$lib/interaction"
+import { ApplicationIntegrationType, InteractionContextType } from "discord.js"
 
 const command: Command = {
 	name: "wasp",
 	description: 'Replies with resources from https://waspscripts.com"',
+	integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
+	contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
 	options: [
 		{
 			type: 3,

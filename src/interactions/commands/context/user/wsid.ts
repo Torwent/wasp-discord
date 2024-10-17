@@ -1,10 +1,12 @@
 import type { Command } from "$lib/interaction"
 import { getWSID, supabase } from "$lib/supabase"
-import { ApplicationCommandType } from "discord.js"
+import { ApplicationCommandType, ApplicationIntegrationType, InteractionContextType } from "discord.js"
 
 const command: Command = {
 	name: "WaspScripts ID",
 	type: ApplicationCommandType.User,
+	integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
+	contexts: [InteractionContextType.Guild,InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
 	run: async ({ interaction }) => {
 		await interaction.deferReply({ ephemeral: true })
 		const user = interaction.options.data[0].value as string

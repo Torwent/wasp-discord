@@ -1,9 +1,12 @@
 import type { Command } from "$lib/interaction"
-import { supabase } from "$lib/supabase"
+import { supabase, User } from "$lib/supabase"
+import { ApplicationIntegrationType, InteractionContextType } from "discord.js"
 
 const command: Command = {
 	name: "user",
 	description: "Gets the waspscripts user info",
+	integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
+	contexts: [InteractionContextType.Guild,InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
 	options: [{ type: 6, name: "user", description: "Discord user", required: true }],
 	run: async ({ interaction }) => {
 		await interaction.deferReply({ ephemeral: true })
@@ -28,11 +31,11 @@ const command: Command = {
 			.schema("profiles")
 			.from("profiles")
 			.select(
-				"id, customer_id, private!profiles_id_fkey (email), roles!profiles_id_fkey (premium, vip, tester, scripter, moderator, administrator)"
+				"id, customer_id, private!private_id_fkey (email), roles!roles_id_fkey (premium, vip, tester, scripter, moderator, administrator)"
 			)
 			.eq("discord", user)
 			.limit(1)
-			.single()
+			.single<User>()
 
 		if (error) {
 			await interaction.editReply("Database error: \n```\n" + JSON.stringify(error) + "```")

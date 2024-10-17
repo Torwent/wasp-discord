@@ -1,11 +1,13 @@
 import type { Command } from "$lib/interaction"
 import { getRole } from "$lib/lib"
 import { getWSID, supabase } from "$lib/supabase"
-import { ApplicationCommandType } from "discord.js"
+import { ApplicationCommandType, ApplicationIntegrationType, InteractionContextType } from "discord.js"
 
 const command: Command = {
 	name: "WaspScripts Access",
 	type: ApplicationCommandType.User,
+	integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
+	contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
 	run: async ({ interaction }) => {
 		await interaction.deferReply({ ephemeral: true }).catch((err) => console.error(err))
 		const role = getRole(interaction.member, ["Tester", "Scripter", "Moderator", "Administrator"])

@@ -1,11 +1,13 @@
 import type { Command } from "$lib/interaction"
 import { getRole } from "$lib/lib"
-import { supabase } from "$lib/supabase"
-import { ApplicationCommandType } from "discord.js"
+import { supabase, User } from "$lib/supabase"
+import { ApplicationCommandType, ApplicationIntegrationType, InteractionContextType } from "discord.js"
 
 const command: Command = {
 	name: "User information",
 	type: ApplicationCommandType.User,
+	integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
+	contexts: [InteractionContextType.Guild,InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
 	run: async ({ interaction }) => {
 		await interaction.deferReply({ ephemeral: true })
 		const roles = interaction.member.roles.cache
@@ -27,10 +29,10 @@ const command: Command = {
 			.schema("profiles")
 			.from("profiles")
 			.select(
-				"id, customer_id, private!profiles_id_fkey (email), roles!profiles_id_fkey (premium, vip, tester, scripter, moderator, administrator)"
+				"id, customer_id, private!private_id_fkey (email), roles!roles_id_fkey (premium, vip, tester, scripter, moderator, administrator)"
 			)
 			.eq("discord", user)
-			.single()
+			.single<User>()
 
 		if (error) {
 			await interaction.editReply("Database error: \n```\n" + JSON.stringify(error) + "```")

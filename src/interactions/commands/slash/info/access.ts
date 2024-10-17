@@ -1,10 +1,12 @@
 import type { Command } from "$lib/interaction"
 import { getRole } from "$lib/lib"
 import { supabase } from "$lib/supabase"
+import { ApplicationIntegrationType } from "discord.js"
 
 const command: Command = {
 	name: "access",
 	description: "Gets the user subscriptions and free access information",
+	integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
 	options: [{ type: 6, name: "user", description: "Discord user", required: true }],
 	run: async ({ interaction }) => {
 		await interaction.deferReply({ ephemeral: true }).catch((err) => console.error(err))
