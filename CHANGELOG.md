@@ -1,3 +1,12 @@
+## [0.11.1](https://github.com/Torwent/wasp-discord/compare/v0.11.0...v0.11.1) (2024-10-23)
+
+
+### Bug Fixes
+
+* simplify message screening and added some more information when messages get deleted ([3553c0b](https://github.com/Torwent/wasp-discord/commit/3553c0b3431c9e5d36610116a2cb09081c269b7c))
+
+
+
 # [0.11.0](https://github.com/Torwent/wasp-discord/compare/v0.10.10...v0.11.0) (2024-10-17)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * packages and types update ([8d0c015](https://github.com/Torwent/wasp-discord/commit/8d0c015f55c74c7983da22b57fdbb982d00a8f3d))
-
-
-
-## [0.10.7](https://github.com/Torwent/wasp-discord/compare/v0.10.6...v0.10.7) (2024-10-08)
-
-
-### Bug Fixes
-
-* a lot of error handling added ([dd0bb76](https://github.com/Torwent/wasp-discord/commit/dd0bb769024e315c999e9f811cb019a784064fae))
 
 
 
