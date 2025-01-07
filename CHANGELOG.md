@@ -1,3 +1,12 @@
+## [0.12.1](https://github.com/Torwent/wasp-discord/compare/v0.12.0...v0.12.1) (2025-01-07)
+
+
+### Bug Fixes
+
+* access command ([529b57f](https://github.com/Torwent/wasp-discord/commit/529b57f154db2d09f9584ee93d77795287c6d80d))
+
+
+
 # [0.12.0](https://github.com/Torwent/wasp-discord/compare/v0.11.1...v0.12.0) (2025-01-07)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * should manage achievements properly now ([39f8c44](https://github.com/Torwent/wasp-discord/commit/39f8c44d0f2f8023c5c05d73a122f4053b0e8529))
-
-
-
-## [0.10.9](https://github.com/Torwent/wasp-discord/compare/v0.10.8...v0.10.9) (2024-10-11)
-
-
-### Bug Fixes
-
-* tweaks to achievements and removed mod ping ([8b42ef6](https://github.com/Torwent/wasp-discord/commit/8b42ef66294e2096566cdb15c79cf9e897fdf6a4))
 
 
 
