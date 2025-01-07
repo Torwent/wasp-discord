@@ -1,3 +1,12 @@
+# [0.12.0](https://github.com/Torwent/wasp-discord/compare/v0.11.1...v0.12.0) (2025-01-07)
+
+
+### Features
+
+* make some commands use shared code ([08ec9c9](https://github.com/Torwent/wasp-discord/commit/08ec9c9a5499535e8f26b973d67c41fefacfe3a1))
+
+
+
 ## [0.11.1](https://github.com/Torwent/wasp-discord/compare/v0.11.0...v0.11.1) (2024-10-23)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * tweaks to achievements and removed mod ping ([8b42ef6](https://github.com/Torwent/wasp-discord/commit/8b42ef66294e2096566cdb15c79cf9e897fdf6a4))
-
-
-
-## [0.10.8](https://github.com/Torwent/wasp-discord/compare/v0.10.7...v0.10.8) (2024-10-08)
-
-
-### Bug Fixes
-
-* packages and types update ([8d0c015](https://github.com/Torwent/wasp-discord/commit/8d0c015f55c74c7983da22b57fdbb982d00a8f3d))
 
 
 
