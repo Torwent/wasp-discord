@@ -1,3 +1,12 @@
+## [0.12.2](https://github.com/Torwent/wasp-discord/compare/v0.12.1...v0.12.2) (2025-06-15)
+
+
+### Bug Fixes
+
+* change roles from ids to names ([226357a](https://github.com/Torwent/wasp-discord/commit/226357acd999b264807416a75e0c7de05a8ee1eb))
+
+
+
 ## [0.12.1](https://github.com/Torwent/wasp-discord/compare/v0.12.0...v0.12.1) (2025-01-07)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * read notes ([8e76b17](https://github.com/Torwent/wasp-discord/commit/8e76b1727ea4b22228f4f66bfadc1d2f487fd54c))
-
-
-
-## [0.10.10](https://github.com/Torwent/wasp-discord/compare/v0.10.9...v0.10.10) (2024-10-12)
-
-
-### Bug Fixes
-
-* should manage achievements properly now ([39f8c44](https://github.com/Torwent/wasp-discord/commit/39f8c44d0f2f8023c5c05d73a122f4053b0e8529))
 
 
 
