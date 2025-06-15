@@ -85,9 +85,9 @@ export class ExtendedClient extends Client {
 			console.log(`Ready! Logged in as ${this.user.tag}`)
 
 			const discordRoles = {
-				scripter: "1069140447647240254",
-				vip: "1193104319122260018",
-				premium: "1193104090264252448"
+				scripter: "Scripter",
+				vip: "VIP",
+				premium: "Premium"
 			}
 
 			supabase
@@ -96,48 +96,71 @@ export class ExtendedClient extends Client {
 					"postgres_changes",
 					{ event: "UPDATE", schema: "profiles", table: "roles" },
 					async (payload) => {
-						const id = payload.new.id as string
-						const { premium, vip, scripter } = payload.new
-						const roles = { premium: premium, vip: vip, scripter: scripter }
 
-						console.log("Database user ", id, " roles changed: ", roles)
+							const id = payload.new.id as string
+							const { premium, vip, scripter } = payload.new
+							const roles = { premium: premium, vip: vip, scripter: scripter }
 
-						const { data, error } = await supabase
-							.schema("profiles")
-							.from("profiles")
-							.select("discord")
-							.limit(1)
-							.eq("id", id)
-							.single()
+							console.log("Database user ", id, " roles changed: ", roles)
 
-						if (error) {
-							console.error(error)
-							return
-						}
+							const { data, error } = await supabase
+								.schema("profiles")
+								.from("profiles")
+								.select("discord")
+								.limit(1)
+								.eq("id", id)
+								.single()
 
-						const discord = data.discord
-						const member = guild.members.cache.get(discord)
+							if (error) {
+								console.error(error)
+								return
+							}
 
-						if (!member) {
-							console.log("User ", discord, " not found on the server!")
-							return
-						}
+							const discord = data.discord
+							const member = await guild.members.fetch(discord)
 
-						Object.keys(discordRoles).forEach(async (key) => {
-							if (key === "premium" || key === "vip" || key === "scripter") {
-								const r = discordRoles[key]
-								const role = guild.roles.cache.get(r)
+							if (!member) {
+								console.log("User ", discord, " not found on the server!")
+								return
+							}
 
-								if (role) {
-									if (payload.new[key]) await member.roles.add(role)
-									else await member.roles.remove(role)
+							const rolesToAdd = [];
+							const rolesToRemove = [];
+
+							const allRoles = guild.roles.cache.size > 0 ? guild.roles.cache : await guild.roles.fetch();
+
+							for (const key of ["premium", "vip", "scripter"]) {
+								const roleName = discordRoles[key];
+								const role = allRoles.find(r => r.name.toLowerCase() === roleName.toLowerCase());
+
+								if (!role) {
+									console.warn(`Role "${roleName}" not found.`);
+									continue;
+								}
+
+								if (payload.new[key]) {
+									rolesToAdd.push(role.id);
+								} else {
+									rolesToRemove.push(role.id);
 								}
 							}
-						})
+
+							try {
+								if (rolesToAdd.length > 0) {
+									await member.roles.add(rolesToAdd);
+								}
+								if (rolesToRemove.length > 0) {
+									await member.roles.remove(rolesToRemove);
+								}
+							} catch (err) {
+								console.error(`Error modifying roles for ${member.user.tag}:`, err);
+							}
+
+
 					}
 				)
 				.subscribe()
-		})
+			})
 	}
 
 	async registerEvents() {
@@ -173,7 +196,7 @@ export const client = new ExtendedClient({
 		GatewayIntentBits.MessageContent,
 		32767
 	],
-	partials: [Partials.Message, Partials.Channel, Partials.Reaction, Partials.User]
+	partials: [Partials.Message, Partials.Channel, Partials.Reaction, Partials.User, Partials.GuildMember]
 })
 
 client.start()

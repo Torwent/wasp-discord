@@ -29,7 +29,7 @@ const command: Command = {
 			.schema("profiles")
 			.from("profiles")
 			.select(
-				"id, customer_id, private!private_id_fkey (email), roles!roles_id_fkey (premium, vip, tester, scripter, moderator, administrator)"
+				"id, customer_id, private!left (email), roles!left (premium, vip, tester, scripter, moderator, administrator)"
 			)
 			.eq("discord", user)
 			.single<User>()
