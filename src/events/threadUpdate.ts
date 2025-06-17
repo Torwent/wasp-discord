@@ -3,7 +3,7 @@ import { ForumChannel } from "discord.js"
 
 export default new ClientEvent("threadUpdate", async (thread) => {
 	const parent = thread.parent as ForumChannel
-	if (parent.name !== "👋help") return
+	if (parent.name !== "🙋help") return
 
 	const solved = parent.availableTags.find((tag) => tag.name === "solved")
 
