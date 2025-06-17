@@ -1,3 +1,12 @@
+## [0.12.3](https://github.com/Torwent/wasp-discord/compare/v0.12.2...v0.12.3) (2025-06-17)
+
+
+### Bug Fixes
+
+* help channel name change ([3186558](https://github.com/Torwent/wasp-discord/commit/318655818e435feab09f723120d432cbbd66d003))
+
+
+
 ## [0.12.2](https://github.com/Torwent/wasp-discord/compare/v0.12.1...v0.12.2) (2025-06-15)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * simplify message screening and added some more information when messages get deleted ([3553c0b](https://github.com/Torwent/wasp-discord/commit/3553c0b3431c9e5d36610116a2cb09081c269b7c))
-
-
-
-# [0.11.0](https://github.com/Torwent/wasp-discord/compare/v0.10.10...v0.11.0) (2024-10-17)
-
-
-### Features
-
-* read notes ([8e76b17](https://github.com/Torwent/wasp-discord/commit/8e76b1727ea4b22228f4f66bfadc1d2f487fd54c))
 
 
 
