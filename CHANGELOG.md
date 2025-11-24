@@ -1,3 +1,12 @@
+## [0.12.4](https://github.com/Torwent/wasp-discord/compare/v0.12.3...v0.12.4) (2025-11-24)
+
+
+### Bug Fixes
+
+* better env file loading ([4303c8b](https://github.com/Torwent/wasp-discord/commit/4303c8b76bd62b07de23c489e6f3a2ee17281284))
+
+
+
 ## [0.12.3](https://github.com/Torwent/wasp-discord/compare/v0.12.2...v0.12.3) (2025-06-17)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * make some commands use shared code ([08ec9c9](https://github.com/Torwent/wasp-discord/commit/08ec9c9a5499535e8f26b973d67c41fefacfe3a1))
-
-
-
-## [0.11.1](https://github.com/Torwent/wasp-discord/compare/v0.11.0...v0.11.1) (2024-10-23)
-
-
-### Bug Fixes
-
-* simplify message screening and added some more information when messages get deleted ([3553c0b](https://github.com/Torwent/wasp-discord/commit/3553c0b3431c9e5d36610116a2cb09081c269b7c))
 
 
 
