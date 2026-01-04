@@ -11,7 +11,8 @@ import {
 	Partials,
 	Guild,
 	Role,
-	ApplicationCommandType
+	ApplicationCommandType,
+	GuildMember
 } from "discord.js"
 import { glob } from "glob"
 import { Command } from "$lib/interaction"
@@ -117,7 +118,10 @@ export class ExtendedClient extends Client {
 							}
 
 							const discord = data.discord
-							const member = await guild.members.fetch(discord)
+							const member: GuildMember | undefined = await guild.members.fetch(discord).catch(err => {
+								console.error(err)
+								return undefined
+							})
 
 							if (!member) {
 								console.log("User ", discord, " not found on the server!")
