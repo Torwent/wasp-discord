@@ -13,8 +13,6 @@ for (const file of envFiles) {
 // Check if any environment variables were loaded
 if (Object.keys(process.env).length === 0) {
   console.warn("No environment variables found!");
-} else {
-  console.log("Environment variables loaded:", Object.keys(process.env));
 }
 
 export default process.env;
