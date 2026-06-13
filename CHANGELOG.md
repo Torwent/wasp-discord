@@ -1,3 +1,12 @@
+# [0.13.0](https://github.com/Torwent/wasp-discord/compare/v0.12.4...v0.13.0) (2026-06-13)
+
+
+### Features
+
+* edited messages older than 30mins now get deleted ([b914821](https://github.com/Torwent/wasp-discord/commit/b9148217a9c2659b9403d1533b85da1084f5acf3))
+
+
+
 ## [0.12.4](https://github.com/Torwent/wasp-discord/compare/v0.12.3...v0.12.4) (2025-11-24)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * access command ([529b57f](https://github.com/Torwent/wasp-discord/commit/529b57f154db2d09f9584ee93d77795287c6d80d))
-
-
-
-# [0.12.0](https://github.com/Torwent/wasp-discord/compare/v0.11.1...v0.12.0) (2025-01-07)
-
-
-### Features
-
-* make some commands use shared code ([08ec9c9](https://github.com/Torwent/wasp-discord/commit/08ec9c9a5499535e8f26b973d67c41fefacfe3a1))
 
 
 
