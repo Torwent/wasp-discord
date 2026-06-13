@@ -97,74 +97,74 @@ export class ExtendedClient extends Client {
 					"postgres_changes",
 					{ event: "UPDATE", schema: "profiles", table: "roles" },
 					async (payload) => {
+						const id = payload.new.id as string
+						const { premium, vip, scripter } = payload.new
+						const roles = { premium: premium, vip: vip, scripter: scripter }
 
-							const id = payload.new.id as string
-							const { premium, vip, scripter } = payload.new
-							const roles = { premium: premium, vip: vip, scripter: scripter }
+						console.log("Database user ", id, " roles changed: ", roles)
 
-							console.log("Database user ", id, " roles changed: ", roles)
+						const { data, error } = await supabase
+							.schema("profiles")
+							.from("profiles")
+							.select("discord")
+							.limit(1)
+							.eq("id", id)
+							.single()
 
-							const { data, error } = await supabase
-								.schema("profiles")
-								.from("profiles")
-								.select("discord")
-								.limit(1)
-								.eq("id", id)
-								.single()
+						if (error) {
+							console.error(error)
+							return
+						}
 
-							if (error) {
-								console.error(error)
-								return
-							}
-
-							const discord = data.discord
-							const member: GuildMember | undefined = await guild.members.fetch(discord).catch(err => {
+						const discord = data.discord
+						const member: GuildMember | undefined = await guild.members
+							.fetch(discord)
+							.catch((err) => {
 								console.error(err)
 								return undefined
 							})
 
-							if (!member) {
-								console.log("User ", discord, " not found on the server!")
-								return
+						if (!member) {
+							console.log("User ", discord, " not found on the server!")
+							return
+						}
+
+						const rolesToAdd = []
+						const rolesToRemove = []
+
+						const allRoles =
+							guild.roles.cache.size > 0 ? guild.roles.cache : await guild.roles.fetch()
+
+						for (const key of ["premium", "vip", "scripter"]) {
+							const roleName = discordRoles[key]
+							const role = allRoles.find((r) => r.name.toLowerCase() === roleName.toLowerCase())
+
+							if (!role) {
+								console.warn(`Role "${roleName}" not found.`)
+								continue
 							}
 
-							const rolesToAdd = [];
-							const rolesToRemove = [];
-
-							const allRoles = guild.roles.cache.size > 0 ? guild.roles.cache : await guild.roles.fetch();
-
-							for (const key of ["premium", "vip", "scripter"]) {
-								const roleName = discordRoles[key];
-								const role = allRoles.find(r => r.name.toLowerCase() === roleName.toLowerCase());
-
-								if (!role) {
-									console.warn(`Role "${roleName}" not found.`);
-									continue;
-								}
-
-								if (payload.new[key]) {
-									rolesToAdd.push(role.id);
-								} else {
-									rolesToRemove.push(role.id);
-								}
+							if (payload.new[key]) {
+								rolesToAdd.push(role.id)
+							} else {
+								rolesToRemove.push(role.id)
 							}
+						}
 
-							try {
-								if (rolesToAdd.length > 0) {
-									await member.roles.add(rolesToAdd);
-								}
-								if (rolesToRemove.length > 0) {
-									await member.roles.remove(rolesToRemove);
-								}
-							} catch (err) {
-								console.error(`Error modifying roles for ${member.user.tag}:`, err);
+						try {
+							if (rolesToAdd.length > 0) {
+								await member.roles.add(rolesToAdd)
 							}
-
-
+							if (rolesToRemove.length > 0) {
+								await member.roles.remove(rolesToRemove)
+							}
+						} catch (err) {
+							console.error(`Error modifying roles for ${member.user.tag}:`, err)
+						}
 					}
 				)
 				.subscribe()
-			})
+		})
 	}
 
 	async registerEvents() {
@@ -200,7 +200,13 @@ export const client = new ExtendedClient({
 		GatewayIntentBits.MessageContent,
 		32767
 	],
-	partials: [Partials.Message, Partials.Channel, Partials.Reaction, Partials.User, Partials.GuildMember]
+	partials: [
+		Partials.Message,
+		Partials.Channel,
+		Partials.Reaction,
+		Partials.User,
+		Partials.GuildMember
+	]
 })
 
 client.start()

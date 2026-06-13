@@ -11,58 +11,74 @@ export default new ClientEvent("messageCreate", async (message) => {
 
 			if (contentType.startsWith("audio") || /\.(mp3|wav|ogg|flac)$/i.test(contentType)) {
 				let msg = "<@" + message.author.id + "> your message has been deleted.\n\n"
-				msg += "The file type `" + contentType + "` is not allowed on this server. If this seems like a mistake contact a moderator and let them know 😄\n\n"
+				msg +=
+					"The file type `" +
+					contentType +
+					"` is not allowed on this server. If this seems like a mistake contact a moderator and let them know 😄\n\n"
 				msg += "This message will self-destruct in **15** seconds."
-				const reply = await message.reply(msg)
-				await message.delete()
+				const reply = await message.reply(msg).catch((e) => console.error(e))
+				await message.delete().catch((e) => console.error(e))
 
-				setTimeout(async () => await reply.delete(), 15000)
+				if (reply)
+					setTimeout(async () => await reply.delete().catch((e) => console.error(e)), 15000)
 				return
 			}
 
-			if (message.channel !== achievements) continue;
+			if (message.channel !== achievements) continue
 
-			if ((!contentType.startsWith("image") && !contentType.startsWith("video")) || contentType === "image/gif") {
+			if (
+				(!contentType.startsWith("image") && !contentType.startsWith("video")) ||
+				contentType === "image/gif"
+			) {
 				let msg = "<@" + message.author.id + "> your message has been deleted.\n\n"
-				msg += "The file type `" + contentType + "` is not allowed on this channel. If this seems like a mistake contact a moderator and let them know 😄\n\n"
+				msg +=
+					"The file type `" +
+					contentType +
+					"` is not allowed on this channel. If this seems like a mistake contact a moderator and let them know 😄\n\n"
 				msg += "This message will self-destruct in **15** seconds."
-				const reply = await message.reply(msg)
-				await message.delete()
+				const reply = await message.reply(msg).catch((e) => console.error(e))
+				await message.delete().catch((e) => console.error(e))
 
-				setTimeout(async () => await reply.delete(), 15000)
+				if (reply)
+					setTimeout(async () => await reply.delete().catch((e) => console.error(e)), 15000)
 				return
 			}
 		}
 	}
 
 	if (message.channel === achievements) {
-	    if (message.channel.isThread()) return
-	    const channel = message.channel as TextChannel
+		if (message.channel.isThread()) return
+		const channel = message.channel as TextChannel
 
 		if (message.attachments.size === 0) {
 			let msg = "<@" + message.author.id + "> your message has been deleted.\n\n"
 			msg += "This is a media only server, please post a picture of your achievement 😄\n\n"
 			msg += "This message will self-destruct in **15** seconds."
-			const reply = await message.reply(msg)
-			await message.delete()
+			const reply = await message.reply(msg).catch((e) => console.error(e))
+			await message.delete().catch((e) => console.error(e))
 
-			setTimeout(async () => await reply.delete(), 15000)
+			if (reply) setTimeout(async () => await reply.delete().catch((e) => console.error(e)), 15000)
 			return
 		}
 
-		if ((message.type === MessageType.Reply)) {
+		if (message.type === MessageType.Reply) {
 			let msg = "<@" + message.author.id + "> your message has been deleted.\n\n"
 			msg += "Please keep conversations within threads.\n\n"
 			msg += "This message will self-destruct in **30** seconds."
 
-			const reply = await message.reply(msg)
-			await message.delete()
-			setTimeout(async () => await reply.delete(), 30000)
+			const reply = await message.reply(msg).catch((e) => console.error(e))
+			await message.delete().catch((e) => console.error(e))
+
+			if (reply) setTimeout(async () => await reply.delete().catch((e) => console.error(e)), 15000)
 			return
 		}
 
-		const thread = await message.startThread({ name: "Achievement #" + (channel.threads.cache.size + 1) })
-		await thread.send(":tada:")
+		const thread = await message
+			.startThread({
+				name: "Achievement #" + (channel.threads.cache.size + 1)
+			})
+			.catch((e) => console.error(e))
+		if (thread) await thread.send(":tada:").catch((e) => console.error(e))
 	}
 
 	if (message.channel === bans) {
@@ -90,17 +106,20 @@ export default new ClientEvent("messageCreate", async (message) => {
 			msg += "```\n\n"
 			msg += "This message will self-destruct in **30** seconds."
 
-			const reply = await message.reply(msg)
-			await message.delete()
-			setTimeout(async () => await reply.delete(), 30000)
+			const reply = await message.reply(msg).catch((e) => console.error(e))
+			await message.delete().catch((e) => console.error(e))
+
+			if (reply) setTimeout(async () => await reply.delete().catch((e) => console.error(e)), 30000)
 			return
 		}
 
-		const thread = await message.startThread({ name: "Ban #" + (channel.threads.cache.size + 1) })
+		const thread = await message
+			.startThread({ name: "Ban #" + (channel.threads.cache.size + 1) })
+			.catch((e) => console.error(e))
 		let msg =
 			"Please take posts on this channel with a grain of salt as anyone can post here with no requirements whatsoever "
 		msg +=
 			" and try to not attack anyone just because you don't believe them or simply don't agree with them."
-		await thread.send(msg)
+		if (thread) await thread.send(msg).catch((e) => console.error(e))
 	}
 })

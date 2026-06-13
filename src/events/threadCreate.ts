@@ -11,5 +11,5 @@ export default new ClientEvent("threadCreate", async (thread) => {
 
 	const unsolved = parent.availableTags.find((tag) => tag.name === "unsolved")
 
-	await thread.setAppliedTags([...thread.appliedTags, unsolved.id])
+	await thread.setAppliedTags([...thread.appliedTags, unsolved.id]).catch((e) => console.error(e))
 })

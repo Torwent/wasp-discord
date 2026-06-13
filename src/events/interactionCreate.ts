@@ -34,7 +34,8 @@ export default new ClientEvent("interactionCreate", async (interaction) => {
 
 	if (interaction.isUserContextMenuCommand()) {
 		const command = client.commands.get(interaction.commandName)
-		if (!command) return interaction.followUp("That command does not exist!")
+		if (!command)
+			return interaction.followUp("That command does not exist!").catch((e) => console.error(e))
 
 		try {
 			command.run({
@@ -51,7 +52,8 @@ export default new ClientEvent("interactionCreate", async (interaction) => {
 
 	if (interaction.isMessageContextMenuCommand()) {
 		const command = client.commands.get(interaction.commandName)
-		if (!command) return interaction.followUp("That command does not exist!")
+		if (!command)
+			return interaction.followUp("That command does not exist!").catch((e) => console.error(e))
 
 		try {
 			command.run({

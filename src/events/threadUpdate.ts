@@ -12,7 +12,7 @@ export default new ClientEvent("threadUpdate", async (thread) => {
 
 	if (newTags !== solved.id) return
 
-	await thread.setAppliedTags([solved.id])
-	await thread.setLocked(true)
-	await thread.setArchived(true)
+	await thread.setAppliedTags([solved.id]).catch((e) => console.error(e))
+	await thread.setLocked(true).catch((e) => console.error(e))
+	await thread.setArchived(true).catch((e) => console.error(e))
 })

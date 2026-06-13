@@ -7,10 +7,6 @@ async function getGuildChannel(guild: Guild, channel: string) {
 	) as GuildTextBasedChannel
 }
 
-async function getGuildRole(guild: Guild, role: string) {
-	return guild.roles.cache.find((r) => r.name === role)
-}
-
 export let management: GuildTextBasedChannel
 export let achievements: GuildTextBasedChannel
 export let bans: GuildTextBasedChannel
