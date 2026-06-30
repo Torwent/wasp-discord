@@ -3,7 +3,7 @@
 	"compilerOptions": {
 		"lib": ["ESNext"],
 		"target": "ESNext",
-		"module": "ESNext",
+		"module": "CommonJS",
 		"moduleResolution": "Node",
 		"outDir": "build",
 		"forceConsistentCasingInFileNames": true,
