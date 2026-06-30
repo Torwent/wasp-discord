@@ -1,18 +1,18 @@
-import fs from "fs";
-import dotenv from "dotenv";
+import fs from "fs"
+import dotenv from "dotenv"
 
-const envFiles = [".env.local", "stack.env", ".env"];
+const envFiles = [".env.local", "stack.env", ".env"]
 
 for (const file of envFiles) {
-  if (fs.existsSync(file)) {
-    dotenv.config({ path: file });
-    break; // stop after the first one found
-  }
+	if (fs.existsSync(file)) {
+		dotenv.config({ path: file })
+		break // stop after the first one found
+	}
 }
 
 // Check if any environment variables were loaded
 if (Object.keys(process.env).length === 0) {
-  console.warn("No environment variables found!");
+	console.warn("No environment variables found!")
 }
 
-export default process.env;
+export default process.env

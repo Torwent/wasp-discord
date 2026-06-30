@@ -24,17 +24,17 @@ export async function getWSID(user: string) {
 }
 
 export interface User {
-    id: string
-    customer_id: string
-    private: {
-        email: string
-    }
-    roles: {
-        premium: boolean
-        vip: boolean
-        tester: boolean
-        scripter: boolean
-        moderator: boolean
-        administrator: boolean
-    }
+	id: string
+	customer_id: string
+	private: {
+		email: string
+	}
+	roles: {
+		premium: boolean
+		vip: boolean
+		tester: boolean
+		scripter: boolean
+		moderator: boolean
+		administrator: boolean
+	}
 }
