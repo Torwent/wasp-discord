@@ -1,3 +1,12 @@
+## [0.13.1](https://github.com/Torwent/wasp-discord/compare/v0.13.0...v0.13.1) (2026-06-30)
+
+
+### Bug Fixes
+
+* read notes ([2af0d57](https://github.com/Torwent/wasp-discord/commit/2af0d57e6f89b53f367175530b43d4b4179bacaa))
+
+
+
 # [0.13.0](https://github.com/Torwent/wasp-discord/compare/v0.12.4...v0.13.0) (2026-06-13)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * change roles from ids to names ([226357a](https://github.com/Torwent/wasp-discord/commit/226357acd999b264807416a75e0c7de05a8ee1eb))
-
-
-
-## [0.12.1](https://github.com/Torwent/wasp-discord/compare/v0.12.0...v0.12.1) (2025-01-07)
-
-
-### Bug Fixes
-
-* access command ([529b57f](https://github.com/Torwent/wasp-discord/commit/529b57f154db2d09f9584ee93d77795287c6d80d))
 
 
 
