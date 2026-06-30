@@ -1,3 +1,12 @@
+## [0.13.2](https://github.com/Torwent/wasp-discord/compare/v0.13.1...v0.13.2) (2026-06-30)
+
+
+### Bug Fixes
+
+* make typescrip ignore the update script ([50acc5c](https://github.com/Torwent/wasp-discord/commit/50acc5cc07eefdcd034d0133f0166bf800ed77ff))
+
+
+
 ## [0.13.1](https://github.com/Torwent/wasp-discord/compare/v0.13.0...v0.13.1) (2026-06-30)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * help channel name change ([3186558](https://github.com/Torwent/wasp-discord/commit/318655818e435feab09f723120d432cbbd66d003))
-
-
-
-## [0.12.2](https://github.com/Torwent/wasp-discord/compare/v0.12.1...v0.12.2) (2025-06-15)
-
-
-### Bug Fixes
-
-* change roles from ids to names ([226357a](https://github.com/Torwent/wasp-discord/commit/226357acd999b264807416a75e0c7de05a8ee1eb))
 
 
 
