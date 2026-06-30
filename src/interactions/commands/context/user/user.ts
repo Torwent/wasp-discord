@@ -19,6 +19,7 @@ const command: Command = {
 		InteractionContextType.BotDM,
 		InteractionContextType.PrivateChannel
 	],
+	roles: ["Tester", "Scripter", "Moderator", "Administrator"],
 	run: async ({ interaction, args }) => {
 		await interaction.deferReply({ ephemeral: true })
 		const roles = interaction.member.roles.cache

@@ -10,7 +10,7 @@ import {
 const modal: Button = {
 	name: "subscriptions_previous",
 	description: "Subscriptions previous button",
-	roles: ["Administrator", "Moderator", "Scripter", "Tester"],
+	roles: ["Tester", "Scripter", "Moderator", "Administrator"],
 	type: ApplicationCommandType.ChatInput,
 	integrationTypes: [
 		ApplicationIntegrationType.GuildInstall,

@@ -21,7 +21,7 @@ export default new ClientEvent("interactionCreate", async (interaction) => {
 		const member = interaction.member as GuildMember
 		if (!member) {
 			return interaction.reply({
-				content: "Only members of waspscripts.dev server can use this command.",
+				content: "Only members of waspscripts.com server can use this command.",
 				flags: MessageFlags.Ephemeral
 			})
 		}
@@ -31,7 +31,7 @@ export default new ClientEvent("interactionCreate", async (interaction) => {
 			if (!role) {
 				return interaction.reply({
 					content:
-						"Only " + button.roles.join("/") + " roles in waspscripts.dev can use this command.",
+						"Only " + button.roles.join("/") + " roles in waspscripts.com can use this command.",
 					flags: MessageFlags.Ephemeral
 				})
 			}
@@ -53,6 +53,25 @@ export default new ClientEvent("interactionCreate", async (interaction) => {
 		const command = client.commands.get(interaction.commandName)
 		if (!command) return interaction.followUp("That command does not exist!")
 
+		const member = interaction.member as GuildMember
+		if (!member) {
+			return interaction.reply({
+				content: "Only members of waspscripts.com server can use this command.",
+				flags: MessageFlags.Ephemeral
+			})
+		}
+
+		if (command.roles && command.roles.length > 0) {
+			const role = getRole(member, command.roles)
+			if (!role) {
+				return interaction.reply({
+					content:
+						"Only " + command.roles.join("/") + " roles in waspscripts.com can use this command.",
+					flags: MessageFlags.Ephemeral
+				})
+			}
+		}
+
 		try {
 			command.run({
 				client,
@@ -71,6 +90,25 @@ export default new ClientEvent("interactionCreate", async (interaction) => {
 		if (!command)
 			return interaction.followUp("That command does not exist!").catch((e) => console.error(e))
 
+		const member = interaction.member as GuildMember
+		if (!member) {
+			return interaction.reply({
+				content: "Only members of waspscripts.com server can use this command.",
+				flags: MessageFlags.Ephemeral
+			})
+		}
+
+		if (command.roles && command.roles.length > 0) {
+			const role = getRole(member, command.roles)
+			if (!role) {
+				return interaction.reply({
+					content:
+						"Only " + command.roles.join("/") + " roles in waspscripts.com can use this command.",
+					flags: MessageFlags.Ephemeral
+				})
+			}
+		}
+
 		try {
 			command.run({
 				client,
@@ -88,6 +126,25 @@ export default new ClientEvent("interactionCreate", async (interaction) => {
 		const command = client.commands.get(interaction.commandName)
 		if (!command)
 			return interaction.followUp("That command does not exist!").catch((e) => console.error(e))
+
+		const member = interaction.member as GuildMember
+		if (!member) {
+			return interaction.reply({
+				content: "Only members of waspscripts.com server can use this command.",
+				flags: MessageFlags.Ephemeral
+			})
+		}
+
+		if (command.roles && command.roles.length > 0) {
+			const role = getRole(member, command.roles)
+			if (!role) {
+				return interaction.reply({
+					content:
+						"Only " + command.roles.join("/") + " roles in waspscripts.com can use this command.",
+					flags: MessageFlags.Ephemeral
+				})
+			}
+		}
 
 		try {
 			command.run({

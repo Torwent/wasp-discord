@@ -27,6 +27,7 @@ interface CommandRunOptions {
 type CommandRunFunction = (options: CommandRunOptions) => any
 
 export type Command = {
+	roles?: string[]
 	run: CommandRunFunction
 } & ApplicationCommandData
 

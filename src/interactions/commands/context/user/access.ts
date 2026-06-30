@@ -21,6 +21,7 @@ const command: Command = {
 		InteractionContextType.BotDM,
 		InteractionContextType.PrivateChannel
 	],
+	roles: ["Tester", "Scripter", "Moderator", "Administrator"],
 	run: async ({ interaction }) => {
 		await interaction.deferReply({ flags: MessageFlags.Ephemeral })
 

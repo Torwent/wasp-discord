@@ -5,6 +5,7 @@ const command: Command = {
 	name: "server",
 	defaultMemberPermissions: [PermissionFlagsBits.ModerateMembers],
 	description: "Replies with server info",
+	roles: ["Tester", "Scripter", "Moderator", "Administrator"],
 	run: async ({ interaction }) => {
 		await interaction.deferReply()
 

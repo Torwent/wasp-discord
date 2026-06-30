@@ -42,10 +42,12 @@ module.exports = defineConfig([
 		"**/.DS_Store",
 		"**/node_modules",
 		"build",
+		".svelte-kit",
 		"package",
 		"**/.env",
 		"**/.env.*",
 		"!**/.env.example",
+		"**/supabase",
 		"**/pnpm-lock.yaml",
 		"**/package-lock.json",
 		"**/yarn.lock"

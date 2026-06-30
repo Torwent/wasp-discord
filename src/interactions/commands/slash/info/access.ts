@@ -11,6 +11,7 @@ const command: Command = {
 		ApplicationIntegrationType.UserInstall
 	],
 	options: [{ type: 6, name: "user", description: "Discord user", required: true }],
+	roles: ["Tester", "Scripter", "Moderator", "Administrator"],
 	run: async ({ interaction, args }) => {
 		const user = args.data[0].value as string
 		if (user == "") {

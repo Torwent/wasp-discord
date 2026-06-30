@@ -15,17 +15,10 @@ const command: Command = {
 		InteractionContextType.PrivateChannel
 	],
 	options: [{ type: 6, name: "user", description: "Discord user", required: true }],
+	roles: ["Tester", "Scripter", "Moderator", "Administrator"],
 	run: async ({ interaction, args }) => {
 		await interaction.deferReply({ ephemeral: true })
 		const roles = interaction.member.roles.cache
-		const hasRole = roles.find(
-			(r) => r.name === "Scripter" || r.name === "Moderator" || r.name === "Administrator"
-		)
-
-		if (hasRole == null) {
-			await interaction.editReply("You are not allowed to use this command.")
-			return
-		}
 
 		const user = args.data[0].value as string
 

@@ -8,6 +8,7 @@ const command: Command = {
 	name: "did",
 	description: "Gets the user discord id",
 	options: [{ type: 3, name: "wsid", description: "User WSID", required: true }],
+	roles: ["Tester", "Scripter", "Moderator", "Administrator"],
 	run: async ({ interaction, args }) => {
 		await interaction.deferReply({ ephemeral: true })
 		const user = args.data[0].value as string

@@ -10,7 +10,7 @@ import {
 const modal: Button = {
 	name: "access_next",
 	description: "Access next button",
-	roles: ["Administrator", "Moderator", "Scripter", "Tester"],
+	roles: ["Tester", "Scripter", "Moderator", "Administrator"],
 	type: ApplicationCommandType.ChatInput,
 	integrationTypes: [
 		ApplicationIntegrationType.GuildInstall,
