@@ -10,7 +10,7 @@ let response: string | null = null
 const command: Command = {
 	name: "Quick Help",
 	type: ApplicationCommandType.Message,
-	run: async ({ interaction }) => {
+	run: async ({ interaction, args }) => {
 		await interaction.deferReply({ ephemeral: true })
 		const caller = interaction.member
 		const role = caller.roles.cache.find(
@@ -33,7 +33,7 @@ const command: Command = {
 			return
 		}
 
-		const message = interaction.options.data[0]
+		const message = args.data[0]
 		const user = message.message.author.id
 
 		if (user === "") {

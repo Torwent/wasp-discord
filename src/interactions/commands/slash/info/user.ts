@@ -5,10 +5,17 @@ import { ApplicationIntegrationType, InteractionContextType } from "discord.js"
 const command: Command = {
 	name: "user",
 	description: "Gets the waspscripts user info",
-	integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
-	contexts: [InteractionContextType.Guild,InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
+	integrationTypes: [
+		ApplicationIntegrationType.GuildInstall,
+		ApplicationIntegrationType.UserInstall
+	],
+	contexts: [
+		InteractionContextType.Guild,
+		InteractionContextType.BotDM,
+		InteractionContextType.PrivateChannel
+	],
 	options: [{ type: 6, name: "user", description: "Discord user", required: true }],
-	run: async ({ interaction }) => {
+	run: async ({ interaction, args }) => {
 		await interaction.deferReply({ ephemeral: true })
 		const roles = interaction.member.roles.cache
 		const hasRole = roles.find(
@@ -20,7 +27,7 @@ const command: Command = {
 			return
 		}
 
-		const user = interaction.options.data[0].value as string
+		const user = args.data[0].value as string
 
 		if (user === "") {
 			await interaction.editReply("Discord ID is empty.")

@@ -17,7 +17,7 @@ import { ApplicationCommandType, TextChannel } from "discord.js"
 const command: Command = {
 	name: "Report message",
 	type: ApplicationCommandType.Message,
-	run: async ({ interaction }) => {
+	run: async ({ interaction, args }) => {
 		await interaction.deferReply({ ephemeral: true })
 
 		if (protectedChannels.includes(interaction.channel.name)) {
@@ -25,7 +25,7 @@ const command: Command = {
 			return
 		}
 
-		const message = interaction.options.data[0]
+		const message = args.data[0]
 		const caller = interaction.member
 		const reported = message.message.member
 

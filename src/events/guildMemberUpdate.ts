@@ -70,7 +70,11 @@ export default new ClientEvent("guildMemberUpdate", async (user) => {
 	const { id } = data
 
 	// Build roleObject by checking if member has each role by ID
-	const roleObject: Record<string, boolean> = {}
+	const roleObject = {
+		moderator: false,
+		scripter: false,
+		tester: false
+	}
 	for (const key of Object.keys(discordRoles)) {
 		const role = rolesByName[key]
 		roleObject[key] = role ? member.roles.cache.has(role.id) : false

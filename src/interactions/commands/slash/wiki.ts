@@ -4,8 +4,15 @@ import { ApplicationIntegrationType, InteractionContextType } from "discord.js"
 const command: Command = {
 	name: "wiki",
 	description: "Replies with a link to osrs wiki resources",
-	integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
-	contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
+	integrationTypes: [
+		ApplicationIntegrationType.GuildInstall,
+		ApplicationIntegrationType.UserInstall
+	],
+	contexts: [
+		InteractionContextType.Guild,
+		InteractionContextType.BotDM,
+		InteractionContextType.PrivateChannel
+	],
 	options: [
 		{
 			type: 3,
@@ -16,11 +23,11 @@ const command: Command = {
 		{ type: 6, name: "user", description: "Pings a user", required: false }
 	],
 
-	run: async ({ interaction }) => {
+	run: async ({ interaction, args }) => {
 		await interaction.deferReply()
 		let link = "https://oldschool.runescape.wiki/?search="
 
-		interaction.options.data.forEach((entry) => {
+		args.data.forEach((entry) => {
 			if (entry.name === "user") link = "<@" + entry.value + "> Check: " + link
 			if (entry.name === "search") link += encodeURI(entry.value as string)
 		})

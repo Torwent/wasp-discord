@@ -4,8 +4,10 @@ import type {
 	CommandInteraction,
 	CommandInteractionOptionResolver,
 	GuildMember,
-	ApplicationCommandDataResolvable
+	ApplicationCommandDataResolvable,
+	ButtonInteraction
 } from "discord.js"
+import { ExtendedClient } from "src"
 
 export interface RegisterCommandsOptions {
 	GUILD_ID?: string
@@ -27,3 +29,16 @@ type CommandRunFunction = (options: CommandRunOptions) => any
 export type Command = {
 	run: CommandRunFunction
 } & ApplicationCommandData
+
+export interface ButtonInteractionEx extends ButtonInteraction {
+	member: GuildMember
+}
+
+export type Button = ApplicationCommandData & {
+	roles?: string[]
+	run: (options: {
+		client: ExtendedClient
+		member: GuildMember
+		interaction: ButtonInteractionEx
+	}) => void
+}

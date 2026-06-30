@@ -15,7 +15,7 @@ import {
 	GuildMember
 } from "discord.js"
 import { glob } from "glob"
-import { Command } from "$lib/interaction"
+import { Button, Command } from "$lib/interaction"
 import { ClientEvent } from "$lib/event"
 import { supabase } from "$lib/supabase"
 import { setupChannels } from "$lib/lib"
@@ -40,6 +40,7 @@ export class ExtendedClient extends Client {
 	}
 
 	commands: Collection<string, Command> = new Collection()
+	buttons: Collection<string, Button> = new Collection()
 
 	// Register modules (Commands, Buttons, Menus, Modals, ...)
 	async registerModules() {
@@ -70,9 +71,21 @@ export class ExtendedClient extends Client {
 			commands.push(command)
 		})
 
-		this.once("ready", async () => {
-			const guild = this.guilds.cache.get(process.env.GUILD_ID)
+		const buttonsPath = __dirname.replaceAll("\\", "/") + "/interactions/buttons/"
+		const buttonFiles = await glob(buttonsPath + "**/*{.ts,.js}")
+		buttonFiles.forEach(async (file) => {
+			const imported = await import(file)
+			if (!imported) return
+			const button: Button = imported.default
 
+			console.log("Adding button: ", button.name)
+
+			this.buttons.set(button.name, button)
+			commands.push(button)
+		})
+
+		this.once("clientReady", async () => {
+			const guild = this.guilds.cache.get(process.env.GUILD_ID)
 			await setupChannels(guild)
 
 			guild.commands.set(commands)

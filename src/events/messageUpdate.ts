@@ -1,7 +1,7 @@
 import { ClientEvent } from "$lib/event"
-import { getRole } from "$lib/lib"
+import { getRole, management } from "$lib/lib"
 
-const maxTime = 30 * 60 * 1000
+const maxTime = 2 * 24 * 60 * 60 * 1000 //48h
 
 export default new ClientEvent("messageUpdate", async (oldMsg, newMsg) => {
 	if (newMsg.author.bot) return
@@ -12,20 +12,25 @@ export default new ClientEvent("messageUpdate", async (oldMsg, newMsg) => {
 
 	const { member } = newMsg
 	if (!member) return
-	console.log(member.guild.id)
+
 	const role = getRole(member, ["Administrator", "Moderator", "Scripter", "Tester"])
 	if (role) return
 
-	const reply = await newMsg
-		.reply(
+	const { guild } = member
+	const mod = guild.roles.cache.get("moderator")
+
+	await management
+		.send(
 			"<@" +
+				mod.id +
+				"> <@" +
 				newMsg.author.id +
-				"> your message has been deleted.\n\nFor server safety reasons, you can't edit messages that are older than " +
-				(maxTime / 60 / 1000).toString() +
-				" minutes on this server."
+				"> edited a message that is more than 48H old: https://discord.com/channels/" +
+				newMsg.guildId +
+				"/" +
+				newMsg.channelId +
+				"/" +
+				newMsg.id
 		)
 		.catch((e) => console.error(e))
-	await newMsg.delete().catch((e) => console.error(e))
-
-	if (reply) setTimeout(async () => await reply.delete(), 15000)
 })

@@ -1,14 +1,25 @@
 import type { Command } from "$lib/interaction"
 import { getRole } from "$lib/lib"
 import { supabase, User } from "$lib/supabase"
-import { ApplicationCommandType, ApplicationIntegrationType, InteractionContextType } from "discord.js"
+import {
+	ApplicationCommandType,
+	ApplicationIntegrationType,
+	InteractionContextType
+} from "discord.js"
 
 const command: Command = {
 	name: "User information",
 	type: ApplicationCommandType.User,
-	integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
-	contexts: [InteractionContextType.Guild,InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
-	run: async ({ interaction }) => {
+	integrationTypes: [
+		ApplicationIntegrationType.GuildInstall,
+		ApplicationIntegrationType.UserInstall
+	],
+	contexts: [
+		InteractionContextType.Guild,
+		InteractionContextType.BotDM,
+		InteractionContextType.PrivateChannel
+	],
+	run: async ({ interaction, args }) => {
 		await interaction.deferReply({ ephemeral: true })
 		const roles = interaction.member.roles.cache
 		const role = getRole(interaction.member, ["Scripter", "Moderator", "Administrator"])
@@ -18,7 +29,7 @@ const command: Command = {
 			return
 		}
 
-		const user = interaction.options.data[0].value as string
+		const user = args.data[0].value as string
 
 		if (user === "") {
 			await interaction.editReply("Discord ID is empty.")

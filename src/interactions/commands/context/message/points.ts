@@ -5,10 +5,10 @@ import { ApplicationCommandType } from "discord.js"
 const command: Command = {
 	name: "Report points (message)",
 	type: ApplicationCommandType.Message,
-	run: async ({ interaction }) => {
+	run: async ({ interaction, args }) => {
 		await interaction.deferReply({ ephemeral: true })
 
-		const message = interaction.options.data[0]
+		const message = args.data[0]
 		const member = message.message.member
 
 		if (member.id === "") {

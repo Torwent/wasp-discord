@@ -8,9 +8,9 @@ const command: Command = {
 	name: "did",
 	description: "Gets the user discord id",
 	options: [{ type: 3, name: "wsid", description: "User WSID", required: true }],
-	run: async ({ interaction }) => {
+	run: async ({ interaction, args }) => {
 		await interaction.deferReply({ ephemeral: true })
-		const user = interaction.options.data[0].value as string
+		const user = args.data[0].value as string
 
 		if (user === "") {
 			await interaction.editReply("WaspScripts ID is empty.")

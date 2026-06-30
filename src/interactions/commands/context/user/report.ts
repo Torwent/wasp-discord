@@ -17,7 +17,7 @@ import { ApplicationCommandType, GuildMember, TextChannel } from "discord.js"
 const command: Command = {
 	name: "Report user",
 	type: ApplicationCommandType.User,
-	run: async ({ interaction }) => {
+	run: async ({ interaction, args }) => {
 		await interaction.deferReply({ ephemeral: true })
 
 		if (protectedChannels.includes(interaction.channel.name)) {
@@ -26,7 +26,7 @@ const command: Command = {
 		}
 
 		const caller = interaction.member
-		const reported = interaction.options.data[0].member as GuildMember
+		const reported = args.data[0].member as GuildMember
 
 		if (!reported || reported.id === "") {
 			await interaction.editReply("User Discord ID is empty. Maybe they already left the server?")

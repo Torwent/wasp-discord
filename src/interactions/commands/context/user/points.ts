@@ -5,10 +5,10 @@ import { ApplicationCommandType } from "discord.js"
 const command: Command = {
 	name: "Report points (user)",
 	type: ApplicationCommandType.User,
-	run: async ({ interaction }) => {
+	run: async ({ interaction, args }) => {
 		await interaction.deferReply({ ephemeral: true })
 
-		const member = interaction.options.data[0].value as string
+		const member = args.data[0].value as string
 
 		if (!member) {
 			await interaction.editReply("User Discord ID is empty. Maybe the user left the server?")

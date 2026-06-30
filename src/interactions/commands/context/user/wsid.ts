@@ -1,14 +1,24 @@
 import { wsid } from "$lib/commands"
 import type { Command } from "$lib/interaction"
-import { getWSID } from "$lib/supabase"
-import { ApplicationCommandType, ApplicationIntegrationType, InteractionContextType } from "discord.js"
+import {
+	ApplicationCommandType,
+	ApplicationIntegrationType,
+	InteractionContextType
+} from "discord.js"
 
 const command: Command = {
 	name: "WaspScripts ID",
 	type: ApplicationCommandType.User,
-	integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
-	contexts: [InteractionContextType.Guild,InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
-	run: async ({ interaction }) => await wsid(interaction)
+	integrationTypes: [
+		ApplicationIntegrationType.GuildInstall,
+		ApplicationIntegrationType.UserInstall
+	],
+	contexts: [
+		InteractionContextType.Guild,
+		InteractionContextType.BotDM,
+		InteractionContextType.PrivateChannel
+	],
+	run: async ({ interaction, args }) => await wsid(interaction, args)
 }
 
 export default command

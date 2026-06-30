@@ -4,8 +4,15 @@ import { ApplicationIntegrationType, InteractionContextType } from "discord.js"
 const command: Command = {
 	name: "wasp",
 	description: 'Replies with resources from https://waspscripts.com"',
-	integrationTypes: [ApplicationIntegrationType.GuildInstall, ApplicationIntegrationType.UserInstall],
-	contexts: [InteractionContextType.Guild, InteractionContextType.BotDM, InteractionContextType.PrivateChannel],
+	integrationTypes: [
+		ApplicationIntegrationType.GuildInstall,
+		ApplicationIntegrationType.UserInstall
+	],
+	contexts: [
+		InteractionContextType.Guild,
+		InteractionContextType.BotDM,
+		InteractionContextType.PrivateChannel
+	],
 	options: [
 		{
 			type: 3,
@@ -27,11 +34,11 @@ const command: Command = {
 		{ type: 6, name: "user", description: "user to ping", required: false }
 	],
 
-	run: async ({ interaction }) => {
+	run: async ({ interaction, args }) => {
 		await interaction.deferReply()
 		let link = "https://waspscripts.com"
-		if (interaction.options.data.length > 0) {
-			interaction.options.data.forEach((entry) => {
+		if (args.data.length > 0) {
+			args.data.forEach((entry) => {
 				if (entry.name === "user") link = "<@" + entry.value + "> Check: " + link
 				if (entry.name === "page") link += encodeURI(entry.value as string)
 				if (entry.name === "script") link += "/scripts?search=" + encodeURI(entry.value as string)
